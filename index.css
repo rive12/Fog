@@ -1,0 +1,147 @@
+@import url('https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css');
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@font-face {
+    font-family: A;
+    src: url(AE.otf);
+}
+body {
+    font-family: A;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    animation: fadeInAnimation ease-in-out 0.3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    background-image: url(./imgs/Karda\ Home@2x.png);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+      -o-user-select: none;
+     -ms-user-select: none;
+         user-select: none;
+}
+
+
+
+.fa-magnifying-glass {
+    color: white;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10%;
+}
+
+.logo {
+    width: 150px;
+}
+
+.logo-wrapper .text {
+    font-size: 75px;
+    font-family: A;
+    color: #FFF;
+}
+
+.logo-wrapper h1 {
+    color: white;
+}
+
+footer {
+    margin-top: auto;
+    width: 93%;
+    align-self: center;
+    height: 80px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+footer a,
+footer span {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 16px;
+}
+
+footer a {
+    cursor: pointer;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+.desc {
+    display: flex;
+    justify-content: center;
+}
+
+.desc p {
+    width: 560px;
+    color: rgba(253, 253, 253, 0.514);
+}
+
+form input {
+    background: none;
+    font-family: inherit;
+    padding: 0px 25px;
+    height: 48px;
+    border: 1px solid rgba(253, 253, 253, 0.514);
+    color: var(--text-color);
+    outline: none;
+    width: 350px;
+    margin-top: 5px;
+    color: #FFF;
+}
+
+
+canvas {
+    display: block; 
+    z-index: -1;
+
+  }
+  
+  
+  /* ---- particles.js container ---- */
+  
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+.settingsP {
+    font-size: 25px;
+}
+.settingsBody {
+    color: grey;
+    font-family: 'A';
+    font-weight: 500;
+    text-align: center;
+}
+.settingsHead {
+    color: grey;
+    font-size: 80px;
+    font-family: 'A';
+    text-decoration: underline;
+    text-decoration: rgb(255, 255, 255);
+}
+
+

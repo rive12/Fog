@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles/main.css">
+        <script href="./index.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" crossorigin="anonymous">
+        <title>Kardna | Womginx</title>
+        <link href="nav.css" rel="stylesheet">
+        <script>
+            document.onkeydown = function(e) {
+            if(event.keyCode == 123) {
+            return false;
+            }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+            return false;
+            }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+            return false;
+            }
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+            return false;
+            }
+            }
+            </script>
+    </head>
+    <div id="particles-js"></div>
+    <body>
+        <nav class="ka-boom">
+            <ul class="nav">
+                  <li><a href="./index.html">Home</a></li>
+                  <li><a href="./choice.html">Search</a></li>
+                  <li><a href="./games.html">Games</a></li>
+                  <li><a href="./movies.html">Movies</a></li>
+                  <li><a href="./music.html">Music</a></li>
+                  <li><a onclick="settings();" style="color: #FFF;">Settings</a></li>
+            </ul>
+        </nav>
+        <iframe id="iframe_frame" src=""></iframe>
+        <main>
+            <div class="proHead">
+                <h>Womginx</h>
+            </div>
+            <div class="proBar">
+                <form id="womf">
+                    <input type="text" autocomplete="off" name="url" id="womurl" placeholder="NOT WORKING ATM">
+                    <button class="proButton" type="submit"><i class="fa fa-search"></i></button>
+                    <button class="proButton" type="button" onclick="womStealth()"><i class="fa fa-eye-slash"></i></button>
+                </form>
+            </div>
+        </main>
+        <script src="./scripts/main.js"></script>
+        <script>
+            window.addEventListener("DOMContentLoaded", function() {
+            var prefix = "main";
+            document.getElementById("womf").addEventListener("submit", function(e) {
+               e.preventDefault();
+               var url = document.getElementById("womurl").value;
+               if (url.includes('.') && !url.includes(' ')) {
+                   window.location.href = "https://w." + document.domain + "/" + prefix + "/" + (url.substring(0, 4) == "http" ? url : "https://" + url);
+                }  else {
+                     window.location.href = "https://w." + document.domain + "/" + prefix + "/" + "https://searx.degenerate.info/search?q=" + url.replace(/ /g, "+");
+                }
+            }, false);
+        }, false);
+        </script>
+            <script src="particles.js"></script>
+            <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    </body>
+</html>

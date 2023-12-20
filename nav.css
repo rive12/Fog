@@ -1,0 +1,62 @@
+@import url('https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css');
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@font-face {
+    font-family: A;
+    src: url(AE.otf);
+}
+.nav {
+    height: 40px; /* set same as height & line-height below */
+    font-family: A;
+    text-align: center;
+  }
+  
+  /* This rule centers the nav items verticaly in the bar with the height and line height properties. Spacing between the nav items is controlled by setting right and left padding.  */
+  .nav li {
+    display: inline-block;
+    list-style: none;
+    height: 40px; /* should be the same as line-height */
+    line-height: 40px; /* should be the same as height */
+    padding: 0px 40px; /* "0" sets top and bottom padding to none */
+    text-decoration: none;
+  }
+  
+  /* :hover allows you change the background color of the nav items when you mouse over them. Play around with the transition value to change the speed of the hover transition. */
+  .nav li:hover {
+    background: rgb(134, 134, 134);
+    transition: .3s;
+    text-decoration: none;
+    z-index: 1;
+  }
+  
+  /* This rule is applied to the link <a> tag. It lets you turn off the link underline and set the link text color. */
+  .nav-link {
+    color: #fff;
+    text-decoration: none;
+    z-index: 1;
+  }
+
+
+  a:link {
+    text-decoration: none;
+    color: #fff;
+    z-index: 1;
+  }
+  
+  a:visited {
+    text-decoration: none;
+    color: #fff;
+    z-index: 1;
+  }
+
+  .ka-boom{
+    background-color: black;
+   
+  }

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="./index.css">
+        <link rel="stylesheet" href="./nav.css">
+        <script href="./swttings.js"></script>
+        <script href="./index.js"></script>
+		<script>
+			document.onkeydown = function(e) {
+			if(event.keyCode == 123) {
+			return false;
+			}
+			if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+			return false;
+			}
+			if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+			return false;
+			}
+			if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+			return false;
+			}
+			}
+			</script>
+        <style>
+            details {
+	position: relative;
+	width: 300px;
+	margin-right: 1rem;
+}
+
+details[open] {
+	z-index: 1;
+}
+
+summary {
+	padding: 1rem;
+	cursor: pointer;
+	border-radius: 5px;
+	background-color: #ddd;
+	list-style: none;
+}
+
+summary::-webkit-details-marker {
+	display: none;
+}
+
+details[open] summary:before {
+	content: '';
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	background: transparent;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+summary:after {
+	content: '';
+	display: inline-block;
+	float: right;
+	width: .5rem;
+	height: .5rem;
+	border-bottom: 1px solid currentColor;
+	border-left: 1px solid currentColor;
+	border-bottom-left-radius: 2px;
+	transform: rotate(45deg) translate(50%, 0%);
+	transform-origin: center center;
+	transition: transform ease-in-out 100ms
+}
+
+summary:focus {
+	outline: none;
+}
+
+details[open] summary:after {
+	transform: rotate(-45deg) translate(0%, 0%);
+}
+
+ul {
+	width: 100%;
+	background: #ddd;
+	position: absolute;
+	top: calc(100% + .5rem);
+	left: 0;
+	padding: 1rem;
+	margin: 0;
+	box-sizing: border-box;
+	border-radius: 5px;
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+li {
+	margin: 0;
+	padding: 1rem 0;
+	border-bottom: 1px solid #ccc;
+}
+
+li:first-child {
+	padding-top: 0;
+}
+
+li:last-child {
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+/* FAKE SELECT */
+
+summary.radios {
+	counter-reset: radios;
+}
+
+summary.radios:before {
+	content: var(--selection);
+}
+
+input[type=radio] {
+	counter-increment: radios;
+	appearance: none;
+	display: none;
+}
+
+input[type=radio]:checked {
+	display: inline;
+	--display: block;
+}
+
+input[type=radio]:after {
+	content: attr(title);
+	display: inline;
+	font-size: 1rem;
+}
+
+ul.list {
+	counter-reset: labels;
+}
+
+label {
+	width: 100%;
+	display: flex;
+	cursor: pointer;
+	justify-content: space-between;
+}
+
+label span {
+	--display: none;
+	display: var(--display);
+	width: 1rem;
+	height: 1rem;
+	border: 1px solid #727272;
+	border-radius: 3px;
+}
+        </style>
+        <title>Kardna | Settings</title>
+    </head>
+    <body  class="settingsBody">
+        <div id="particles-js"></div>
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="./particles.js"></script>
+        <h class="settingsHead">Settings</h>
+        <br>
+        <br>
+        <br>
+        <br>
+		<h1>Select Proxy</h1>
+        <details style="z-index: 100; align-self: center;" class="custom-select">
+            <summary class="radios">
+                <input type="radio" name="item"  title="Kardna" checked>
+                <input type="radio" name="item" id="item1" title="Kardns Proxy">
+                <input type="radio" name="item" id="item2" title="Ultraviolet">
+                <input type="radio" name="item" id="item3" title="Cyclone">
+                <input type="radio" name="item" id="item4" title="Womginx">
+				<input type="radio" name="item" id="item5" title="Degeneracy">
+            </summary>
+            <ul class="list">
+                <li>
+                    <label for="item1">
+                        Kardna Proxy
+                        <span>Wait wat</span>
+                    </label>
+                </li>
+                <li>
+                    <label for="item2">Ultraviolet Proxy</label>
+                </li>
+                <li>
+                    <label for="item3">Cyclone</label>
+                </li>
+                <li>
+                    <label for="item4">Womginx</label>
+                </li>
+                <li>
+                    <label for="item5">Degeneracy</label>
+                </li>
+            </ul>
+        </details>
+		<br>
+        <script src="./scripts/main.js"></script>
+		<iframe src="./settings2.html" frameBorder="0" width="852px" height="480px"></iframe>
+    </body>
+</html>
