@@ -1,0 +1,34 @@
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+}
+#vanta-js{
+    width: 100%;
+    height: 100vh;
+    z-index: 12;
+}
+body{
+    overflow: hidden;
+}
+</style>
+<div id="vanta-js"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+<script>
+VANTA.WAVES({
+    el: "#vanta-js",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00,
+    color: 0x343434,
+    shininess: 21.00,
+    waveHeight: 12.50,
+    waveSpeed: 0.55,
+    zoom: 0.71
+    })
+    </script>

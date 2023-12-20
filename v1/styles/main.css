@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:100,200,300,400,500,600,700,800,900');
+
+@import url('https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css');
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@font-face {
+    font-family: A;
+    src: url(../AE.otf);
+}
+body {
+    font-family: A;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    animation: fadeInAnimation ease-in-out 0.3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    background-image: url(../imgs/Karda\ Home@2x.png);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+      -o-user-select: none;
+     -ms-user-select: none;
+         user-select: none;
+}
+
+/* Landing Page */
+
+#landing {
+    margin-top: 15%;
+    text-align: center;
+}
+
+#landing-head {
+    color: grey;
+    font-size: 65px;
+    font-weight: 900;
+    font-family: 'A';
+}
+
+#landing-body {
+    text-align: center;
+    font-family: 'Ubuntu';
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+/* Choice Page */
+
+#choices {
+    text-align: center;
+    margin-top: 12%;
+    font-weight: 500;
+    z-index: 1;
+}
+
+#choiceheadtxt {
+    font-size: 40px;
+    font-weight: 900;
+    font-family: 'A';
+    color: white;
+}
+
+#choiceDesc {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'A';
+    color: white;
+}
+
+#choiceDesc:after {
+    content: 'To get a description of each proxy, hover over the icon you would like the description of.';
+}
+
+#womginxDesc:hover ~ #choiceDesc::after {
+    content: 'Womginx is a very fast proxy with good site compatibility.';
+}
+
+#uvDesc:hover ~ #choiceDesc::after {
+    content: 'Ultraviolet is an incredibly fast and secure proxy with support for Spotify, reCaptcha, Discord, and more!';
+}
+
+#ramDesc:hover ~ #choiceDesc::after {
+    content: 'Rammerhead is a super fast and reliable web proxy with amazing site support.';
+}
+
+.imageChoice {
+    display: inline-block;
+    width: 225px;
+    height: 300px;
+    border-radius: 5px;
+    margin-right: 2.5px;
+    margin-left: 2.5px;
+    color: grey;
+    cursor: pointer;
+    border: 1px solid;
+    border-color: grey;
+    font-size: 30px;
+    font-family: 'A';
+    text-decoration: none;
+    background: #23272a;
+    transition: all .5s ease-out;
+}
+
+.imageChoice:hover {
+    transition: all .5s ease-in;
+    transform: scale(1.05);
+}
+
+.imageChoice img {
+    width: 100%;
+    height: 80%;
+}
+
+#choiceButtons {
+    text-align: center;
+}
+
+/* Navbar */
+
+.navbar {
+    background-color: #23272a;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    letter-spacing: 0.8px;
+    height: 50px;
+}
+
+.navbar a {
+    color: white;
+    display: block;
+    float: right;
+    font-size: 17px;
+    padding: 12px 15px;
+    font-family: 'A';
+    text-align: center;
+    text-decoration: none;
+}
+
+.ddIcon {
+    color: white;
+    padding: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    display: block;
+    float: right;
+    text-align: center;
+    text-decoration: none;
+}
+
+.dropDown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #23272a;
+    margin-top: 50px;
+    min-width: 150px;
+    z-index: 1;
+    right: 0;
+}
+  
+.dropdownContent a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdownContent a:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.05);
+}
+  
+.dropDown:hover .dropdownContent {
+    display: block;
+}
+
+#homeButton {
+    color: white;
+    display: block;
+    float: left;
+    margin-left: 25px;
+    font-size: 30px;
+    padding: 12px 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navbar i:hover {
+    cursor: pointer;
+}
+
+.navbar a:hover {
+    cursor: pointer;
+}
+
+/* Pr0xy Pages */
+
+.proHead {
+    margin-top: 15%;
+    text-align: center;
+    color: grey;
+    font-size: 80px;
+    font-family: 'A';
+    font-weight: 500;
+}
+
+.proBar {
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 50%;
+    height: 50px;
+    padding: 0px 5px;
+    margin-top: 25px;
+    color:  white;
+    font-family: 'A';
+    background: #23272a;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: grey;
+    border-width: 1px;
+    border: 1px solid grey;
+    transition: all .2s ease-in-out;
+}
+
+.proButton {
+    width: 50px;
+    height: 52px;
+    color: white;
+    padding: 0px 5px;
+    font-size: 15px;
+    font-family: 'A';
+    background: #23272a;
+    border-radius: 5px;
+    border-color: grey;
+    border-width: 1px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    border-style: solid;
+}
+
+.siteButton {
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    color: white;
+    padding: 0px 5px;
+    font-size: 17px;
+    font-family: 'A';
+    background: #23272a;
+    border-radius: 5px;
+    border-color: grey;
+    border-width: 1px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    border-style: solid;
+}
+
+/* Stealth Mode Iframe */
+
+#iframe_frame {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    border: none;
+    background-color: white;
+}
+
+/* Standard Button */
+
+.std-button {
+    width: 150px;
+    height: 50px;
+    color: white;
+    padding: 0px 5px;
+    font-size: 15px;
+    font-family: 'A';
+    background: #23272a;
+    border-radius: 5px;
+    border-color: grey;
+    border-width: 1px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    border-style: solid;
+}
+
+.std-button:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.05);
+}
+
+/* Footer(s) */
+
+.footer{ 
+    position: fixed;     
+    text-align: center;    
+    bottom: 20px; 
+    width: 100%;
+}
+
+#footer-href {
+    color: black;
+}
+
+/* Center Horizontally and Vertically */
+
+.middle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+
+/* Settings 
+Note: CHANGE THIS! THIS IS NOT GOING TO STAY LIKE THIS!! DO NOT LET IT!!! */
+
+.settingsBody {
+    margin-top: 3%;
+    color: grey;
+    font-size: 45px;
+    font-family: 'A';
+    font-weight: 500;
+    text-align: center;
+}
+
+.settingsHead {
+    color: grey;
+    font-size: 80px;
+    font-family: 'A';
+}
+
+.settingsP {
+    font-size: 25px;
+}
+
+.settingsImg {
+    width: 200px;
+    height: 200px;
+}
+
+.settingsInput {
+    width: 50%;
+    height: 50px;
+    padding: 0px 5px;
+    color:  white;
+    font-family: 'A';
+    background: #23272a;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: grey;
+    border-width: 1px;
+    transition: all .2s ease-in-out;
+    border-style: solid;
+}
+
+.settingsInput:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.01);
+}
+
+.settingsButton {
+    width: 90px;
+    height: 50px;
+    color: white;
+    padding: 0px 5px;
+    font-size: 15px;
+    font-family: 'A';
+    background: #23272a;
+    border-radius: 5px;
+    border-color: grey;
+    border-width: 1px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    border-style: solid;
+}
+
+.settingsButton:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+}
+
+.settingsButton[name="cloakButton"] {
+    width: 50px;
+    height: 52px;
+    padding: 0px 5px;
+    margin-left: 5px;
+}
+
+canvas {
+    display: block;
+    z-index: -1;
+
+  }
+  
+  
+  /* ---- particles.js container ---- */
+  
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
