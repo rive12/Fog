@@ -1,0 +1,152 @@
+@font-face {
+    font-family: A;
+    src: url(../AE.otf);
+}
+
+body{
+    background-color: black;
+    color: white;
+    font-family: A;
+    overflow: hidden;
+}
+
+.featured{
+    opacity: 0;
+    transform: translateY(-480px);
+    animation: fade 2s 3s forwards;
+}
+
+.group{
+    opacity: 0;
+    animation: fade 2s 3s forwards;
+    text-align: center;
+    width: 50%;
+    font-family: A;
+}
+/* Apps Text/Div */
+.group2{
+    opacity: 0;
+    animation: fade 2s 3s forwards;
+    text-align: center;
+    width:50%;
+    float:right;
+    font-family: A;
+    transform: translateY(1px);
+}
+#Games{
+    float:left;
+    opacity: 0;
+    width:100%;
+    transform: translateY(-150px);
+    animation: fade 2s 3s forwards;
+}
+#Games img{
+    width:120px;
+    border-radius: 15%;
+    margin: 5px;
+    height:120px;
+    transition: transform .2s; /* Animation */
+}
+#Games img:hover{
+    transform: scale(1.1);
+}
+/* Apps Icons */
+#Apps{
+    float:right;
+    opacity: 0;
+    animation: fade 2s 3s forwards;
+    transform: translateY(-210px);
+}
+#Apps p{
+    padding-right: 50px;
+}
+#Apps img{
+    border-radius: 15%;
+    height:120px;
+    height:120px;
+    margin: 5px;
+    transition: transform .2s; /* Animation */
+}
+#Apps img:hover{
+    transform: scale(1.1);
+}
+
+
+
+.header{    
+    opacity: 0;
+    animation-name: drop-fade;
+    animation-duration: 1s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 870px;
+    text-align:center;
+}
+
+.headerOne{
+    opacity: 0;
+    animation-name: drop-fade;
+    animation-duration: 1.5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    background: linear-gradient(to right, #313131, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 575px;
+}
+
+ul{
+    list-style-type: none;
+    padding: 15px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.vtwo{
+    opacity: 0;
+    width: 300px;
+    color: transparent;
+    transform: translateX(620px) translateY(-210px);
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: white;
+    animation-name: fade;
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+    overflow: hidden;
+}
+
+/* width height*/
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+}
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255);
+}
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(201, 201, 201);
+}
+  
+@keyframes drop-fade{
+    from{transform: translatey(0); opacity: 0;} 
+    to{transform: translatey(20px); opacity: 1;}
+}
+
+@keyframes fade{
+    from{opacity: 0;} 
+    to{opacity: 1;}
+}

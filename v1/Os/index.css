@@ -1,0 +1,50 @@
+@font-face {
+    font-family: A;
+    src: url(./AE.otf);
+}
+body {
+    font-family: A;
+}
+h3{
+    color: white;
+}
+.header{
+    background-color: black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 95%;
+    left: 0;
+}
+.header h1{
+    color: white;
+    text-align: center;
+    font-size: 20px;
+
+}
+.footer{
+    background-color: black;
+    position: absolute;
+    top: 95%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.footer h3{
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    
+}
+.google{
+
+}
+.vs{
+
+}
+.games{
+
+}
+.folder{
+
+}

@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bobydob/fdes@v1.0/48/style.css">
+    <script src="https://cdn.jsdelivr.net/gh/bobydob/fdes@v1.0/48/UnityProgress.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/bobydob/fdes@v1.0/48/unityloader41.js"></script>
+
+    <script type="text/javascript">
+      var gameInstance;
+      window.onload = function () {
+        let  bttn = document.createElement( "button" );
+        bttn.appendChild(document.createTextNode( "Slope" ));
+        bttn.setAttribute('id', 'run_game');
+        bttn.style.color = 'white';
+        bttn.style.display = 'none';
+        bttn.style.position = 'absolute';
+        document.body.appendChild(bttn);
+        bttn.style.display = 'block';
+        bttn.style.left = ((document.body.clientWidth - bttn.offsetWidth)/2) + 'px';
+        bttn.style.top = ((document.body.clientHeight - bttn.offsetHeight)/2) + 'px';
+        bttn.onclick = function () {
+          gameInstance = UnityLoader.instantiate("gameContainer", "https://cdn.jsdelivr.net/gh/bobydob/fdes@v1.0/48/slope.json", {onProgress: UnityProgress,Module:{onRuntimeInitialized: function() {UnityProgress(gameInstance, "complete")}}});
+          this.remove();
+        }
+      }
+    </script>
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 100%; height: 100%; margin: auto"></div>
+    </div>
+<style>
+  @font-face {
+    font-family: A;
+    src: url(AE.otf);
+}
+
+button {
+  font-family: A;
+  min-width: 100%;
+  font-family: inherit;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background-color: black;
+  padding: 18px 46px;
+  font-size: 28px;
+  cursor: pointer;
+}
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+</style>
