@@ -1,0 +1,145 @@
+<html>
+
+  <head>
+    <title>Karnda Settings</title>
+    <script src="./scripts/background.js"></script>
+    <style type="text/css">
+      select {clear:both;}
+
+      body{
+        background-color: black;
+      }
+      .bn632-hover {
+        width: 160px;
+        z-index: 100;
+        font-size: 16px;
+        font-weight: 600;
+        color: rgb(131, 131, 131);
+        cursor: pointer;
+        margin: 20px;
+        position: absolute;
+        top: 84%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        transform: translateX(-460%);
+        height: 45px;
+        text-align:center;
+        border: none;
+        background-size: 300% 100%;
+        border-radius: 50px;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+}
+
+.bn632-hover:hover {
+  background-position: 100% 0;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.bn632-hover:focus {
+  outline: none;
+}
+
+.bn633-hover.bn26 {
+  background-image: linear-gradient(
+    to right,
+    #29323c,
+    #485563,
+    #2b5876,
+    #4e4376
+  );
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+  width: 160px;
+        font-size: 16px;
+        font-weight: 600;
+        color: rgb(131, 131, 131);
+        cursor: pointer;
+        margin: 20px;
+        position: absolute;
+        top: 90%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        transform: translateX(-460%);
+        height: 55px;
+        text-align:center;
+        border: none;
+        background-size: 300% 100%;
+        border-radius: 50px;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+        z-index: 100;
+}
+
+.bn633-hover:hover {
+  background-position: 100% 0;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.bn633-hover:focus {
+  outline: none;
+}
+
+.bn633-hover.bn26 {
+  background-image: linear-gradient(
+    to right,
+    #29323c,
+    #485563,
+    #2b5876,
+    #4e4376
+  );
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+.bn632-hover.bn25 {
+  background-image: linear-gradient(
+    to right,
+    #29323c,
+    #485563,
+    #2b5876,
+    #4e4376
+  );
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+    </style>
+  </head>
+
+  <body>
+    <script>
+        // Check browser support
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            localStorage.setItem("link", MyFrame);
+            // Retrieve
+            document.getElementById("result").innerHTML = localStorage.getItem("link");
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
+        </script>
+    <h3 style="text-align:center;" >
+    <iframe id="MyFrame" src="./scripts/bird.html" frameBorder="0" style="z-index:-100;width:1280;height:720px;overflow:scroll"MyFrame"></iframe>
+    <select  class="bn632-hover bn25"id="MySelectMenu">
+        <option target="main" value="./scripts/bird.html">Birds</option>
+        <option target="main" value="./scripts/clouds.html">Clouds</option>
+        <option target="main" value="./scripts/dots.html">Dots</option>
+        <option target="main" value="./scripts/fog.html">Fog</option>
+        <option target="main" value="./scripts/globe.html">Globe</option>
+        <option target="main" value="./scripts/halo.html">Halo</option>
+        <option target="main" value="./scripts/net.html">Net</option>
+        <option target="main" value="./scripts/graywaves.html">Waves</option>
+    </select>
+    <button target='ifrm1' class="bn633-hover bn26"onClick="newSrc();">Set Background</button>
+
+</h3>
+
+  </body>
+
+</html>

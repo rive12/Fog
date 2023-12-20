@@ -1,0 +1,45 @@
+
+<script>let site1 = getCurrentURL();
+  var name = new URL(site1).host;
+  console.log(name);
+  const encodedData = "WyJrYXJkbmE0bGlmZS5jZiIsImthcmRuYTRsaWZlLmdhIiwia2FyZG5hNGxpZmUuZ3EiLCJrYXJkbmE0bGlmZS5tbCIsImthcmRuYTRsaWZlLnRrIiwia2FyZG5hLmNmIiwia2FyZG5hLm1sIiwia2FyZG5hLnh5eiIsInJpcGthcmRuYS5jZiIsInJpcGthcmRuYS5tbCIsInJpcGthcmRuYS50ayIsInJpcGthcmRuYS5ncSIsInJpcGthcmRuYS5nYSIsInJpcHJpcGthcmRuYS5nYSIsInJpcHJpcGthcmRuYS5ncSIsInJpcHJpcGthcmRuYS50ayIsInJpcHJpcGthcmRuYS5tbCIsInJpcHJpcGthcmRuYS5jZiIsInRleGFzZmVldC5nYSJd"; // Encoded data
+  const decodedString = atob(encodedData); // Decode the Base64 string
+  const myArray = JSON.parse(decodedString); // Convert the JSON string to an array
+  const myVariable = name;
+  if (myArray.includes(myVariable)) {
+    var url = "https://" + 'bg.' + name;
+  } else {
+    console.log("Its working!!!")
+    var url = 'https://bg.mc-kardna.cf';
+  }
+  console.log(url);
+  function getCurrentURL () {
+  return window.location.href
+  }
+  
+  </script>
+  <link href="styles.css" rel="stylesheet">
+  <script defer src="script.js"></script>
+  <button data-modal-target="#modal"><img class="favico"src="./imgs/google-logo-small.png"></button>
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div style="z-index: 110;"class="title"><img class="favico"src="./imgs/google-logo-small.png"></div>
+      <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+      <br><br><br>
+      <div" class="logo-wrapper">
+      <h1><img class="google"src="./imgs/google.png"></h1>
+  </div>
+     <div class="bar">
+      <form>
+          <input  class="serch" placeholder="This Is Broken">
+      </form>
+      <script src="uv/uv.bundle.js"></script>
+      <script src="uv/uv.config.js"></script>
+      <script src="./index.js"></script>
+     </div>
+     <br>
+    </div>
+  </div>
+  <div id="overlay"></div>
