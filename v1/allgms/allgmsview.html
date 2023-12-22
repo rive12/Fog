@@ -1,11 +1,12 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Fog</title>
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./nav.css">
     <link rel="stylesheet" id="themeStylesheetlink">
     <script src="particles.js"></script>
-    <script href="./index.js"></script>
+    <script src="./index.js"></script>
 
     <title>Fog Menu</title>
     <script>
@@ -56,48 +57,25 @@
         display: none;
         z-index: 99999999999999999;
     }
+
+    #search-bar {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    #search-input {
+        padding: 10px;
+        font-size: 16px;
+    }
 </style>
 <body>
-    <div id="myDIV">
-        <button onclick="openFullscreen();">Open Video in Fullscreen Mode</button>
+    <!-- Your existing content... -->
+    <div id="search-bar">
+        <label for="search-input">Search Games:</label>
+        <input type="text" id="search-input" oninput="filterGames()">
     </div>
-    <iframe src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
-    </div>
-    <div>
-        <h1 style="
-            @font-face {
-                font-family: A;
-                src: url(../AE.otf);
-            }
-            font-family: A;
-            opacity: 0;
-            animation-name: drop-fade;
-            animation-duration: 1s;
-            text-align:center;
-            font-size: 100px;
-            animation-delay: .5s;
-            animation-fill-mode: forwards;">
-            Fog Menu
-        </h1>
-    </div>
-    <script>
-        var site = getCurrentURL();
-        var name = new URL(site).host;
-        var url = 'bg' + '.' + name;
 
-        //Other Stuff
-        console.log(url);
-        //window.location.replace(url)
-
-
-        function getCurrentURL() {
-            return window.location.href
-        }</script>
-
-    </div>
-    <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>
     <section>
-
         <a onclick="myFunction()" href="./games/slope.html">
             <img src="https://play-lh.googleusercontent.com/uJn2i9h7KxYQarC_c3K4qH6o7gLtflFnhD_dN14MNkzHJ1NeNFzCL69jpB5mT0vCoQs=w240-h480-rw" alt="slope">
         </a>
@@ -119,23 +97,24 @@
         <a onclick="myFunction()" href="https://google-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/mind4ur/debugactions@5d145906f538b65e58d37eb56e7f429f8e052c74/package/1v1.xml">
             <img src="./img/1v1.jpg" alt="1v1.lol">
         </a>
+    </section>
 
-        <script>
-            // Function to filter games based on the search input
-            function filterGames() {
-                var searchInput = document.getElementById('search-input').value.toLowerCase();
-                var games = document.querySelectorAll('section a');
+    <script>
+        // Function to filter games based on the search input
+        function filterGames() {
+            var searchInput = document.getElementById('search-input').value.toLowerCase();
+            var games = document.querySelectorAll('section a');
 
-                games.forEach(function (game) {
-                    var alt = game.querySelector('img').getAttribute('alt').toLowerCase();
+            games.forEach(function (game) {
+                var alt = game.querySelector('img').getAttribute('alt').toLowerCase();
 
-                    if (alt.includes(searchInput)) {
-                        game.style.display = 'inline-block';
-                    } else {
-                        game.style.display = 'none';
-                    }
-                });
-            }
-        </script>
+                if (alt.includes(searchInput)) {
+                    game.style.display = 'inline-block';
+                } else {
+                    game.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
