@@ -180,5 +180,17 @@
             </div>
             <script src="./scripts/fullscreen.js"></script>
             <script src="./scripts/show.js"></script>
+            <script>
+                function openGame(link) {
+                    // Open a new window with about:blank
+                    var gameWindow = window.open('about:blank', '_blank');
+
+                    // Write an iframe to the new window
+                    gameWindow.document.write('<iframe src="' + link + '" style="width: 100%; height: 100vh; border: none;"></iframe>');
+
+                    // Prevent the default link behavior
+                    return false;
+                }
+            </script>
     </body>
 </html>
