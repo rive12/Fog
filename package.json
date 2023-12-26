@@ -1,12 +1,12 @@
 {
-  "name": "fog",
+  "name": "algebra",
   "version": "1.0.0",
-  "description": "Your package description",
+  "description": "In elementary algebra, completing the square is a technique for converting a quadratic polynomial of the form to the form for some values of h and k.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [unblocked],
+  "keywords": ["games"],
   "author": "Your Name",
   "license": "ISC",
   "engines": {
