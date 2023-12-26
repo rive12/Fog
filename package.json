@@ -1,0 +1,15 @@
+{
+  "name": "fog",
+  "version": "1.0.0",
+  "description": "Your package description",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [unblocked games],
+  "author": "Your Name",
+  "license": "ISC",
+  "engines": {
+    "node": ">=12.22.12 <19.0.0"
+  }
+}
