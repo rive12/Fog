@@ -21,15 +21,17 @@
 
     #iframeContainer {
         position: fixed;
-        top: 0;
+        top: 72px; /* Adjust this value based on the height of your nav */
         left: 0;
-        width: 100vw; /* 100% of the viewport width */
-        height: 100vh; /* 100% of the viewport height */
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: calc(100% - 72px); /* Adjusted to leave space for the nav */
         border: none;
         margin: 0;
         padding: 0;
         overflow: hidden;
-        z-index: 0; /* Change the z-index to a non-negative value */
+        z-index: 0;
     }
 </style>
 
