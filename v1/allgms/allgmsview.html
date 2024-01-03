@@ -47,7 +47,7 @@
     #search-bar {
         text-align: center;
         margin: 20px 0;
-        color: white
+        color: white;
     }
 
     #search-input {
@@ -68,7 +68,12 @@
             text-align: center;
             text-decoration: none;
             color: #000;
+            transition: transform 0.2s ease-in-out; /* Add a smooth transition */
         }
+
+            section a:hover {
+                transform: scale(1.1); /* Increase size by 10% on hover */
+            }
 
         section img {
             width: 240px;
@@ -235,7 +240,7 @@
         </a>
 
         <a onclick="myFunction()" href="../games/vex3">
-            <img src="img/vex3.jpg" alt="vex 3">
+            <img src="../img/vex3.jpg" alt="vex 3">
         </a>
 
         <a onclick="myFunction()" href="../games/vex4">
