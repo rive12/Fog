@@ -1,5 +1,3 @@
-
-
 <html>
 <head>
     <title>Fog</title>
@@ -128,7 +126,7 @@
                     <img src="https://i.ibb.co/xjTbf8j/image.png" />
                 </a>
                 <a onclick="myFunction()" href="https://75jfh73gd9hla64g-opensocial.googleusercontent.com/gadgets/ifr?url=https://googleusercontent.b-cdn.net/ovo/ovo.xml">
-                    <img src="https://i.ibb.co/HdV7Lfx/image.png" />
+                    <img srcA="https://i.ibb.co/HdV7Lfx/image.png" />
                 </a>
                 <a onclick="myFunction()" href="https://monkeisthepuregoatyoualreadyknow.netlify.app/play/paperio/">
                     <img src="https://i.ibb.co/RQYMbHQ/1024x1024bb.png" />
@@ -151,8 +149,8 @@
                 <a onclick="myFunction()" href="https://bg.kardna.shop/uv/service/hvtrs8%2F-wuw%2Cx%60oz.aoo%2Fgn%2FUQ%2Frlcy-gcmgs-fmrvnktg%2F%40T7P0X%3B9%3BVJ2">
                     <img src="./img/fortniteBk.png" />
                 </a>
-                <a href="/games/roblox">
-                    <img src="./img/robloxBk.png" />
+                <a onclick="newTab(event)" href="./games/roblox" class="open-in-new-tab">
+                    <img src="./img/robloxBk.png" alt="roblox">
                 </a>
 
             </div>
@@ -178,6 +176,13 @@
         </div>
         <script src="./scripts/fullscreen.js"></script>
         <script src="./scripts/show.js"></script>
+        <script>
+    function newTab(event) {
+        event.preventDefault();
+        const link = event.currentTarget.getAttribute("href");
+        window.open(link, "_blank");
+    }
+</script>
 </body>
 </html>
  
