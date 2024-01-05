@@ -183,10 +183,11 @@
         <script src="./scripts/show.js"></script>
         <script>
             function openGame(link) {
+                var newWindow = window.open('about:blank', '_blank');
                 var iframe = document.createElement('iframe');
                 iframe.src = link;
                 iframe.id = 'iframeContainer';
-                document.body.appendChild(iframe);
+                newWindow.document.body.appendChild(iframe);
             }
         </script>
 </body>
