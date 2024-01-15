@@ -149,7 +149,7 @@
                 <a onclick="myFunction()" href="https://bg.dereksarnoisafaggot.shop/uv/service/hvtrs8%2F-wuw%2Cx%60oz.aoo%2Fgn%2FUQ%2Frlcy-gcmgs-fmrvnktg%2F%40T7P0X%3B9%3BVJ2">
                     <img src="./img/fortniteBk.png" />
                 </a>
-                <a onclick="openInNewTab(this)" href="https://bg.dereksarnoisafaggot.shop/uv/service/hvtrs8%2F-nmw%2Cge%2Frlcy-rmbnoz-aoppmrctkol%2F7369-rmbnoz">
+                <a onclick="openInAboutBlank(this)" href="https://bg.dereksarnoisafaggot.shop/uv/service/hvtrs8%2F-nmw%2Cge%2Frlcy-rmbnoz-aoppmrctkol%2F7369-rmbnoz">
                     <img src="./img/robloxBk.png" alt="roblox">
                 </a>
 
@@ -177,15 +177,31 @@
         <script src="./scripts/fullscreen.js"></script>
         <script src="./scripts/show.js"></script>
         <script>
-            function openInNewTab(element) {
+            function openInAboutBlank(element) {
+                // Prevent the default behavior of the link
+                event.preventDefault();
+            
                 // Get the href attribute of the clicked link
                 var link = element.getAttribute("href");
             
-                // Open the link in a new tab
-                var newTab = window.open("about:blank", "_blank");
-                
-                // Set the location of the new tab to the clicked link
-                newTab.location.href = link;
+                // Create a new iframe
+                var iframe = document.createElement("iframe");
+                iframe.src = link;
+                iframe.style.position = "fixed";
+                iframe.style.top = "0";
+                iframe.style.left = "0";
+                iframe.style.bottom = "0";
+                iframe.style.right = "0";
+                iframe.style.width = "100%";
+                iframe.style.height = "100%";
+                iframe.style.border = "none";
+                iframe.style.margin = "0";
+                iframe.style.padding = "0";
+                iframe.style.overflow = "hidden";
+                iframe.style.zIndex = "999999"; // Ensure it's on top
+            
+                // Append the iframe to the body
+                document.body.appendChild(iframe);
             }
             </script>
 </body>
