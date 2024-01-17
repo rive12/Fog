@@ -83,8 +83,21 @@
             object-fit: cover;
             border-radius: 15px; /* Same border-radius as the parent <a> element */
         }
+
+    #removeLagButton {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+    }
 </style>
 <body>
+    <button id="removeLagButton" onclick="removeCloudsIframes()">Remove Lag</button>
     <iframe src="../scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     <div id="search-bar">
         <label for="search-input">Search Games:</label>
@@ -330,6 +343,15 @@
 
         // Call the sorting function when the page loads
         window.onload = sortGames;
+    </script>
+    <script>
+        function removeCloudsIframes() {
+            const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
+
+            iframes.forEach(iframe => {
+                iframe.remove();
+            });
+        }
     </script>
 </body>
 </html>
