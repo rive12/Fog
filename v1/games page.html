@@ -9,6 +9,17 @@
 
         gtag('config', 'G-44TM52GM2B');
     </script>
+    <!-- Google Tag Manager -->
+    <script>
+    (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PP6772XP');</script>
+    <!-- End Google Tag Manager -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3724985851304355"
             crossorigin="anonymous"></script>
     <title>Fog</title>
@@ -83,6 +94,12 @@
     }
 </style>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP6772XP"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <button id="removeLagButton" onclick="removeCloudsIframes()">Remove Lag</button>
     <iframe src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     </div>
@@ -198,10 +215,10 @@
             function openInAboutBlank(element) {
                 // Prevent the default behavior of the link
                 event.preventDefault();
-            
+
                 // Get the href attribute of the clicked link
                 var link = element.getAttribute("href");
-            
+
                 // Create a new iframe
                 var iframe = document.createElement("iframe");
                 iframe.src = link;
@@ -217,20 +234,20 @@
                 iframe.style.padding = "0";
                 iframe.style.overflow = "hidden";
                 iframe.style.zIndex = "999999"; // Ensure it's on top
-            
+
                 // Append the iframe to the body
                 document.body.appendChild(iframe);
             }
-            </script>
-    <script>
-        function removeCloudsIframes() {
-            const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
-            
-            iframes.forEach(iframe => {
-                iframe.remove();
-            });
-        }
-    </script>
+        </script>
+        <script>
+            function removeCloudsIframes() {
+                const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
+
+                iframes.forEach(iframe => {
+                    iframe.remove();
+                });
+            }
+        </script>
 </body>
 </html>
  
