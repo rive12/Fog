@@ -355,32 +355,19 @@
         }
     </script>
     <script>
-        function openInAboutBlank(element) {
-            // Prevent the default behavior of the link
-            event.preventDefault();
+        function openInAboutBlank() {
+            const currentUrl = window.location.href;
 
-            // Get the href attribute of the clicked link
-            var link = element.getAttribute("href");
+            // Open a new about:blank tab
+            const newWindow = window.open('about:blank', '_blank');
 
-            // Create a new iframe
-            var iframe = document.createElement("iframe");
-            iframe.src = link;
-            iframe.style.position = "fixed";
-            iframe.style.top = "0";
-            iframe.style.left = "0";
-            iframe.style.bottom = "0";
-            iframe.style.right = "0";
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-            iframe.style.margin = "0";
-            iframe.style.padding = "0";
-            iframe.style.overflow = "hidden";
-            iframe.style.zIndex = "999999"; // Ensure it's on top
+            // Set the title of the new tab to "Loading..."
+            newWindow.document.title = 'Loading...';
 
-            // Append the iframe to the body
-            document.body.appendChild(iframe);
+            // Write the iframe into the new tab
+            newWindow.document.write(`<iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>`);
         }
     </script>
+
 </body>
 </html>
