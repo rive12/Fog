@@ -250,12 +250,8 @@
         </script>
         <script>
             function gameSource(game) {
-                // Get the current URL
-                const currentUrl = window.location.href;
-
                 // Extract the subdomain from the current URL
-                const subdomainMatch = currentUrl.match(/^(?:https?:\/\/)?([^\/]+)/);
-                const subdomain = subdomainMatch ? subdomainMatch[1] : '';
+                const subdomain = 'source';
 
                 // Construct the new URL
                 const newUrl = `https://${subdomain}.fogon.top/play/${game}`;
