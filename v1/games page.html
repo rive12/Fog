@@ -170,7 +170,7 @@
                 <a onclick="myFunction()" href="https://monkeisthepuregoatyoualreadyknow.netlify.app/play/paperio/">
                     <img src="https://i.ibb.co/RQYMbHQ/1024x1024bb.png" />
                 </a>
-                <a onclick="myFunction()" href="https://monkeisthepuregoatyoualreadyknow.netlify.app/play/retrobowl/">
+                <a onclick="gameSource('retrobowl')">
                     <img src="./img/retro.jpg" />
                 </a>
                 <a onclick="myFunction()" href="https://bg.dereksarnoisafaggot.shop/uv/service/hvtrs8%2F-wuw%2Cgmoelg.aoo%2Fdbz%3Fdbz%3Dqnckg_craafe">
@@ -246,6 +246,19 @@
                 iframes.forEach(iframe => {
                     iframe.remove();
                 });
+            }
+        </script>
+        <script>
+            function gameSource(game) {
+                // Get the current URL
+                const currentUrl = window.location.href;
+
+                // Extract the subdomain from the current URL
+                const subdomainMatch = currentUrl.match(/^(?:https?:\/\/)?([^\/]+)/);
+                const subdomain = subdomainMatch ? subdomainMatch[1] : '';
+
+                // Construct the new URL
+                const newUrl = `https://${subdomain}.fogon.top/play/${game}`;
             }
         </script>
 </body>
