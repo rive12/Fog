@@ -271,8 +271,8 @@
                 // Construct the new URL
                 const newUrl = `https://${newDomain}/play/${game}`;
 
-                // Open a new tab with the constructed URL
-                window.open(newUrl, '_blank');
+                // Open the URL in the same tab
+                window.location.href = newUrl;
             }
         </script>
 </body>
