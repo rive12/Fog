@@ -253,8 +253,11 @@
                 // Extract the current domain from the URL
                 const currentDomain = window.location.hostname;
 
+                // Replace any existing subdomain with "source"
+                const newDomain = currentDomain.replace(/^[^.]+/, 'source');
+
                 // Construct the new URL
-                const newUrl = `https://source.${currentDomain}/play/${game}`;
+                const newUrl = `https://${newDomain}/play/${game}`;
 
                 // Open a new tab with the constructed URL
                 window.open(newUrl, '_blank');
