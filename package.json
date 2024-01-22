@@ -1,15 +1,15 @@
 {
-  "name": "algebra",
+  "name": "science",
   "version": "1.0.0",
-  "description": "In elementary algebra, completing the square is a technique for converting a quadratic polynomial of the form to the form for some values of h and k.",
+  "description": "The best Science website since 2016.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["games"],
-  "author": "Your Name",
+  "keywords": ["science"],
+  "author": "Interesting Science LTD",
   "license": "ISC",
   "engines": {
-    "node": ">=12.22.12 <19.0.0"
+    "node": ">=10.0.0 <19.0.0"
   }
 }
