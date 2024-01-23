@@ -47,17 +47,18 @@
     </div>
 
     <script>
-    const iframe = document.getElementById('myIframe');
+        const iframe = document.getElementById('myIframe');
 
-    // Detect iframe URL change
-    iframe.onload = function () {
-        // Check if the iframe URL is different
-        if (iframe.contentWindow.location.href !== 'https://bg.dereksarnoisafaggot.shop/') {
-            // If different, make the iframe fill out the entire page
-            iframe.style.height = '100vh';
-            document.body.style.overflow = 'auto'; // Show scrollbars
-        }
-    };
+        // Detect iframe URL change
+        iframe.onload = function () {
+            // Check if the iframe URL is different
+            if (iframe.contentWindow.location.href !== 'https://bg.dereksarnoisafaggot.shop/') {
+                // If different, make the iframe fill out the entire page
+                iframe.style.height = '100vh';
+                document.getElementById('container').style.height = '100vh';
+                document.body.style.overflow = 'auto'; // Show scrollbars
+            }
+        };
     </script>
 
 </body>
