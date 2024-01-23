@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "The best Science website since 2016.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": ["science"],
+  "scripts": {},
+  "keywords": [ "science" ],
   "author": "Interesting Science LTD",
   "license": "ISC",
   "engines": {
