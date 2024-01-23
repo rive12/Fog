@@ -7,7 +7,7 @@
     <style>
         body {
             margin: 0;
-            overflow: hidden; /* Hide scrollbars initially */
+            overflow: hidden;
         }
 
         #container {
@@ -23,21 +23,19 @@
             top: 0;
             left: 0;
             z-index: -1;
-            transition: opacity 0.5s; /* Add a smooth transition effect for opacity */
         }
 
         #myIframe {
             width: 100vw;
-            height: 50vh; /* Initial height, adjust as needed */
+            height: 50vh; /* Adjust as needed */
             position: absolute;
-            top: 50vh;
+            top: 0;
             left: 0;
             border: none;
             margin: 0;
             padding: 0;
             overflow: hidden;
             z-index: 0;
-            transition: height 0.5s; /* Add a smooth transition effect for height */
         }
     </style>
 </head>
@@ -47,22 +45,6 @@
         <img id="bgImage" src="../images/FogSearch.png" alt="Background Image">
         <iframe id="myIframe" src="https://bg.dereksarnoisafaggot.shop/" frameborder="0"></iframe>
     </div>
-
-    <script>
-        document.body.addEventListener('click', () => {
-            const container = document.getElementById('container');
-
-            // Remove all children of the container except the iframe
-            while (container.firstChild) {
-                if (container.firstChild.id !== 'myIframe') {
-                    container.firstChild.remove();
-                } else {
-                    container.firstChild.style.height = '100vh';
-                    document.body.style.overflow = 'auto'; // Show scrollbars
-                }
-            }
-        });
-    </script>
 
 </body>
 </html>
