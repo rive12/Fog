@@ -36,6 +36,7 @@
             padding: 0;
             overflow: hidden;
             z-index: 0;
+            transition: height 0.5s; /* Add a smooth transition effect */
         }
     </style>
 </head>
@@ -47,25 +48,13 @@
     </div>
 
     <script>
-        const iframe = document.getElementById('myIframe');
-
-        // Create a MutationObserver to watch for changes in the DOM
-        const observer = new MutationObserver(mutations => {
-            mutations.forEach(mutation => {
-                // Check if a new element is added to the DOM
-                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                    // If a new element is added, make the iframe fill out the entire page
-                    iframe.style.height = '100vh';
-                    document.body.style.overflow = 'auto'; // Show scrollbars
-                }
-            });
+        // Add a click event listener to the body
+        document.body.addEventListener('click', () => {
+            // When the body is clicked, set the iframe height to fill the entire page
+            const iframe = document.getElementById('myIframe');
+            iframe.style.height = '100vh';
+            document.body.style.overflow = 'auto'; // Show scrollbars
         });
-
-        // Configure the observer to watch for changes in the entire document
-        const observerConfig = { childList: true, subtree: true };
-
-        // Start observing the document
-        observer.observe(document, observerConfig);
     </script>
 
 </body>
