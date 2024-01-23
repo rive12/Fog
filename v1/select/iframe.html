@@ -10,55 +10,55 @@
             overflow: hidden; /* Hide scrollbars initially */
         }
 
-        #container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-        }
-
-        #bgImage {
-            width: 100%;
-            height: auto;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-
         #myIframe {
             width: 100vw;
-            height: 50vh; /* Initial height, adjust as needed */
+            height: 100vh;
             position: absolute;
-            top: 50vh;
+            top: 0;
             left: 0;
             border: none;
             margin: 0;
             padding: 0;
             overflow: hidden;
             z-index: 0;
+            transition: height 0.5s; /* Add a smooth transition effect */
         }
     </style>
 </head>
 <body>
 
-    <div id="container">
-        <img id="bgImage" src="../images/FogSearch.png" alt="Background Image">
-        <iframe id="myIframe" src="https://bg.dereksarnoisafaggot.shop/" frameborder="0"></iframe>
-    </div>
+    <iframe id="myIframe" src="https://bg.dereksarnoisafaggot.shop/" frameborder="0"></iframe>
 
     <script>
         const iframe = document.getElementById('myIframe');
 
-        // Detect iframe URL change
-        iframe.onload = function () {
-            // Check if the iframe URL is different
-            if (iframe.contentWindow.location.href !== 'https://bg.dereksarnoisafaggot.shop/') {
-                // If different, make the iframe fill out the entire page
-                iframe.style.height = '100vh';
-                document.getElementById('container').style.height = '100vh';
-                document.body.style.overflow = 'auto'; // Show scrollbars
-            }
-        };
+        // Create a MutationObserver to watch for changes in the DOM
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                // Check if a new element is added to the DOM
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    // If a new element is added, make the iframe fill out the entire page
+                    iframe.style.height = '100vh';
+                    document.body.style.overflow = 'auto'; // Show scrollbars
+                }
+            });
+        });
+
+        // Configure the observer to watch for changes in the entire document
+        const observerConfig = { childList: true, subtree: true };
+
+        // Start observing the document
+        observer.observe(document, observerConfig);
+    </script>
+
+    <!-- Example: Add a new element to the body -->
+    <script>
+        // Simulate adding a new element after a delay (for demonstration purposes)
+        setTimeout(() => {
+            const newElement = document.createElement('div');
+            newElement.textContent = 'New Element';
+            document.body.appendChild(newElement);
+        }, 3000); // Add new element after 3 seconds (adjust as needed)
     </script>
 
 </body>
