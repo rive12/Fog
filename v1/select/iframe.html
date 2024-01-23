@@ -10,24 +10,41 @@
             overflow: hidden; /* Hide scrollbars initially */
         }
 
-        #myIframe {
+        #container {
+            position: relative;
             width: 100vw;
             height: 100vh;
+        }
+
+        #bgImage {
+            width: 100%;
+            height: auto;
             position: absolute;
             top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        #myIframe {
+            width: 100vw;
+            height: 50vh; /* Initial height, adjust as needed */
+            position: absolute;
+            top: 50vh;
             left: 0;
             border: none;
             margin: 0;
             padding: 0;
             overflow: hidden;
             z-index: 0;
-            transition: height 0.5s; /* Add a smooth transition effect */
         }
     </style>
 </head>
 <body>
 
-    <iframe id="myIframe" src="https://bg.dereksarnoisafaggot.shop/" frameborder="0"></iframe>
+    <div id="container">
+        <img id="bgImage" src="../images/FogSearch.png" alt="Background Image">
+        <iframe id="myIframe" src="https://bg.dereksarnoisafaggot.shop/" frameborder="0"></iframe>
+    </div>
 
     <script>
         const iframe = document.getElementById('myIframe');
@@ -49,16 +66,6 @@
 
         // Start observing the document
         observer.observe(document, observerConfig);
-    </script>
-
-    <!-- Example: Add a new element to the body -->
-    <script>
-        // Simulate adding a new element after a delay (for demonstration purposes)
-        setTimeout(() => {
-            const newElement = document.createElement('div');
-            newElement.textContent = 'New Element';
-            document.body.appendChild(newElement);
-        }, 3000); // Add new element after 3 seconds (adjust as needed)
     </script>
 
 </body>
