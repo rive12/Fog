@@ -1,6 +1,26 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TM52GM2B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-44TM52GM2B');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PP6772XP');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Topics - Weather | Interesting Science</title>
@@ -23,6 +43,7 @@
             top: 0;
             left: 0;
             z-index: -1;
+            transition: opacity 0.5s; /* Add a smooth transition effect for opacity */
         }
 
         #myIframe {
@@ -36,7 +57,7 @@
             padding: 0;
             overflow: hidden;
             z-index: 0;
-            transition: height 0.5s; /* Add a smooth transition effect */
+            transition: height 0.5s; /* Add a smooth transition effect for height */
         }
     </style>
 </head>
@@ -48,12 +69,19 @@
     </div>
 
     <script>
-        // Add a click event listener to the body
         document.body.addEventListener('click', () => {
-            // When the body is clicked, set the iframe height to fill the entire page
             const iframe = document.getElementById('myIframe');
+            const bgImage = document.getElementById('bgImage');
+
+            // When the body is clicked, set the iframe height to fill the entire page
             iframe.style.height = '100vh';
             document.body.style.overflow = 'auto'; // Show scrollbars
+
+            // Fade out and remove the background image
+            bgImage.style.opacity = '0';
+            setTimeout(() => {
+                bgImage.remove();
+            }, 500); // Set the timeout to match the transition duration
         });
     </script>
 
