@@ -59,7 +59,9 @@
 
     <script>
         document.getElementById('overlay').addEventListener('click', function () {
-            document.getElementById('myIframe').style.height = '100vh';
+            const iframe = document.getElementById('myIframe');
+            iframe.style.height = '100vh';
+            iframe.style.zIndex = '2'; // Move iframe above the overlay
             this.parentNode.removeChild(this);
         });
     </script>
