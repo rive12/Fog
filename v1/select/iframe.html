@@ -37,6 +37,16 @@
             overflow: hidden;
             z-index: 0;
         }
+
+        #overlay {
+            width: 100vw;
+            height: 100vh; /* Adjust to cover the remaining part of the page */
+            position: absolute;
+            top: 0vh; /* Adjust to cover the remaining part of the page */
+            left: 0;
+            background: transparent; /* Make it invisible */
+            z-index: 1; /* Above the iframe */
+        }
     </style>
 </head>
 <body>
@@ -44,19 +54,13 @@
     <div id="container">
         <img id="bgImage" src="../images/FogSearch.png" alt="Background Image">
         <iframe id="myIframe" src="https://bg.dereksarnoisafaggot.shop/" frameborder="0"></iframe>
+        <div id="overlay"></div>
     </div>
 
     <script>
-        document.body.addEventListener('click', function () {
+        document.getElementById('overlay').addEventListener('click', function () {
             document.getElementById('myIframe').style.height = '100vh';
-        });
-
-        // Access the iframe document
-        var iframeDoc = document.getElementById('myIframe').contentDocument || document.getElementById('myIframe').contentWindow.document;
-
-        // Add click event listener to the iframe document
-        iframeDoc.addEventListener('click', function () {
-            document.getElementById('myIframe').style.height = '100vh';
+            this.parentNode.removeChild(this);
         });
     </script>
 
