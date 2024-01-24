@@ -46,16 +46,9 @@
         <iframe id="myIframe" src="https://bg.dereksarnoisafaggot.shop/" frameborder="0"></iframe>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#myIframe').on('load', function () {
-                var iframe = $('#myIframe')[0].contentWindow.document;
-
-                $(iframe).on('click', function () {
-                    $('#myIframe').css('height', '100vh');
-                });
-            });
+        document.body.addEventListener('click', function () {
+            document.getElementById('myIframe').style.height = '100vh';
         });
     </script>
 
