@@ -184,6 +184,14 @@
 
                         // Save the theme information in localStorage
                         localStorage.setItem('theme', 'blue');
+
+                        // Get all buttons with specified IDs
+                        const buttons = document.querySelectorAll('#Button, #removeLagButton, #cloak');
+
+                        // Apply the new background color
+                        buttons.forEach(button => {
+                            button.style.backgroundColor = '#005dff';
+                        });
                     }
                 </script>
 
