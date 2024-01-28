@@ -110,7 +110,7 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <button id="removeLagButton" onclick="removeCloudsIframes()">Remove Lag</button>
-    <iframe src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
+    <iframe src="../scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     </div>
     <div>
         <h1 style="
@@ -189,7 +189,7 @@
                 <a onclick="myFunction()" href="games/1v1lol">
                     <img src="./img/1v1.jpg" />
                 </a>
-                <a href="./allgms/allgmsview">View All</a>
+                <a href="../allgms/allgmsview">View All</a>
                 <br>
                 <br>
                 <br>
@@ -219,8 +219,8 @@
                 </a>
             </div>
         </div>
-        <script src="./scripts/fullscreen.js"></script>
-        <script src="./scripts/show.js"></script>
+        <script src="../scripts/fullscreen.js"></script>
+        <script src="../scripts/show.js"></script>
         <script>
             function openInAboutBlank(element) {
                 // Prevent the default behavior of the link
@@ -251,7 +251,7 @@
         </script>
         <script>
             function removeCloudsIframes() {
-                const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
+                const iframes = document.querySelectorAll('iframe[src="../scripts/clouds.html"]');
 
                 iframes.forEach(iframe => {
                     iframe.remove();
