@@ -185,6 +185,10 @@
                         // Save the theme information in localStorage
                         localStorage.setItem('theme', 'blue');
 
+                        // Dispatch a custom event to notify other pages
+                        const event = new Event('themeChanged');
+                        document.dispatchEvent(event);
+
                         // Get all buttons with specified IDs
                         const buttons = document.querySelectorAll('#Button, #removeLagButton, #cloak');
 
