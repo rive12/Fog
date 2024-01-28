@@ -170,20 +170,20 @@
                     }
                 </script>
                 <script>
-                // Function to apply the blue theme
+                    // Check if there is a saved theme in localStorage
+                    const savedTheme = localStorage.getItem('theme');
+                    if (savedTheme === 'blue') {
+                        // Apply the theme if it was previously saved
+                        document.body.classList.add('blue-theme');
+                    }
+
+                    // Function to apply the blue theme
                     function blueTheme() {
                         // Add a class to the body when the theme is changed
                         document.body.classList.add('blue-theme');
 
                         // Save the theme information in localStorage
                         localStorage.setItem('theme', 'blue');
-                    }
-
-                    // Check if there is a saved theme in localStorage
-                    const savedTheme = localStorage.getItem('theme');
-                    if (savedTheme === 'blue') {
-                        // Apply the theme if it was previously saved
-                        blueTheme();
                     }
                 </script>
 
