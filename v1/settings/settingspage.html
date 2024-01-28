@@ -121,12 +121,12 @@
             font-family: A;
             opacity: 0;
             animation-name: drop-fade;
-            animation-duration: 1s;
+            animation-duration: 0.5s;
             text-align:center;
             font-size: 100px;
-            animation-delay: .5s;
+            animation-delay: .2s;
             animation-fill-mode: forwards;">
-            Fog Menu
+            Settings
         </h1>
     </div>
     <script>
@@ -151,104 +151,15 @@
     <section>
 
         <div class="group">
-            <p style="font-size: large; transform: translateY(-145px); padding-left: 15px;">My Games</p>
+            <p style="font-size: large; transform: translateY(-145px); padding-left: 15px;">Themes</p>
             <div id="Games">
 
-                <a href="https://bananajump.netlify.app/">
-                    <img src="https://i.ibb.co/4Kjq885/image.png" />
-                </a>
-                <a href="https://obbm.netlify.app/">
-                    <img src="https://i.ibb.co/RTsCjtD/image.png" />
-                </a>
                 <button id="Button" onclick="blueTheme()">Blue Theme</button>
 
 
-                <br>
-                <br>
-                <br>
-                <h2>Main Games</h2>
 
-                <a onclick="myFunction()" href="../games/slope.html">
-                    <img src="https://play-lh.googleusercontent.com/uJn2i9h7KxYQarC_c3K4qH6o7gLtflFnhD_dN14MNkzHJ1NeNFzCL69jpB5mT0vCoQs=w240-h480-rw" />
-                </a>
-                <a onclick="myFunction()" href="https://www.mathplayground.com/drift-boss-v3/index.html">
-                    <img src="https://i.ibb.co/xjTbf8j/image.png" />
-                </a>
-                <a onclick="myFunction()" href="https://75jfh73gd9hla64g-opensocial.googleusercontent.com/gadgets/ifr?url=https://googleusercontent.b-cdn.net/ovo/ovo.xml">
-                    <img src="https://i.ibb.co/HdV7Lfx/image.png" />
-                </a>
-                <a onclick="gameSource('paperio')">
-                    <img src="https://i.ibb.co/RQYMbHQ/1024x1024bb.png" />
-                </a>
-                <a onclick="gameSource('retrobowl')">
-                    <img src="../img/retro.jpg" />
-                </a>
-                <a onclick="myFunction()" href="https://bg.dereksarnoisafaggot.shop/uv/service/hvtrs8%2F-wuw%2Cgmoelg.aoo%2Fdbz%3Fdbz%3Dqnckg_craafe">
-                    <img src="../img/snake.webp" />
-                </a>
-                <a onclick="myFunction()" href="games/1v1lol">
-                    <img src="../img/1v1.jpg" />
-                </a>
-                <a href="../allgms/allgmsview">View All</a>
-                <br>
-                <br>
-                <br>
-                <h2>Account Needed Games</h2>
-
-                <a onclick="openInAboutBlank(this)" href="https://bg.dereksarnoisafaggot.shop/uv/service/hvtrs8%2F-nmweg%2Cnn%2Frlcy-eria-eaoeq%2F5328-fmrvnktg">
-                    <img src="../img/fortniteBk.png" />
-                </a>
-                <a onclick="myFunction()" href="https://bg.dereksarnoisafaggot.shop/uv/service/hvtrs8%2F-nmweg%2Cnn%2Fkfpaoe-slirpgt">
-                    <img src="../img/robloxBk.png" />
-                </a>
-
-            </div>
-        </div>
-
-        <div class="group2">
-            <div id="Apps">
-                <h2>Apps</h2>
-                <a onclick="myFunction()" href="https://bg.dereksarnoisafaggot.shop/uv/service/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-">
-                    <img src="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png" />
-                </a>
-                <a onclick="myFunction()" href="https://bg.dereksarnoisafaggot.shop/uv/service/hvtrs8%2F-wuw%2Ctkkvoi.aoo%2F">
-                    <img src="https://i.ibb.co/2Fc8g7H/image.png" />
-                </a>
-                <a onclick="myFunction()" href="https://bg.dereksarnoisafaggot.shop/uv/service/hvtrs8%2F-dksaopd%2Ccmm-lmgkn">
-                    <img src="https://i.ibb.co/nRTzdkn/image.png" />
-                </a>
-            </div>
-        </div>
         <script src="../scripts/fullscreen.js"></script>
         <script src="../scripts/show.js"></script>
-        <script>
-            function openInAboutBlank(element) {
-                // Prevent the default behavior of the link
-                event.preventDefault();
-
-                // Get the href attribute of the clicked link
-                var link = element.getAttribute("href");
-
-                // Create a new iframe
-                var iframe = document.createElement("iframe");
-                iframe.src = link;
-                iframe.style.position = "fixed";
-                iframe.style.top = "0";
-                iframe.style.left = "0";
-                iframe.style.bottom = "0";
-                iframe.style.right = "0";
-                iframe.style.width = "100%";
-                iframe.style.height = "100%";
-                iframe.style.border = "none";
-                iframe.style.margin = "0";
-                iframe.style.padding = "0";
-                iframe.style.overflow = "hidden";
-                iframe.style.zIndex = "999999"; // Ensure it's on top
-
-                // Append the iframe to the body
-                document.body.appendChild(iframe);
-            }
-        </script>
         <script>
             function removeCloudsIframes() {
                 const iframes = document.querySelectorAll('iframe[src="../scripts/clouds.html"]');
@@ -256,33 +167,6 @@
                 iframes.forEach(iframe => {
                     iframe.remove();
                 });
-            }
-        </script>
-        <script>
-            function gameSource(game) {
-                // Extract the current domain from the URL
-                const currentDomain = window.location.hostname;
-
-                // Split the domain into parts
-                const domainParts = currentDomain.split('.');
-
-                // Check if there are three parts (subdomain.domain.tld)
-                if (domainParts.length === 3) {
-                    // Replace the first part with "source"
-                    domainParts[0] = 'source';
-                } else {
-                    // If not, add "source" as a subdomain
-                    domainParts.unshift('source');
-                }
-
-                // Construct the new domain
-                const newDomain = domainParts.join('.');
-
-                // Construct the new URL
-                const newUrl = `https://${newDomain}/play/${game}`;
-
-                // Open the URL in the same tab
-                window.location.href = newUrl;
             }
         </script>
             <script>
