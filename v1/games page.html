@@ -276,11 +276,21 @@
             }
         </script>
     <script>
-        // Check if there is a saved theme in localStorage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'blue') {
-            // Apply the theme if it was previously saved
-            document.body.classList.add('blue-theme');
+        // Function to apply the saved theme
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'blue') {
+                // Apply the theme if it was previously saved
+                document.body.classList.add('blue-theme');
+
+                // Get all buttons with specified IDs
+                const buttons = document.querySelectorAll('#Button, #removeLagButton, #cloak');
+
+                // Apply the new background color
+                buttons.forEach(button => {
+                    button.style.backgroundColor = '#005dff';
+                }
+                            }
         }
 
         // Function to apply the blue theme
@@ -291,23 +301,12 @@
             // Save the theme information in localStorage
             localStorage.setItem('theme', 'blue');
 
-            // Dispatch a custom event to notify other pages
-            const event = new Event('themeChanged');
-            document.dispatchEvent(event);
-
-            // Get all buttons with specified IDs
-            const buttons = document.querySelectorAll('#Button, #removeLagButton, #cloak');
-
-            // Apply the new background color
-            buttons.forEach(button => {
-                button.style.backgroundColor = '#005dff';
-            });
+            // Apply the saved theme on other pages
+            applySavedTheme();
         }
 
-        // Listen for the custom event to apply the theme on other pages
-        document.addEventListener('themeChanged', function () {
-            document.body.classList.add('blue-theme');
-        });
+        // Apply the saved theme on page load
+        applySavedTheme();
     </script>
 </body>
 </html>
