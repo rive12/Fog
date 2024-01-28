@@ -151,34 +151,41 @@
     <section>
 
         <div class="group">
-            <p style="font-size: large; transform: translateY(-145px); padding-left: 15px;">Themes</p>
+            <p style="font-size: larger; transform: translateY(-145px); padding-left: 15px;">Themes</p>
             <div id="Games">
 
                 <button id="Button" onclick="blueTheme()">Blue Theme</button>
 
 
 
-        <script src="../scripts/fullscreen.js"></script>
-        <script src="../scripts/show.js"></script>
-        <script>
-            function removeCloudsIframes() {
-                const iframes = document.querySelectorAll('iframe[src="../scripts/clouds.html"]');
+                <script src="../scripts/fullscreen.js"></script>
+                <script src="../scripts/show.js"></script>
+                <script>
+                    function removeCloudsIframes() {
+                        const iframes = document.querySelectorAll('iframe[src="../scripts/clouds.html"]');
 
-                iframes.forEach(iframe => {
-                    iframe.remove();
-                });
-            }
-        </script>
-            <script>
-        function blueTheme() {
-            // Get all buttons with specified IDs
-            const buttons = document.querySelectorAll('#Button, #removeLagButton, #cloak');
+                        iframes.forEach(iframe => {
+                            iframe.remove();
+                        });
+                    }
+                </script>
+                <script>
+                // Function to apply the blue theme
+                    function blueTheme() {
+                        // Add a class to the body when the theme is changed
+                        document.body.classList.add('blue-theme');
 
-            // Apply the new background color
-            buttons.forEach(button => {
-                button.style.backgroundColor = '#005dff';
-            });
-        }
-    </script>
-</body>
-</html>
+                        // Save the theme information in localStorage
+                        localStorage.setItem('theme', 'blue');
+                    }
+
+                    // Check if there is a saved theme in localStorage
+                    const savedTheme = localStorage.getItem('theme');
+                    if (savedTheme === 'blue') {
+                        // Apply the theme if it was previously saved
+                        blueTheme();
+                    }
+                </script>
+
+</body >
+</html >
