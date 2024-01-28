@@ -110,7 +110,7 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <button id="removeLagButton" onclick="removeCloudsIframes()">Remove Lag</button>
-    <iframe src="./scripts/net.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
+    <iframe src="../scripts/net.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     </div>
     <div>
         <h1 style="
@@ -158,7 +158,7 @@
 
                 <script>
                     function removeCloudsIframes() {
-                        const iframes = document.querySelectorAll('iframe[src="./scripts/net.html"]');
+                        const iframes = document.querySelectorAll('iframe[src="../scripts/net.html"]');
 
                         iframes.forEach(iframe => {
                             iframe.remove();
