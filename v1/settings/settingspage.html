@@ -197,6 +197,11 @@
                             button.style.backgroundColor = '#005dff';
                         });
                     }
+
+                    // Listen for the custom event to apply the theme on other pages
+                    document.addEventListener('themeChanged', function () {
+                        document.body.classList.add('blue-theme');
+                    });
                 </script>
 
 </body >
