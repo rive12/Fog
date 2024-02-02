@@ -1,59 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" crossorigin="anonymous">
     <title>404 Page Not Found | Interesting Science</title>
-    <script href="../index.js"></script>
+    <script src="../index.js"></script>
     <link href="../nav.css" rel="stylesheet">
-    <script>
-        document.onkeydown = function (e) {
-            if (event.keyCode == 123) {
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-                return false;
-            }
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-                return false;
-            }
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../particles.js"></script>
+    <style>
+        body {
+            overflow-y: scroll;
+            height: 30in;
+            background-image: url(./imgs/Karda Home@2x.png);
         }
-    </script>
+
+        #removeLagButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background-color: #4d4c4c;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
-<style>
-    body {
-        overflow-y: scroll;
-        height: 30in;
-        background-image: url(../imgs/Karda\ Home@2x.png);
-    }
-    #removeLagButton {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 10px;
-        background-color: #4d4c4c;
-        color: #fff;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-    }
-</style>
-<div id="particles-js"></div>
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="../particles.js"></script>
-<nav class="ka-boom">
-    <ul class="nav">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../select/">Search</a></li>
-        <li><a href="../games/">Games</a></li>
-        <li><a href="../movies/">Movies</a></li>
-        <li><a href="../music/">Music</a></li>
-    </ul>
-</nav>
 
 <body>
     <button id="removeLagButton" onclick="removeNetIframes()">Remove Lag</button>
@@ -89,5 +65,7 @@
                 });
             }
         </script>
+    </div>
 </body>
+
 </html>
