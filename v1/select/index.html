@@ -24,6 +24,19 @@
         }
     </script>
 </head>
+<style>
+    #removeLagButton {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: #4d4c4c;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
 <div id="particles-js"></div>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="../particles.js"></script>
@@ -38,6 +51,7 @@
 </nav>
 
 <body>
+    <button id="removeLagButton" onclick="removeNetIframes()">Remove Lag</button>
     <iframe src="../scripts/net.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     <div id="choices">
         <h id="choiceheadtxt">Official Pro<wbr>xi<wbr>es</h>
@@ -59,6 +73,15 @@
                 const url = 'https://22.3322.cf/';
                 const newWindow = window.open('about:blank', '_blank');
                 newWindow.document.write(`<html><head><title>Loading...</title></head><body><iframe src="${url}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe></body></html>`);
+            }
+        </script>
+        <script>
+            function removeNetIframes() {
+                const iframes = document.querySelectorAll('iframe[src="../scripts/net.html"]');
+
+                iframes.forEach(iframe => {
+                    iframe.remove();
+                });
             }
         </script>
 </body>
