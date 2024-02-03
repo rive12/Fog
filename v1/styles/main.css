@@ -78,22 +78,6 @@ body {
     color: white;
 }
 
-#choiceDesc:after {
-    content: 'To get a description of each proxy, hover over the icon you would like the description of.';
-}
-
-#womginxDesc:hover ~ #choiceDesc::after {
-    content: 'Womginx is a very fast proxy with good site compatibility.';
-}
-
-#uvDesc:hover ~ #choiceDesc::after {
-    content: 'Ultraviolet is an incredibly fast and secure proxy with support for Spotify, reCaptcha, Discord, and more!';
-}
-
-#ramDesc:hover ~ #choiceDesc::after {
-    content: 'Rammerhead is a super fast and reliable web proxy with amazing site support.';
-}
-
 .imageChoice {
     display: inline-block;
     width: 225px;
