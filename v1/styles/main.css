@@ -112,6 +112,20 @@ body {
     transition: all .5s ease-out;
 }
 
+.imageChoice:hover {
+    transition: all .5s ease-in;
+    transform: scale(1.05);
+}
+
+.imageChoice img {
+    width: 100%;
+    height: 80%;
+}
+
+#choiceButtons {
+    text-align: center;
+}
+/*SuperNova Choice*/
 .imageChoiceNova {
     display: inline-block;
     width: 225px;
@@ -130,20 +144,15 @@ body {
     transition: all .5s ease-out;
 }
 
-.imageChoice:hover {
-    transition: all .5s ease-in;
-    transform: scale(1.05);
-}
+    .imageChoiceNova:hover {
+        transition: all .5s ease-in;
+        transform: scale(1.05);
+    }
 
-.imageChoice img {
-    width: 100%;
-    height: 80%;
-}
-
-#choiceButtons {
-    text-align: center;
-}
-
+    .imageChoiceNova img {
+        width: 100%;
+        height: 80%;
+    }
 /* Navbar */
 
 .navbar {
