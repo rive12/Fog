@@ -112,6 +112,24 @@ body {
     transition: all .5s ease-out;
 }
 
+.imageChoiceNova {
+    display: inline-block;
+    width: 235px;
+    height: 300px;
+    border-radius: 5px;
+    margin-right: 2.5px;
+    margin-left: 2.5px;
+    color: grey;
+    cursor: pointer;
+    border: 1px solid;
+    border-color: grey;
+    font-size: 30px;
+    font-family: 'A';
+    text-decoration: none;
+    background: #23272a;
+    transition: all .5s ease-out;
+}
+
 .imageChoice:hover {
     transition: all .5s ease-in;
     transform: scale(1.05);
