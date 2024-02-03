@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TM52GM2B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-44TM52GM2B');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ㅤ</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        #password-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #password-input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #iframe-container {
+            display: none;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="password-container">
+        <label for="password-input">Enter Password:</label>
+        <input type="password" id="password-input">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+
+    <div id="iframe-container">
+        <iframe src="https://cloudos-fr.netlify.app/"></iframe>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById('password-input').value;
+
+            if (password === '2112' || password === '4520' || password === '2727' || password === '0111') {  //original passwords: 2112, 4520, 2727
+                // Show the iframe and hide the password container
+                document.getElementById('iframe-container').style.display = 'block';
+                document.getElementById('password-container').style.display = 'none';
+            } else {
+                alert('Incorrect Password, Try Again.');
+            }
+        }
+    </script>
+</body>
+</html>
