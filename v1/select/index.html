@@ -66,8 +66,8 @@
         <h id="choiceheadtxt">Official Pro<wbr>xi<wbr>es</h>
         <br><br>
         <a class="imageChoice" href='../select/kn.html'>Kardna<img src="../imgs/option-k-logo.png"></a>
-        <a class="imageChoice" href='https://22.3322.cf/' onclick="openRammerInNewTab()">Rammer<img src="../imgs/option-r-logo.png"></a>
-        <a class="imageChoiceNova" href='https://pizza-orange-why-are-you-reading-me-lol.onrender.com/' onclick="openRammerInNewTab()">SuperNova<img src="../imgs/option-s-logo.png"></a>
+        <a class="imageChoice" href='#' onclick="openInAboutBlank('https://22.3322.cf/')">Rammer<img src="../imgs/option-r-logo.png"></a>
+        <a class="imageChoiceNova" href='#' onclick="openInAboutBlank('https://pizza-orange-why-are-you-reading-me-lol.onrender.com/')">SuperNova<img src="../imgs/option-s-logo.png"></a>
         <div class="modal" id="modal">
             <div class="modal-header">
             </div>
@@ -78,13 +78,13 @@
         <link href="styles.css" rel="stylesheet">
         <script defer src="script.js"></script>
         <script>
-            function openRammerInNewTab() {
+            function openInAboutBlank(url) {
                 event.preventDefault();
-                const url = 'https://22.3322.cf/';
                 const newWindow = window.open('about:blank', '_blank');
                 newWindow.document.write(`<html><head><title>Loading...</title></head><body><iframe src="${url}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe></body></html>`);
             }
         </script>
+
         <script>
             function removeNetIframes() {
                 const iframes = document.querySelectorAll('iframe[src="../scripts/net.html"]');
