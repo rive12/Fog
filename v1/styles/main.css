@@ -114,7 +114,7 @@ body {
 
 .imageChoiceNova {
     display: inline-block;
-    width: 235px;
+    width: 225px;
     height: 300px;
     border-radius: 5px;
     margin-right: 2.5px;
@@ -123,7 +123,7 @@ body {
     cursor: pointer;
     border: 1px solid;
     border-color: grey;
-    font-size: 30px;
+    font-size: 25px;
     font-family: 'A';
     text-decoration: none;
     background: #23272a;
