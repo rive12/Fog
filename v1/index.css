@@ -21,8 +21,7 @@ body {
     animation: fadeInAnimation ease-in-out 0.3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    background-image: url(./imgs/
-        );
+    background-image: url(./imgs/Karda\ Home@2x.png);
     -webkit-user-select: none;
     -moz-user-select: none;
       -o-user-select: none;

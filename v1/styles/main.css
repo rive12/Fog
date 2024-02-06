@@ -24,7 +24,7 @@ body {
     animation: fadeInAnimation ease-in-out 0.3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    background-image: url(../imgs/KardaHome2x.png);
+    background-image: url(../imgs/Karda\ Home@2x.png);
     -webkit-user-select: none;
     -moz-user-select: none;
       -o-user-select: none;
@@ -78,6 +78,22 @@ body {
     color: white;
 }
 
+#choiceDesc:after {
+    content: 'To get a description of each proxy, hover over the icon you would like the description of.';
+}
+
+#womginxDesc:hover ~ #choiceDesc::after {
+    content: 'Womginx is a very fast proxy with good site compatibility.';
+}
+
+#uvDesc:hover ~ #choiceDesc::after {
+    content: 'Ultraviolet is an incredibly fast and secure proxy with support for Spotify, reCaptcha, Discord, and more!';
+}
+
+#ramDesc:hover ~ #choiceDesc::after {
+    content: 'Rammerhead is a super fast and reliable web proxy with amazing site support.';
+}
+
 .imageChoice {
     display: inline-block;
     width: 225px;
@@ -89,7 +105,7 @@ body {
     cursor: pointer;
     border: 1px solid;
     border-color: grey;
-    font-size: 25px;
+    font-size: 30px;
     font-family: 'A';
     text-decoration: none;
     background: #23272a;
