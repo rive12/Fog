@@ -122,12 +122,12 @@
                  iframe.remove();
              });
          }
-     </script>
+     </script>  
      <script>
          window.addEventListener('beforeunload', function (e) {
-             // cancel close
+             // Cancel the event
              e.preventDefault();
-             // put tha mesasge
+             // Set the confirmation message
              e.returnValue = 'Are you sure you want to leave? Your changes may not be saved.';
          });
      </script>
