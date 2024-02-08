@@ -123,6 +123,14 @@
              });
          }
      </script>
+     <script>
+         window.addEventListener('beforeunload', function (e) {
+             // cancel close
+             e.preventDefault();
+             // put tha mesasge
+             e.returnValue = 'Are you sure you want to leave? Your changes may not be saved.';
+         });
+     </script>
 
  </body>
 </html>
