@@ -16,17 +16,25 @@
             height: 100vh;
         }
 
-        #myButton {
+        .button {
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateY(-50%);
             padding: 10px 20px;
             background-color: #4d4d4d;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+        #myButton {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #downloadButton {
+            left: calc(50% + 100px); /* Adjust the position as needed */
         }
 
         #myIframe {
@@ -43,7 +51,8 @@
 <body>
 
 <div id="container">
-    <button id="myButton" onclick="toggleIframe()">placeholder</button>
+    <button id="myButton" class="button" onclick="toggleIframe()">placeholder</button>
+    <button id="downloadButton" class="button" onclick="openNewTab()">Download FogClient BETA</button>
     <iframe id="myIframe" src="https://example.com"></iframe>
 </div>
 
@@ -59,6 +68,10 @@
             iframe.style.display = "none";
             button.style.display = "block";
         }
+    }
+
+    function openNewTab() {
+        window.open('../beta/FogClient.dll', '_blank');
     }
 </script>
 
