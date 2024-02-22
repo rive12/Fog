@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hehe</title>
+    <title>Spinning 3D Model</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         body, html {
@@ -50,43 +48,23 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById('model').appendChild(renderer.domElement);
 
-        // Create a cube geometry (you can replace this with your model)
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-
         // Set camera position
         camera.position.z = 5;
+
+        // Load the 3D model
+        const loader = new THREE.GLTFLoader();
+        loader.load('https://data.fogon.top/logo.glb', function (gltf) {
+            // Add the loaded model to the scene
+            scene.add(gltf.scene);
+        });
 
         // Render loop
         function animate() {
             requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
             renderer.render(scene, camera);
         }
         animate();
     </script>
 
-    <script>
-        // Get the current domain
-        const currentDomain = window.location.hostname;
 
-        // Check if the domain is netlify.app
-        if (currentDomain.endsWith('netlify.app')) {
-            // Replace the subdomain with 'fogdata' and construct the model source URL
-            var modelSource = `https://fogdata.${currentDomain.replace('netlify.app', '')}/logo.glb`;
-        } else {
-            // Construct the model source URL with the current subdomain
-            var modelSource = `https://data.${currentDomain}/logo.glb`;
-        }
-
-        // Load the model
-        const loader = new THREE.GLTFLoader();
-        loader.load(modelSource, function (gltf) {
-            scene.add(gltf.scene);
-        });
-    </script>
-</body>
-</html>
+</body></html>
