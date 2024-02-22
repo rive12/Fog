@@ -425,21 +425,15 @@
         // Apply the saved theme on page load
         applySavedTheme();
     </script>
-    <script>
+<script>
     function gameSource(game) {
         // Extract the current domain from the URL
         const currentDomain = window.location.hostname;
 
-        // Check if the current domain is a Netlify subdomain
-        if (currentDomain.endsWith('.netlify.app')) {
-            // Replace the subdomain with "sourcefog"
-            const newDomain = currentDomain.replace(/^[^.]+/, 'sourcefog');
-            
-            // Construct the new URL
-            const newUrl = `https://${newDomain}/play/${game}`;
-
-            // Open the URL in the same tab
-            window.location.href = newUrl;
+        // Check if the domain is netlify.app
+        if (currentDomain.endsWith('netlify.app')) {
+            // Replace the subdomain with 'fogsource' and construct the new URL
+            var newUrl = `https://fogsource.${currentDomain.replace('netlify.app', '')}/play/${game}`;
         } else {
             // Split the domain into parts
             const domainParts = currentDomain.split('.');
@@ -457,11 +451,11 @@
             const newDomain = domainParts.join('.');
 
             // Construct the new URL
-            const newUrl = `https://${newDomain}/play/${game}`;
-
-            // Open the URL in the same tab
-            window.location.href = newUrl;
+            var newUrl = `https://${newDomain}/play/${game}`;
         }
+
+        // Open the URL in the same tab
+        window.location.href = newUrl;
     }
 </script>
 
