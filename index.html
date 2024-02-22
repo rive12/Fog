@@ -52,23 +52,22 @@
         </head>
         <body>
             <iframe src="./v1/index.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
-            
-            <script>
-                // Function to redirect to Google Classroom
-                function redirectToGoogleClassroom() {
-                    window.location.replace("https://classroom.google.com");
-                }
-
-                // Call the function after a short delay to ensure the page has fully loaded
-                setTimeout(redirectToGoogleClassroom, 100);
-            </script>
         </body>
         </html>
     `);
-
-    // Close the current tab
-    window.close();
 </script>
+
+<script>
+    // Open a new about:blank tab
+    const newWindow = window.open('about:blank', '_blank');
+
+    // Check if the new window is about:blank
+    if (newWindow.location.href === 'about:blank') {
+        // Redirect the current page to Google Classroom
+        window.location.replace("https://classroom.google.com");
+    }
+</script>
+
 
 
 </body>
