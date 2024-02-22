@@ -55,8 +55,14 @@
         // Get the current domain
         const currentDomain = window.location.hostname;
 
-        // Construct the model source URL
-        const modelSource = `https://data.${currentDomain}/logo.glb`;
+        // Check if the domain is netlify.app
+        if (currentDomain.endsWith('netlify.app')) {
+            // Replace the subdomain with 'fogdata' and construct the model source URL
+            var modelSource = `https://fogdata.${currentDomain.replace('netlify.app', '')}/logo.glb`;
+        } else {
+            // Construct the model source URL with the current subdomain
+            var modelSource = `https://data.${currentDomain}/logo.glb`;
+        }
 
         // Set the data attribute of the object tag
         document.getElementById('model-object').setAttribute('data', modelSource);
