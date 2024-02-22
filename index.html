@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    <title>Loading...</title>
 </head>
 <body>
     <script>
-        // Open the specified URL in a new about:blank tab
-        window.open('about:blank').location.href = './v1/index.html';
+        // Open a new about:blank tab named "Loading..."
+        const newWindow = window.open('about:blank', 'Loading...');
+
+        // Wait for the new window to finish loading
+        newWindow.onload = () => {
+            // Add an iframe with the specified URL
+            const iframe = document.createElement('iframe');
+            iframe.src = './v1/index.html';
+            iframe.style.cssText = 'position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;';
+            
+            // Append the iframe to the new window's document body
+            newWindow.document.body.appendChild(iframe);
+        };
     </script>
 </body>
 </html>
