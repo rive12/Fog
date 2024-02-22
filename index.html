@@ -41,6 +41,9 @@
         // Open a new about:blank tab
         const newWindow = window.open('about:blank', 'Loading...');
 
+        // Close the current window
+        window.close();
+
         // Write the HTML content into the new window
         newWindow.document.write(`
             <!DOCTYPE html>
@@ -56,9 +59,6 @@
             </body>
             </html>
         `);
-
-        // Close the current window
-        window.close();
     </script>
 </body>
 </html>
