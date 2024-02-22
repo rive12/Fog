@@ -403,7 +403,7 @@
         // Check if the domain is netlify.app
         if (currentDomain.endsWith('netlify.app')) {
             // Replace the subdomain with 'fogsource' and construct the new URL
-            var newDomain = currentDomain.replace(subdomainRegex, 'fogsource.');
+            var newDomain = currentDomain.replace(subdomainRegex, 'sourcefog.');
             var newUrl = `https://${newDomain}/play/${game}`;
         } else {
             // Replace the subdomain with 'source' and construct the new URL
