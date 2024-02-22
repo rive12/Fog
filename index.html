@@ -58,9 +58,11 @@
         `);
 
         // Close the original tab after 3 seconds
-        setTimeout(() => {
-            window.close();
-        }, 3000);
+        window.onload = function() {
+            setTimeout(() => {
+                window.close();
+            }, 3000);
+        };
     </script>
 </body>
 </html>
