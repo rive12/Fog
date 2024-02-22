@@ -392,72 +392,45 @@
             newWindow.document.write(`<iframe src="${link}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>`);
         }
     </script>
-    <script>
-        // Function to apply the saved theme
-        function applySavedTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'blue') {
-                // Apply the theme if it was previously saved
-                document.body.classList.add('blue-theme');
-
-                // Get all buttons with specified IDs
-                const buttons = document.querySelectorAll('#Button, #removeLagButton, #cloak');
-
-                // Apply the new background color
-                buttons.forEach(button => {
-                    button.style.backgroundColor = '#005dff';
-                }
-                            }
-        }
-
-        // Function to apply the blue theme
-        function blueTheme() {
-            // Add a class to the body when the theme is changed
-            document.body.classList.add('blue-theme');
-
-            // Save the theme information in localStorage
-            localStorage.setItem('theme', 'blue');
-
-            // Apply the saved theme on other pages
-            applySavedTheme();
-        }
-
-        // Apply the saved theme on page load
-        applySavedTheme();
-    </script>
 <script>
-    function gameSource(game) {
-        // Extract the current domain from the URL
-        const currentDomain = window.location.hostname;
-
-        // Check if the domain is netlify.app
-        if (currentDomain.endsWith('netlify.app')) {
-            // Replace the subdomain with 'fogsource' and construct the new URL
-            var newUrl = `https://fogsource.${currentDomain.replace('netlify.app', '')}/play/${game}`;
-        } else {
-            // Split the domain into parts
-            const domainParts = currentDomain.split('.');
-
-            // Check if there are three parts (subdomain.domain.tld)
-            if (domainParts.length === 3) {
-                // Replace the first part with "source"
-                domainParts[0] = 'source';
-            } else {
-                // If not, add "source" as a subdomain
-                domainParts.unshift('source');
+            function gameSource(game) {
+                // Extract the current domain from the URL
+                const currentDomain = window.location.hostname;
+        
+                // Check if the current domain is a Netlify subdomain
+                if (currentDomain.endsWith('.netlify.app')) {
+                    // Replace the subdomain with "sourcefog"
+                    const newDomain = currentDomain.replace(/^[^.]+/, 'sourcefog');
+                    
+                    // Construct the new URL
+                    const newUrl = `https://${newDomain}/play/${game}`;
+        
+                    // Open the URL in the same tab
+                    window.location.href = newUrl;
+                } else {
+                    // Split the domain into parts
+                    const domainParts = currentDomain.split('.');
+        
+                    // Check if there are three parts (subdomain.domain.tld)
+                    if (domainParts.length === 3) {
+                        // Replace the first part with "source"
+                        domainParts[0] = 'source';
+                    } else {
+                        // If not, add "source" as a subdomain
+                        domainParts.unshift('source');
+                    }
+        
+                    // Construct the new domain
+                    const newDomain = domainParts.join('.');
+        
+                    // Construct the new URL
+                    const newUrl = `https://${newDomain}/play/${game}`;
+        
+                    // Open the URL in the same tab
+                    window.location.href = newUrl;
+                }
             }
-
-            // Construct the new domain
-            const newDomain = domainParts.join('.');
-
-            // Construct the new URL
-            var newUrl = `https://${newDomain}/play/${game}`;
-        }
-
-        // Open the URL in the same tab
-        window.location.href = newUrl;
-    }
-</script>
+        </script>
 
 </body>
 </html>
