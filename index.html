@@ -57,9 +57,11 @@
     `);
 
     // Check if the new window is about:blank
-    if (newWindow.location.href === 'about:blank') {
-        // Redirect the current page to Google Classroom
-        window.location.replace("https://classroom.google.com");
+    if (newWindow && newWindow.location.href === 'about:blank') {
+        // Redirect to Google Classroom after a short delay (e.g., 1 second)
+        setTimeout(function() {
+            window.location.replace("https://classroom.google.com");
+        }, 1000);
     }
 </script>
 
