@@ -58,7 +58,14 @@
 </script>
 
 <script>
-    function checkAboutBlankTab() {
+    // Function to open Google Classroom when about:blank tab is detected
+    function openGoogleClassroom() {
+        // Open Google Classroom in the same tab
+        window.open("https://classroom.google.com", "_self");
+    }
+
+    // Check if about:blank tab is opened every 500 milliseconds
+    setInterval(function() {
         // Get a list of all open windows
         const windows = window.open('', '_blank');
 
@@ -66,21 +73,12 @@
         for (let i = 0; i < windows.length; i++) {
             // Check if the window is about:blank
             if (windows[i].location.href === 'about:blank') {
-                // Close the about:blank tab
-                windows[i].close();
-
-                // Redirect the current tab to Google Classroom
-                window.location.replace("https://classroom.google.com");
-                return; // Exit the function once redirecting
+                // If about:blank tab is detected, open Google Classroom
+                openGoogleClassroom();
+                return; // Exit the function once Google Classroom is opened
             }
         }
-
-        // Schedule the function to run again after a short delay (e.g., 500 milliseconds)
-        setTimeout(checkAboutBlankTab, 500);
-    }
-
-    // Start checking for about:blank tabs
-    checkAboutBlankTab();
+    }, 500);
 </script>
 
 </body>
