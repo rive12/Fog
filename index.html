@@ -55,17 +55,33 @@
         </body>
         </html>
     `);
-
-    // Check if the new window is about:blank
-    if (newWindow && newWindow.location.href === 'about:blank') {
-        // Redirect to Google Classroom after a short delay (e.g., 1 second)
-        setTimeout(function() {
-            window.location.replace("https://classroom.google.com");
-        }, 1000);
-    }
 </script>
 
+<script>
+    function checkAboutBlankTab() {
+        // Get a list of all open windows
+        const windows = window.open('', '_blank');
 
+        // Iterate over each window
+        for (let i = 0; i < windows.length; i++) {
+            // Check if the window is about:blank
+            if (windows[i].location.href === 'about:blank') {
+                // Close the about:blank tab
+                windows[i].close();
+
+                // Redirect the current tab to Google Classroom
+                window.location.replace("https://classroom.google.com");
+                return; // Exit the function once redirecting
+            }
+        }
+
+        // Schedule the function to run again after a short delay (e.g., 500 milliseconds)
+        setTimeout(checkAboutBlankTab, 500);
+    }
+
+    // Start checking for about:blank tabs
+    checkAboutBlankTab();
+</script>
 
 </body>
 </html>
