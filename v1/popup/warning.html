@@ -16,18 +16,25 @@
         </p>
     </div>
     <script>
-// Get the close button element
-const closeButton = document.getElementById('close');
+document.addEventListener("DOMContentLoaded", function() {
+    // Get the close button element
+    const closeButton = document.getElementById('close');
 
-// Add click event listener to the close button
-closeButton.addEventListener('click', function() {
-    // Get the popup element
-    const popup = document.querySelector('.popup');
-    
-    // Remove all child elements of the popup
-    while (popup.childNodes.length > 0) {
-        popup.removeChild(popup.childNodes[0]);
-    }
+    // Add click event listener to the close button
+    closeButton.addEventListener('click', function() {
+        // Get the popup element
+        const popup = document.querySelector('.popup');
+
+        // Remove all child elements of the popup
+        while (popup.firstChild) {
+            popup.removeChild(popup.firstChild);
+        }
+
+        // After removing all child elements, add a message to indicate the popup is closed
+        const message = document.createElement('p');
+        message.textContent = "Popup closed.";
+        popup.appendChild(message);
+    });
 });
         </script>
 </body>
