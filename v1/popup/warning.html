@@ -11,31 +11,18 @@
         <button id="close">&times;</button>
         <h2>Developer Notice</h2>
         <p>
-            I am currently aware that a lot of our services (proxied services) are currently not working.
+            I am currently aware that alot of our services (proxied services) are currently not working.
             Please do not inform me about this in person or in the discord, I am working to fix it soon.
         </p>
     </div>
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Get the close button element
-    const closeButton = document.getElementById('close');
-
-    // Add click event listener to the close button
-    closeButton.addEventListener('click', function() {
-        // Get the popup element
-        const popup = document.querySelector('.popup');
-
-        // Remove all child elements of the popup
-        while (popup.firstChild) {
-            popup.removeChild(popup.firstChild);
-        }
-
-        // After removing all child elements, add a message to indicate the popup is closed
-        const message = document.createElement('p');
-        message.textContent = "Popup closed.";
-        popup.appendChild(message);
-    });
-});
-        </script>
+    <!--Script-->
+    <script>window.addEventListener("load", function(){
+        setTimeout(
+            function open(event){
+                document.querySelector(".popup").style.display = "block";
+            },
+            1000
+        )
+    });</script>>
 </body>
 </html>
