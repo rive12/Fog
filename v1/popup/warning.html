@@ -16,20 +16,19 @@
         </p>
     </div>
     <script>
+// Get the close button element
+const closeButton = document.getElementById('close');
 
-        // Get the close button element
-        const closeButton = document.getElementById('close');
-        
-        // Add click event listener to the close button
-        closeButton.addEventListener('click', function() {
-            // Get the popup element
-            const popup = document.querySelector('.popup');
-            
-            // Remove all child elements of the popup
-            while (popup.firstChild) {
-                popup.removeChild(popup.firstChild);
-            }
-        });
+// Add click event listener to the close button
+closeButton.addEventListener('click', function() {
+    // Get the popup element
+    const popup = document.querySelector('.popup');
+    
+    // Remove all child elements of the popup
+    while (popup.childNodes.length > 0) {
+        popup.removeChild(popup.childNodes[0]);
+    }
+});
         </script>
 </body>
 </html>
