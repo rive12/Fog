@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TM52GM2B"></script>
@@ -37,60 +39,71 @@
         <li><a href="../games">Games</a></li>
         <li><a href="../movies/">Movies</a></li>
         <li><a href="../music/">Music</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">V</a>
+            <div class="dropdown-content">
+                <a href="https://www.spotify.com/">
+                    <img src="spotify_logo.png" alt="Spotify Logo">
+                    <span>Spotify</span>
+                </a>
+            </div>
+        </li>
     </ul>
 </nav>
 <style>
- <style>
-        /* Dropdown container */
-        .dropdown {
-            position: absolute;
-            top: 10px; /* Adjust top position as needed */
-            right: 10px; /* Adjust right position as needed */
-            display: inline-block;
-        }
-
-        /* Dropdown button */
-        .dropdown-button {
-            background-color: #000000;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Dropdown content */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #000000;
-            min-width: 160px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-            z-index: 1;
-            padding: 8px 0;
-        }
-
-        /* Show dropdown content when hovering over dropdown button */
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Style the dropdown links */
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        /* Add a background color to the dropdown links on hover */
-        .dropdown-content a:hover {
-            background-color: #000000;
-        }
-
-        /* Image style */
-        .spotify-icon {
-            width: 20px; /* Adjust width as needed */
-            height: auto; /* Maintain aspect ratio */
-            margin-right: 5px; /* Adjust margin as needed */
-        }
+    .dropdown {
+        position: relative;
+        float: right;
+    }
+    
+    .dropbtn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        cursor: pointer;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        right: 0;
+        margin-top: 32px;
+    }
+    
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .dropdown:hover .dropbtn {
+        background-color: #ccc;
+    }
+    
+    .dropdown-content img {
+        float: left;
+        margin-right: 10px;
+    }
 
     #myDiv {
         display: none;
@@ -112,6 +125,7 @@
         z-index: 0; /* Change the z-index to a non-negative value */
     }
 </style>
+</style>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
@@ -119,20 +133,6 @@
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-<!-- Dropdown container -->
-    <div class="dropdown">
-        <!-- Dropdown button with image and text -->
-        <button class="dropdown-button">
-            <img class="spotify-icon" src="spotify_icon.png" alt="Spotify Icon">
-            Spotify
-        </button>
-        <!-- Dropdown content -->
-        <div class="dropdown-content">
-            <!-- Dropdown options -->
-            <a href="#">Spotify</a>
-        </div>
-    </div>
-
     <iframe id="iframeContainer" src="https://bg.brolawncare.xyz/uv/service/hvtrs8%2F-mwskc%2Cymuvu%60e%2Ccmm-"></iframe>
 </body>
+</html>
