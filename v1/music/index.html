@@ -40,49 +40,56 @@
     </ul>
 </nav>
 <style>
- /* Dropdown styles */
- .dropdown {
-            position: relative;
+ <style>
+        /* Dropdown container */
+        .dropdown {
+            position: absolute;
+            top: 10px; /* Adjust top position as needed */
+            right: 10px; /* Adjust right position as needed */
             display: inline-block;
-            float: right;
-            margin-right: 20px;
-            margin-top: 10px;
         }
 
+        /* Dropdown button */
+        .dropdown-button {
+            background-color: #000000;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Dropdown content */
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #f9f9f9;
+            background-color: #000000;
             min-width: 160px;
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
             z-index: 1;
+            padding: 8px 0;
         }
 
-        .dropdown-content img {
-            width: 20px;
-            height: auto;
-            margin-right: 10px;
+        /* Show dropdown content when hovering over dropdown button */
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
+        /* Style the dropdown links */
         .dropdown-content a {
-            color: black;
+            color: white;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
         }
 
+        /* Add a background color to the dropdown links on hover */
         .dropdown-content a:hover {
-            background-color: #f1f1f1;
+            background-color: #000000;
         }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* V symbol style */
-        .dropdown-text::after {
-            content: '▼';
-            margin-left: 5px;
+        /* Image style */
+        .spotify-icon {
+            width: 20px; /* Adjust width as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 5px; /* Adjust margin as needed */
         }
 
     #myDiv {
@@ -111,11 +118,20 @@
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP6772XP"
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div class="dropdown">
-        <span class="dropdown-text">V</span>
-        <div class="dropdown-content">
-            <a href="#"><img src="spotify-icon.png" alt="Spotify"> Spotify</a>
-        </div>
+    <!-- End Google Tag Manager (noscript   ) -->
+
+<!-- Dropdown container -->
+<div class="dropdown">
+    <!-- Dropdown button with image and text -->
+    <button class="dropdown-button">
+        ▼
+    </button>
+    <!-- Dropdown content -->
+    <div class="dropdown-content">
+        <!-- Dropdown options -->
+        <a href="#">Spotify</a>
+    </div>
+</div>
+
     <iframe id="iframeContainer" src="https://bg.brolawncare.xyz/uv/service/hvtrs8%2F-mwskc%2Cymuvu%60e%2Ccmm-"></iframe>
 </body>
