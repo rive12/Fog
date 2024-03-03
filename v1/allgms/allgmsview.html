@@ -400,22 +400,38 @@
         // Extract the current domain from the URL
         const currentDomain = window.location.hostname;
 
-        // Define the regular expression to match subdomains
-        const subdomainRegex = /^(.*?)\./;
+        // Check if the current domain is a Netlify subdomain
+        if (currentDomain.endsWith('.netlify.app')) {
+            // Replace the subdomain with "sourcefog"
+            const newDomain = currentDomain.replace(/^[^.]+/, 'sourcefog');
+            
+            // Construct the new URL
+            const newUrl = `https://${newDomain}/play/${game}`;
 
-        // Check if the domain is netlify.app
-        if (currentDomain.endsWith('netlify.app')) {
-            // Replace the subdomain with 'fogsource' and construct the new URL
-            var newDomain = currentDomain.replace(subdomainRegex, 'sourcefog.');
-            var newUrl = `https://${newDomain}/play/${game}`;
+            // Open the URL in the same tab
+            window.location.href = newUrl;
         } else {
-            // Replace the subdomain with 'source' and construct the new URL
-            var newDomain = currentDomain.replace(subdomainRegex, 'source.');
-            var newUrl = `https://${newDomain}/play/${game}`;
-        }
+            // Split the domain into parts
+            const domainParts = currentDomain.split('.');
 
-        // Open the URL in the same tab
-        window.location.href = newUrl;
+            // Check if there are three parts (subdomain.domain.tld)
+            if (domainParts.length === 3) {
+                // Replace the first part with "source"
+                domainParts[0] = 'source';
+            } else {
+                // If not, add "source" as a subdomain
+                domainParts.unshift('source');
+            }
+
+            // Construct the new domain
+            const newDomain = domainParts.join('.');
+
+            // Construct the new URL
+            const newUrl = `https://${newDomain}/play/${game}`;
+
+            // Open the URL in the same tab
+            window.location.href = newUrl;
+        }
     }
 </script>
 
