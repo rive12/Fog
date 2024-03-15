@@ -8,6 +8,6 @@
   "author": "Interesting Science LTD",
   "license": "ISC",
   "engines": {
-    "node": ">=18.19.0 <19.0.0"
+    "node": ">=21.7.1 <19.0.0"
   }
 }
