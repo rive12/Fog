@@ -1,145 +1,207 @@
 <html>
-
-  <head>
-    <title>Karnda Settings</title>
-    <script src="./scripts/background.js"></script>
-    <style type="text/css">
-      select {clear:both;}
-
-      body{
-        background-color: black;
-      }
-      .bn632-hover {
-        width: 160px;
-        z-index: 100;
-        font-size: 16px;
-        font-weight: 600;
-        color: rgb(131, 131, 131);
-        cursor: pointer;
-        margin: 20px;
-        position: absolute;
-        top: 84%;
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        transform: translateX(-460%);
-        height: 45px;
-        text-align:center;
-        border: none;
-        background-size: 300% 100%;
-        border-radius: 50px;
-        moz-transition: all .4s ease-in-out;
-        -o-transition: all .4s ease-in-out;
-        -webkit-transition: all .4s ease-in-out;
-        transition: all .4s ease-in-out;
-}
-
-.bn632-hover:hover {
-  background-position: 100% 0;
-  moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-}
-
-.bn632-hover:focus {
-  outline: none;
-}
-
-.bn633-hover.bn26 {
-  background-image: linear-gradient(
-    to right,
-    #29323c,
-    #485563,
-    #2b5876,
-    #4e4376
-  );
-  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
-  width: 160px;
-        font-size: 16px;
-        font-weight: 600;
-        color: rgb(131, 131, 131);
-        cursor: pointer;
-        margin: 20px;
-        position: absolute;
-        top: 90%;
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        transform: translateX(-460%);
-        height: 55px;
-        text-align:center;
-        border: none;
-        background-size: 300% 100%;
-        border-radius: 50px;
-        moz-transition: all .4s ease-in-out;
-        -o-transition: all .4s ease-in-out;
-        -webkit-transition: all .4s ease-in-out;
-        transition: all .4s ease-in-out;
-        z-index: 100;
-}
-
-.bn633-hover:hover {
-  background-position: 100% 0;
-  moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-}
-
-.bn633-hover:focus {
-  outline: none;
-}
-
-.bn633-hover.bn26 {
-  background-image: linear-gradient(
-    to right,
-    #29323c,
-    #485563,
-    #2b5876,
-    #4e4376
-  );
-  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
-}
-.bn632-hover.bn25 {
-  background-image: linear-gradient(
-    to right,
-    #29323c,
-    #485563,
-    #2b5876,
-    #4e4376
-  );
-  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
-}
-    </style>
-  </head>
-
-  <body>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TM52GM2B"></script>
     <script>
-        // Check browser support
-        if (typeof(Storage) !== "undefined") {
-            // Store
-            localStorage.setItem("link", MyFrame);
-            // Retrieve
-            document.getElementById("result").innerHTML = localStorage.getItem("link");
-        } else {
-            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-44TM52GM2B');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PP6772XP');</script>
+    <!-- End Google Tag Manager -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3724985851304355"
+            crossorigin="anonymous"></script>
+    <title>Fog</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./nav.css">
+    <link rel="stylesheet" id="themeStylesheetlink">
+    <script src="particles.js"></script>
+    <script href="./index.js"></script>
+
+    <title>Fog Menu</title>
+    <script>
+        document.onkeydown = function (e) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
         }
+    </script>
+    <script>
+        let site1 = getCurrentURL();
+        var name = new URL(site1).host;
+        console.log(name);
+        const encodedData = "WyJrYXJkbmE0bGlmZS5jZiIsImthcmRuYTRsaWZlLmdhIiwia2FyZG5hNGxpZmUuZ3EiLCJrYXJkbmE0bGlmZS5tbCIsImthcmRuYTRsaWZlLnRrIiwia2FyZG5hLmNmIiwia2FyZG5hLm1sIiwia2FyZG5hLnh5eiIsInJpcGthcmRuYS5jZiIsInJpcGthcmRuYS5tbCIsInJpcGthcmRuYS50ayIsInJpcGthcmRuYS5ncSIsInJpcGthcmRuYS5nYSIsInJpcHJpcGthcmRuYS5nYSIsInJpcHJpcGthcmRuYS5ncSIsInJpcHJpcGthcmRuYS50ayIsInJpcHJpcGthcmRuYS5tbCIsInJpcHJpcGthcmRuYS5jZiIsInRleGFzZmVldC5nYSJd"; // Encoded data
+        const decodedString = atob(encodedData); // Decode the Base64 string
+        const myArray = JSON.parse(decodedString); // Convert the JSON string to an array
+        const myVariable = name;
+        if (myArray.includes(myVariable)) {
+            var url = "https://" + 'bg.' + name;
+        } else {
+            console.log("Its working!!!")
+            var url = 'https://bg.mc-kardna.cf';
+        }
+        console.log(url);
+        function getCurrentURL() {
+            return window.location.href
+        }</script>
+</head>
+<style>
+    h1 {
+        margin: 0 0 0 0;
+    }
+
+    body {
+        overflow-y: scroll;
+        height: 30in;
+        background-image: url(./imgs/Karda\ Home@2x.png);
+    }
+
+    #myDiv {
+        display: none;
+        z-index: 99999999999999999;
+    }
+
+    #removeLagButton {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: #4d4c4c;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP6772XP"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav class="ka-boom">
+        <ul class="nav">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./select/">Search</a></li>
+            <li><a href="./games">Games</a></li>
+            <li><a href="./media/">Media</a></li>
+            <li><a href="./settings2.html">Settings</a></li>
+        </ul>
+    </nav>
+    <iframe src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
+    </div>
+    <div>
+        <h1 style="
+            @font-face {
+                font-family: A;
+                src: url(../AE.otf);
+            }
+            font-family: A;
+            opacity: 0;
+            animation-name: drop-fade;
+            animation-duration: 0s;
+            text-align:center;
+            font-size: 100px;
+            animation-delay: 0s;
+            animation-fill-mode: forwards;">
+            Settings
+        </h1>
+    </div>
+    <script>
+        var site = getCurrentURL();
+        var name = new URL(site).host;
+        var url = 'bg' + '.' + name;
+
+        //Other Stuff
+        console.log(url);
+        //window.location.replace(url)
+
+
+        function getCurrentURL() {
+            return window.location.href
+        }
+
+
+    </script>
+
+    </div>
+    <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>
+    <section>
+
+        <div class="group">
+            <p style="font-size: large; transform: translateY(-145px); padding-left: 15px;">Game Settings</p>
+            <div id="Games">
+
+                <a href="https://bananajump.netlify.app/">
+                    <img src="https://i.ibb.co/4Kjq885/image.png" />
+                </a>
+
+                <br>
+                <br>
+                <br>
+                <h2>Miscellaneous</h2>
+
+                <label for="toggleButton">Peformance Mode</label>
+                <input type="checkbox" id="toggleButton" onchange="toggleScriptExecution()">
+
+            </div>
+        </div>
+
+        </div>
+        </div>
+        <script src="./scripts/fullscreen.js"></script>
+        <script src="./scripts/show.js"></script>
+        <script>
+            function toggleScriptExecution() {
+                const isChecked = document.getElementById('toggleButton').checked;
+                if (isChecked) {
+                    // Enable script execution
+                    window.addEventListener('load', executeScript);
+                } else {
+                    // Disable script execution
+                    window.removeEventListener('load', executeScript);
+                }
+                // Save toggle state in cookie
+                document.cookie = "scriptEnabled=" + isChecked;
+            }
+
+            function executeScript() {
+                const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
+                iframes.forEach(iframe => {
+                    iframe.remove();
+                });
+            }
+
+            // Check cookie on page load
+            window.addEventListener('load', function () {
+                const scriptEnabled = document.cookie.split(';').some((item) => item.trim().startsWith('scriptEnabled='));
+                document.getElementById('toggleButton').checked = scriptEnabled;
+                if (scriptEnabled) {
+                    window.addEventListener('load', executeScript);
+                }
+            });
         </script>
-    <h3 style="text-align:center;" >
-    <iframe id="MyFrame" src="./scripts/bird.html" frameBorder="0" style="z-index:-100;width:1280;height:720px;overflow:scroll"MyFrame"></iframe>
-    <select  class="bn632-hover bn25"id="MySelectMenu">
-        <option target="main" value="./scripts/bird.html">Birds</option>
-        <option target="main" value="./scripts/clouds.html">Clouds</option>
-        <option target="main" value="./scripts/dots.html">Dots</option>
-        <option target="main" value="./scripts/fog.html">Fog</option>
-        <option target="main" value="./scripts/globe.html">Globe</option>
-        <option target="main" value="./scripts/halo.html">Halo</option>
-        <option target="main" value="./scripts/net.html">Net</option>
-        <option target="main" value="./scripts/graywaves.html">Waves</option>
-    </select>
-    <button target='ifrm1' class="bn633-hover bn26"onClick="newSrc();">Set Background</button>
-
-</h3>
-
-  </body>
-
+</body>
 </html>
+

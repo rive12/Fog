@@ -14,8 +14,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -28,7 +32,7 @@
               "RelativeDocumentMoniker": "v1\\select\\index.html",
               "ToolTip": "C:\\Users\\esteb\\source\\repos\\rive12\\Fog\\v1\\select\\index.html",
               "RelativeToolTip": "v1\\select\\index.html",
-              "ViewState": "AQIAADkAAAAAAAAAAAAAAD0AAAAeAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2024-02-22T11:48:39.555Z",
               "EditorCaption": ""

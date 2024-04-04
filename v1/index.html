@@ -1,4 +1,4 @@
-
+﻿
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TM52GM2B"></script>
@@ -72,116 +72,126 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        z-index: 1000; /* Change the z-index to a non-negative value */
+        z-index: 1000; 
     }
 
-    /* CSS for the changelog section */
-#changelog {
-    display: none; /* Initially hide the changelog */
-    position: fixed; /* Fixed position so it stays in place */
-    top: 50%; /* Position at the vertical center of the viewport */
-    left: 50%; /* Position at the horizontal center of the viewport */
-    transform: translate(-50%, -50%); /* Center the element */
-    background-color: #fff; /* Background color */
-    padding: 20px; /* Padding */
-    border: 1px solid #ccc; /* Border */
-    border-radius: 5px; /* Border radius */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow */
-    z-index: 999; /* Ensure it's above other content */
-}
+        /* changelog css */
+        #changelog {
+            width: 80%; 
+            margin: 30px auto; 
+            padding: 20px;
+            background-color: #1c1c1c;
+            color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
 
-#changelog h2 {
-    margin-top: 0; /* Remove default margin */
-}
+            #changelog h2 {
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 10px;
+            }
 
-/* CSS to show the changelog when the user scrolls down */
-.show-changelog #changelog {
-    display: block; /* Show the changelog when the parent has the 'show-changelog' class */
-}
+            #changelog p {
+                font-size: 18px;
+                margin-top: 0;
+            }
 
-.hidden {
-    display: none; /* Hide the element by default */
-}
+            #changelog ul {
+                list-style-type: none;
+                padding: 0;
+                margin-top: 10px;
+            }
 
+                #changelog ul li {
+                    margin-bottom: 5px;
+                    font-size: 18px;
+                }
+
+                    #changelog ul li.added {
+                        color: #00ff00;
+                    }
+
+                    #changelog ul li.removed {
+                        color: #ff0000;
+                    }
+
+                    #changelog ul li.fixed {
+                        color: #ffffff;
+                    }
     </style>
 </head>
 
- <body>
-     <!-- Google Tag Manager (noscript) -->
-     <noscript>
-         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP6772XP"
-                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
-     </noscript>
-     <!-- End Google Tag Manager (noscript) -->
-     <button id="removeLagButton" onclick="removeCloudsIframes()">Remove Lag</button>
-     <iframe id="MyFrame" src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
-     <nav class="ka-boom">
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP6772XP"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <button id="removeLagButton" onclick="removeCloudsIframes()">Remove Lag</button>
+    <iframe id="MyFrame" src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
+    <nav class="ka-boom">
         <ul class="nav">
             <li><a href="./index.html">Home</a></li>
             <li><a href="./select/">Search</a></li>
             <li><a href="./games">Games</a></li>
             <li><a href="./media/">Media</a></li>
+            <li><a href="./settings2.html">Settings</a></li>
         </ul>
-     </nav>
-     <!-- <iframe id="iframeContainer" src="../v1/popup/warning.html"></iframe> -->
-     <iframe id="MyFrame" src="./search.html" style="position:fixed; top:7%; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
-     <img class="kardimg" src="./imgs/Kardna Text.png"></img>
-     <div id="changelog" class="hidden">
-        <h2>Changelog</h2>
-        <!-- Add your changelog content here -->
-        <p>Version 1.0 - Initial release</p>
-        <p>Version 1.1 - Bug fixes and performance improvements</p>
-    </div>
+    </nav>
+    <!-- <iframe id="iframeContainer" src="../v1/popup/warning.html"></iframe> -->
+    <iframe id="MyFrame" src="./search.html" style="position:fixed; top:7%; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
+    <img class="kardimg" src="./imgs/Kardna Text.png"></img>
+    <!-- changelog -->
+    <div id="changelog">
+        <h2>v1.1.0 - The Expansion Update</h2>
+        <p>Adds many new improvements to Fog, along with new features.</p>
+        <ul>
+            <li class="fixed">FIXED:</li>
+            <li class="fixed">・ Nothing</li>
+            <p> </p>
+            <li class="added">ADDED:</li>
+            <li class="added">+ Changelog</li>
+            <p> </p>
+            <li class="removed">REMOVED:</li>
+            <li class="removed">・ Nothing</li>
+        </ul>
+    </div>  
 
-     <script>
-         function openInAB() {
-             const currentUrl = window.location.href;
-             const iframeSrc = 'about:blank';
+    <script>
+        function openInAB() {
+            const currentUrl = window.location.href;
+            const iframeSrc = 'about:blank';
 
-             const newWindow = window.open(iframeSrc, '_blank');
-
-             newWindow.document.open();
-             newWindow.document.write(`
-                               <html>
-                                   <head>
-                                       <title>Loading...</title>
-                                       <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVR42mJ0vLy9TqO0du3bm/YSMRxg/Dhg/v8CqNAAAEEAAf/zqJwPj0qAAAAAElFTkSuQmCC">
-                                   </head>
-                                   <body>
-                                       <iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
-                                   </body>
-                               </html>
-                           `);
-             newWindow.document.close();
-         }
-     </script>
-     <script>
-         function removeCloudsIframes() {
-             const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
-
-             iframes.forEach(iframe => {
-                 iframe.remove();
-             });
-         }
-     </script>
-     <script>
-        window.addEventListener('scroll', function() {
-            var changelog = document.getElementById('changelog');
-            var kardnaText = document.querySelector('.kardimg');
-    
-            // Calculate the distance between the top of the window and the Kardna Text
-            var kardnaTextTop = kardnaText.getBoundingClientRect().top;
-    
-            // If the Kardna Text is at or above the top of the viewport, add the 'show-changelog' class to the body
-            if (kardnaTextTop <= 0) {
-                document.body.classList.add('show-changelog');
-            } else {
-                // Otherwise, remove the 'show-changelog' class
-                document.body.classList.remove('show-changelog');
-            }
-        });
+            const newWindow = window.open(iframeSrc, '_blank');
+            
+            newWindow.document.open();
+            newWindow.document.write(`
+                                   <html>
+                                       <head>
+                                           <title>Loading...</title>
+                                           <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVR42mJ0vLy9TqO0du3bm/YSMRxg/Dhg/v8CqNAAAEEAAf/zqJwPj0qAAAAAElFTkSuQmCC">
+                                       </head>
+                                       <body>
+                                           <iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
+                                       </body>
+                                   </html>
+                               `);
+            newWindow.document.close();
+        }
     </script>
-      
- </body>
+    <script>
+        function removeCloudsIframes() {
+            const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
+
+            iframes.forEach(iframe => {
+                iframe.remove();
+            });
+        }
+    </script>
+</body>
 </html>
 
