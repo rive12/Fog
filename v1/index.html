@@ -159,7 +159,7 @@
             <li class="removed">REMOVED:</li>
             <li class="removed">・ Nothing</li>
         </ul>
-    </div>  
+    </div>
 
     <script>
         function openInAB() {
@@ -167,29 +167,34 @@
             const iframeSrc = 'about:blank';
 
             const newWindow = window.open(iframeSrc, '_blank');
-            
+
             newWindow.document.open();
             newWindow.document.write(`
-                                   <html>
-                                       <head>
-                                           <title>Loading...</title>
-                                           <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVR42mJ0vLy9TqO0du3bm/YSMRxg/Dhg/v8CqNAAAEEAAf/zqJwPj0qAAAAAElFTkSuQmCC">
-                                       </head>
-                                       <body>
-                                           <iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
-                                       </body>
-                                   </html>
-                               `);
+                                       <html>
+                                           <head>
+                                               <title>Loading...</title>
+                                               <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVR42mJ0vLy9TqO0du3bm/YSMRxg/Dhg/v8CqNAAAEEAAf/zqJwPj0qAAAAAElFTkSuQmCC">
+                                           </head>
+                                           <body>
+                                               <iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
+                                           </body>
+                                       </html>
+                                   `);
             newWindow.document.close();
         }
     </script>
     <script>
+        // peformance mode
         function removeCloudsIframes() {
             const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
-
             iframes.forEach(iframe => {
                 iframe.remove();
             });
+        }
+
+        const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
+        if (scriptEnabled) {
+            removeCloudsIframes();
         }
     </script>
 </body>

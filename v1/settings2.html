@@ -172,42 +172,19 @@
         </div>
         <script src="./scripts/fullscreen.js"></script>
         <script src="./scripts/show.js"></script>
-        <script>
-            // Function to remove cloud iframes
-            function removeCloudsIframes() {
-                const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
-                iframes.forEach(iframe => {
-                    iframe.remove();
-                });
+    <script>
+        function toggleScriptExecution() {
+            const isChecked = document.getElementById('toggleButton').checked;
+            if (isChecked) {
+
+            } else {
+                // Delete the cookie
+                document.cookie = "scriptEnabled=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             }
-
-            // Function to handle toggle button state
-            function handleToggle() {
-                const checkbox = document.getElementById('cloudToggle');
-                // If checkbox is checked, remove cloud iframes and save state to cookie
-                if (checkbox.checked) {
-                    removeCloudsIframes();
-                    document.cookie = "scriptEnabled=true; expires=Thu, 01 Jan 2030 00:00:00 UTC; path=/;";
-                } else {
-                    // If checkbox is unchecked, delete cookie
-                    document.cookie = "scriptEnabled=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                }
-            }
-
-            // Add event listener to checkbox
-            const checkbox = document.getElementById('cloudToggle');
-            checkbox.addEventListener('change', handleToggle);
-
-            // Check cookie on page load
-            window.onload = function () {
-                const checkbox = document.getElementById('cloudToggle');
-                const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
-                if (scriptEnabled) {
-                    checkbox.checked = true;
-                    removeCloudsIframes();
-                }
-            };
-        </script>
+            // Save toggle state in cookie
+            document.cookie = "scriptEnabled=" + isChecked;
+        }
+    </script>
 </body>
 </html>
 
