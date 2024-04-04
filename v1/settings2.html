@@ -197,10 +197,15 @@
 
         // Check cookie on page load
         window.addEventListener('load', function () {
-            const scriptEnabled = document.cookie.split(';').some((item) => item.trim().startsWith('scriptEnabled='));
-            document.getElementById('toggleButton').checked = scriptEnabled;
-            if (scriptEnabled) {
-                window.addEventListener('load', executeScript);
+            const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+            const scriptEnabledCookie = cookies.find(cookie => cookie.startsWith('scriptEnabled='));
+            if (scriptEnabledCookie) {
+                const scriptEnabledValue = scriptEnabledCookie.split('=')[1];
+                const scriptEnabled = scriptEnabledValue === 'true';
+                document.getElementById('toggleButton').checked = scriptEnabled;
+                if (scriptEnabled) {
+                    window.addEventListener('load', executeScript);
+                }
             }
         });
     </script>
