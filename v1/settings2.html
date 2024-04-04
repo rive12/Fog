@@ -172,36 +172,38 @@
         </div>
         <script src="./scripts/fullscreen.js"></script>
         <script src="./scripts/show.js"></script>
-        <script>
-            function toggleScriptExecution() {
-                const isChecked = document.getElementById('toggleButton').checked;
-                if (isChecked) {
-                    // Enable script execution
-                    window.addEventListener('load', executeScript);
-                } else {
-                    // Disable script execution
-                    window.removeEventListener('load', executeScript);
-                }
-                // Save toggle state in cookie
-                document.cookie = "scriptEnabled=" + isChecked;
+    <script>
+        function toggleScriptExecution() {
+            const isChecked = document.getElementById('toggleButton').checked;
+            if (isChecked) {
+                // Enable script execution
+                window.addEventListener('load', executeScript);
+            } else {
+                // Disable script execution
+                window.removeEventListener('load', executeScript);
+                // Delete the cookie
+                document.cookie = "scriptEnabled=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             }
+            // Save toggle state in cookie
+            document.cookie = "scriptEnabled=" + isChecked;
+        }
 
-            function executeScript() {
-                const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
-                iframes.forEach(iframe => {
-                    iframe.remove();
-                });
-            }
-
-            // Check cookie on page load
-            window.addEventListener('load', function () {
-                const scriptEnabled = document.cookie.split(';').some((item) => item.trim().startsWith('scriptEnabled='));
-                document.getElementById('toggleButton').checked = scriptEnabled;
-                if (scriptEnabled) {
-                    window.addEventListener('load', executeScript);
-                }
+        function executeScript() {
+            const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
+            iframes.forEach(iframe => {
+                iframe.remove();
             });
-        </script>
+        }
+
+        // Check cookie on page load
+        window.addEventListener('load', function () {
+            const scriptEnabled = document.cookie.split(';').some((item) => item.trim().startsWith('scriptEnabled='));
+            document.getElementById('toggleButton').checked = scriptEnabled;
+            if (scriptEnabled) {
+                window.addEventListener('load', executeScript);
+            }
+        });
+    </script>
 </body>
 </html>
 
