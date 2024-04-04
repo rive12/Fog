@@ -176,14 +176,12 @@
         function toggleScriptExecution() {
             const isChecked = document.getElementById('toggleButton').checked;
             if (isChecked) {
-
+                // Save toggle state in cookie
+                document.cookie = "scriptEnabled=" + isChecked;
             } else {
                 // Delete the cookie
                 document.cookie = "scriptEnabled=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             }
-            // Save toggle state in cookie
-            document.cookie = "scriptEnabled=" + isChecked;
-        }
     </script>
 </body>
 </html>
