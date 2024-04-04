@@ -170,16 +170,16 @@
 
             newWindow.document.open();
             newWindow.document.write(`
-                                           <html>
-                                               <head>
-                                                   <title>Loading...</title>
-                                                   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVR42mJ0vLy9TqO0du3bm/YSMRxg/Dhg/v8CqNAAAEEAAf/zqJwPj0qAAAAAElFTkSuQmCC">
-                                               </head>
-                                               <body>
-                                                   <iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
-                                               </body>
-                                           </html>
-                                       `);
+                                               <html>
+                                                   <head>
+                                                       <title>Loading...</title>
+                                                       <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVR42mJ0vLy9TqO0du3bm/YSMRxg/Dhg/v8CqNAAAEEAAf/zqJwPj0qAAAAAElFTkSuQmCC">
+                                                   </head>
+                                                   <body>
+                                                       <iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
+                                                   </body>
+                                               </html>
+                                           `);
             newWindow.document.close();
         }
     </script>
@@ -195,12 +195,20 @@
                 iframes.forEach(iframe => {
                     iframe.remove();
                 });
+            } else {
+                // If the cookie doesn't exist, recreate the iframes
+                const iframeContainer = document.createElement('iframe');
+                iframeContainer.setAttribute('id', 'MyFrame');
+                iframeContainer.setAttribute('src', './scripts/clouds.html');
+                iframeContainer.setAttribute('style', 'position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;');
+                document.body.appendChild(iframeContainer);
             }
         }
 
-        // Call the function to remove iframes when the page loads
+        // Call the function to remove or recreate iframes when the page loads
         removeCloudsIframes();
     </script>
+
 </body>
 </html>
 
