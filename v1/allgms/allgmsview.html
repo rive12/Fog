@@ -124,7 +124,6 @@
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <button id="removeLagButton" onclick="removeCloudsIframes()">Remove Lag</button>
     <iframe src="../scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     <div id="search-bar">
         <label for="search-input">Search Games:</label>
@@ -384,13 +383,29 @@
         window.onload = sortGames;
     </script>
     <script>
+        // Function to remove cloud iframes
         function removeCloudsIframes() {
-            const iframes = document.querySelectorAll('iframe[src="../scripts/clouds.html"]');
+            // Check if the scriptEnabled cookie exists
+            const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
 
-            iframes.forEach(iframe => {
-                iframe.remove();
-            });
+            // If the cookie exists, remove the iframes
+            if (scriptEnabled) {
+                const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
+                iframes.forEach(iframe => {
+                    iframe.remove();
+                });
+            } else {
+                // If the cookie doesn't exist, recreate the iframes
+                const iframeContainer = document.createElement('iframe');
+                iframeContainer.setAttribute('id', 'MyFrame');
+                iframeContainer.setAttribute('src', './scripts/clouds.html');
+                iframeContainer.setAttribute('style', 'position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;');
+                document.body.appendChild(iframeContainer);
+            }
         }
+
+        // Call the function to remove or recreate iframes when the page loads
+        removeCloudsIframes();
     </script>
     <script>
         function openInAB(link) {
@@ -404,45 +419,45 @@
             newWindow.document.write(`<iframe src="${link}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>`);
         }
     </script>
-<script>
-    function gameSource(game) {
-        // Extract the current domain from the URL
-        const currentDomain = window.location.hostname;
+    <script>
+        function gameSource(game) {
+            // Extract the current domain from the URL
+            const currentDomain = window.location.hostname;
 
-        // Check if the current domain is a Netlify subdomain
-        if (currentDomain.endsWith('.netlify.app')) {
-            // Replace the subdomain with "sourcefog"
-            const newDomain = currentDomain.replace(/^[^.]+/, 'sourcefog');
-            
-            // Construct the new URL
-            const newUrl = `https://${newDomain}/play/${game}`;
+            // Check if the current domain is a Netlify subdomain
+            if (currentDomain.endsWith('.netlify.app')) {
+                // Replace the subdomain with "sourcefog"
+                const newDomain = currentDomain.replace(/^[^.]+/, 'sourcefog');
 
-            // Open the URL in the same tab
-            window.location.href = newUrl;
-        } else {
-            // Split the domain into parts
-            const domainParts = currentDomain.split('.');
+                // Construct the new URL
+                const newUrl = `https://${newDomain}/play/${game}`;
 
-            // Check if there are three parts (subdomain.domain.tld)
-            if (domainParts.length === 3) {
-                // Replace the first part with "source"
-                domainParts[0] = 'source';
+                // Open the URL in the same tab
+                window.location.href = newUrl;
             } else {
-                // If not, add "source" as a subdomain
-                domainParts.unshift('source');
+                // Split the domain into parts
+                const domainParts = currentDomain.split('.');
+
+                // Check if there are three parts (subdomain.domain.tld)
+                if (domainParts.length === 3) {
+                    // Replace the first part with "source"
+                    domainParts[0] = 'source';
+                } else {
+                    // If not, add "source" as a subdomain
+                    domainParts.unshift('source');
+                }
+
+                // Construct the new domain
+                const newDomain = domainParts.join('.');
+
+                // Construct the new URL
+                const newUrl = `https://${newDomain}/play/${game}`;
+
+                // Open the URL in the same tab
+                window.location.href = newUrl;
             }
-
-            // Construct the new domain
-            const newDomain = domainParts.join('.');
-
-            // Construct the new URL
-            const newUrl = `https://${newDomain}/play/${game}`;
-
-            // Open the URL in the same tab
-            window.location.href = newUrl;
         }
-    }
-</script>
+    </script>
 
 
 </body>

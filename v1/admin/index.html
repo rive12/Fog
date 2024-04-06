@@ -1,4 +1,4 @@
-﻿<head>
+<head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TM52GM2B"></script>
     <script>
@@ -10,7 +10,7 @@
     </script>
     <!-- Google Tag Manager -->
     <script>
-    (function (w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
                     new Date().getTime(), event: 'gtm.js'
@@ -19,11 +19,12 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-PP6772XP');</script>
     <!-- End Google Tag Manager -->
-    <title>What is Fog really made from? | Interesting Science</title>
+    <title>What creates Fog? | Interesting Science</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
     <link href="../nav.css" rel="stylesheet">
     <script href="../index.js"></script>
     <link href="../index.css" rel="stylesheet">
+    <script href="../scripts/preventcloser.js"></script>
     <script src="./scripts/fullscreen.js"></script>
     <script src="./scripts/show.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3724985851304355"
@@ -66,8 +67,13 @@
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <iframe id="iframeContainer" src="https://bg.brolawncare.xyz"></iframe>
+    <iframe id="iframeContainer" src="panel.html"></iframe>
 </body>
-
-
-
+<script>
+    window.onload = function () {
+        const isAdmin = document.cookie.split(';').some(cookie => cookie.trim().startsWith('isAdmin=true'));
+        if (!isAdmin) {
+            window.location.href = '../index.html';
+        }
+    };
+</script>

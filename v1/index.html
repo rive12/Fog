@@ -121,6 +121,52 @@
                     #changelog ul li.fixed {
                         color: #ffffff;
                     }
+
+        /* issues css */
+
+        #issues {
+            /* font-family: Arial, sans-serif; */
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #1c1c1c;
+            color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+            #issues h2 {
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            #issues p {
+                font-size: 18px; 
+            }
+
+            #issues ul {
+                list-style-type: none;
+                padding: 0;
+                margin-top: 10px;
+            }
+
+        #issues ul li {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        #issues ul li.added {
+            color: #00ff00;
+        }
+
+        #issues ul li.removed {
+            color: #ff0000;
+        }
+
+                #issues ul li.fixed {
+                    color: #ffffff;
+                }
     </style>
 </head>
 
@@ -131,7 +177,7 @@
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <button id="removeLagButton" onclick="removeCloudsIframes()">Remove Lag</button>
+     
     <iframe id="MyFrame" src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     <nav class="ka-boom">
         <ul class="nav">
@@ -155,12 +201,24 @@
             <p> </p>
             <li class="added">ADDED:</li>
             <li class="added">+ Changelog</li>
+            <li class="added">+ Settings</li>
             <p> </p>
             <li class="removed">REMOVED:</li>
             <li class="removed">・ Nothing</li>
         </ul>
     </div>
-
+    <!-- known issues -->
+    <div id="issues">
+        <h2>Known Issues</h2>
+        <ul>
+            <li>ISSUE: The server could not route your request.</li>
+            <li>FIX: Spam "Load Pr0xy" or "Register ServiceWorker."</li>
+            <p> </p>
+            <li>ISSUE: Peformance mode not disabling.</li>
+            <li>FIX: Clear cookies for the site.</li>
+        </ul>
+    </div>
+    <!-- scripts -->
     <script>
         function openInAB() {
             const currentUrl = window.location.href;
@@ -208,7 +266,6 @@
         // Call the function to remove or recreate iframes when the page loads
         removeCloudsIframes();
     </script>
-
 </body>
 </html>
 
