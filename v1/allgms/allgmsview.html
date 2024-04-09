@@ -352,7 +352,6 @@
     </script>
 
     <script>
-        // Function to filter games based on the search input
         function filterGames() {
             var searchInput = document.getElementById('search-input').value.toLowerCase();
             var games = document.querySelectorAll('section a');
@@ -402,19 +401,6 @@
 
         // Call the sorting function when the page loads
         window.onload = sortGames;
-    </script>
-
-    <script>
-        function openInAB(link) {
-            // Open a new about:blank tab
-            const newWindow = window.open('about:blank', '_blank');
-
-            // Set the title of the new tab to "Loading..."
-            newWindow.document.title = 'Loading...';
-
-            // Write the iframe into the new tab
-            newWindow.document.write(`<iframe src="${link}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>`);
-        }
     </script>
     <script>
         function gameSource(game) {
