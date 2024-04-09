@@ -163,12 +163,10 @@
     <section>
 
         <div class="group">
-            <p style="font-size: large; transform: translateY(-145px); padding-left: 15px;">Game Settings</p>
+            <h2 style="transform: translateY(-145px);">Game Settings</h2>
             <div id="Games">
 
-                <a href="https://bananajump.netlify.app/">
-                    <img src="https://i.ibb.co/4Kjq885/image.png" />
-                </a>
+                <p>soon...</p>
 
                 <br>
                 <br>
@@ -202,15 +200,11 @@
             function toggleScriptExecution() {
                 const isChecked = document.getElementById('toggleButton').checked;
                 if (isChecked) {
-                    // Enable script execution
                     window.addEventListener('load', executeScript);
                 } else {
-                    // Disable script execution
                     window.removeEventListener('load', executeScript);
-                    // Delete the cookie
                     document.cookie = "scriptEnabled=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 }
-                // Save toggle state in cookie
                 document.cookie = "scriptEnabled=" + isChecked;
             }
 
@@ -221,7 +215,6 @@
                 });
             }
 
-            // Check cookie on page load
             window.addEventListener('load', function () {
                 const cookies = document.cookie.split(';').map(cookie => cookie.trim());
                 const scriptEnabledCookie = cookies.find(cookie => cookie.startsWith('scriptEnabled='));
@@ -237,19 +230,15 @@
         </script>
 
         <script>
-            // Function to remove cloud iframes
             function removeCloudsIframes() {
-                // Check if the scriptEnabled cookie exists
                 const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
 
-                // If the cookie exists, remove the iframes
                 if (scriptEnabled) {
                     const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
                     iframes.forEach(iframe => {
                         iframe.remove();
                     });
                 } else {
-                    // If the cookie doesn't exist, recreate the iframes
                     const iframeContainer = document.createElement('iframe');
                     iframeContainer.setAttribute('id', 'MyFrame');
                     iframeContainer.setAttribute('src', './scripts/clouds.html');
@@ -258,7 +247,6 @@
                 }
             }
 
-            // Call the function to remove or recreate iframes when the page loads
             removeCloudsIframes();
         </script>
 
