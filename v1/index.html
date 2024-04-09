@@ -177,7 +177,7 @@
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-     
+
     <iframe id="MyFrame" src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     <nav class="ka-boom">
         <ul class="nav">
@@ -188,7 +188,8 @@
             <li><a href="./settings2.html">Settings</a></li>
         </ul>
     </nav>
-    <!-- <iframe id="iframeContainer" src="../v1/popup/warning.html"></iframe> -->
+    <!-- <iframe id="iframeContainer" src="./v1/popup/warning.html"></iframe> -->
+    <iframe id="iframeContainer" src="./popup/warning.html"></iframe>
     <iframe id="MyFrame" src="./search.html" style="position:fixed; top:7%; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
     <img class="kardimg" src="./imgs/Kardna Text.png"></img>
     <!-- changelog -->
@@ -228,16 +229,16 @@
 
             newWindow.document.open();
             newWindow.document.write(`
-                                               <html>
-                                                   <head>
-                                                       <title>Loading...</title>
-                                                       <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVR42mJ0vLy9TqO0du3bm/YSMRxg/Dhg/v8CqNAAAEEAAf/zqJwPj0qAAAAAElFTkSuQmCC">
-                                                   </head>
-                                                   <body>
-                                                       <iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
-                                                   </body>
-                                               </html>
-                                           `);
+                                                   <html>
+                                                       <head>
+                                                           <title>Loading...</title>
+                                                           <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVR42mJ0vLy9TqO0du3bm/YSMRxg/Dhg/v8CqNAAAEEAAf/zqJwPj0qAAAAAElFTkSuQmCC">
+                                                       </head>
+                                                       <body>
+                                                           <iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
+                                                       </body>
+                                                   </html>
+                                               `);
             newWindow.document.close();
         }
     </script>
