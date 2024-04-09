@@ -331,6 +331,27 @@
     </section>
 
     <script>
+        function removeCloudsIframes() {
+            const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
+
+            if (scriptEnabled) {
+                const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
+                iframes.forEach(iframe => {
+                    iframe.remove();
+                });
+            } else {
+                const iframeContainer = document.createElement('iframe');
+                iframeContainer.setAttribute('id', 'MyFrame');
+                iframeContainer.setAttribute('src', './scripts/clouds.html');
+                iframeContainer.setAttribute('style', 'position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;');
+                document.body.appendChild(iframeContainer);
+            }
+        }
+
+        removeCloudsIframes();
+    </script>
+
+    <script>
         // Function to filter games based on the search input
         function filterGames() {
             var searchInput = document.getElementById('search-input').value.toLowerCase();
@@ -382,31 +403,7 @@
         // Call the sorting function when the page loads
         window.onload = sortGames;
     </script>
-    <script>
-        // Function to remove cloud iframes
-        function removeCloudsIframes() {
-            // Check if the scriptEnabled cookie exists
-            const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
 
-            // If the cookie exists, remove the iframes
-            if (scriptEnabled) {
-                const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
-                iframes.forEach(iframe => {
-                    iframe.remove();
-                });
-            } else {
-                // If the cookie doesn't exist, recreate the iframes
-                const iframeContainer = document.createElement('iframe');
-                iframeContainer.setAttribute('id', 'MyFrame');
-                iframeContainer.setAttribute('src', './scripts/clouds.html');
-                iframeContainer.setAttribute('style', 'position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;');
-                document.body.appendChild(iframeContainer);
-            }
-        }
-
-        // Call the function to remove or recreate iframes when the page loads
-        removeCloudsIframes();
-    </script>
     <script>
         function openInAB(link) {
             // Open a new about:blank tab
