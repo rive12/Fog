@@ -47,7 +47,7 @@
             }
 
         .button {
-            background-color: #4CAF50; /* Green */
+            background-color: #eb4034;
             border: none;
             color: white;
             padding: 15px 32px;
@@ -65,7 +65,8 @@
     <div class="container">
         <div class="row">
             <div class="section">
-                <button class="button">Fake Ban Self</button>
+                <h2>Experiments</h2>
+                <button class="button" id="banButton">Fake Ban Self</button>
             </div>
             <div class="section">idk what to add here</div>
         </div>
@@ -74,5 +75,11 @@
             <div class="section">idk what to add here</div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('banButton').addEventListener('click', function() {
+            document.cookie = 'isBanned=true';
+        });
+    </script>
 </body>
 </html>

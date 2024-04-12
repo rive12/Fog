@@ -229,16 +229,16 @@
 
             newWindow.document.open();
             newWindow.document.write(`
-                                                   <html>
-                                                       <head>
-                                                           <title>Loading...</title>
-                                                           <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVR42mJ0vLy9TqO0du3bm/YSMRxg/Dhg/v8CqNAAAEEAAf/zqJwPj0qAAAAAElFTkSuQmCC">
-                                                       </head>
-                                                       <body>
-                                                           <iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
-                                                       </body>
-                                                   </html>
-                                               `);
+                                                                   <html>
+                                                                       <head>
+                                                                           <title>Loading...</title>
+                                                                           <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVR42mJ0vLy9TqO0du3bm/YSMRxg/Dhg/v8CqNAAAEEAAf/zqJwPj0qAAAAAElFTkSuQmCC">
+                                                                       </head>
+                                                                       <body>
+                                                                           <iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
+                                                                       </body>
+                                                                   </html>
+                                                               `);
             newWindow.document.close();
         }
     </script>
@@ -267,6 +267,37 @@
         // Call the function to remove or recreate iframes when the page loads
         removeCloudsIframes();
     </script>
+
+    <script>
+        function applyBanStyling() {
+            const isBanned = document.cookie.split('; ').find(row => row.startsWith('isBanned='));
+            const navElement = document.querySelector('nav.ka-boom');
+
+            if (isBanned) {
+                // Apply styling changes
+                navElement.style.backgroundColor = 'red';
+                navElement.style.pointerEvents = 'none'; // Disable clicking on nav elements
+
+                // Create and append an iframe on top of other elements
+                const iframe = document.createElement('iframe');
+                iframe.style.position = 'fixed';
+                iframe.style.top = '0';
+                iframe.style.left = '0';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.border = 'none';
+                iframe.style.zIndex = '9999'; // Ensure it's on top of other elements
+                iframe.src = './blank.html'; // Load a blank page
+                document.body.appendChild(iframe);
+            }
+        }
+
+        applyBanStyling();
+    </script>
+
+
+
+
 </body>
 </html>
 
