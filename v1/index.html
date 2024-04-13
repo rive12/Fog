@@ -221,41 +221,15 @@
     </div>
     <!-- scripts -->
     <script>
-        function openInAB() {
-            const currentUrl = window.location.href;
-            const iframeSrc = 'about:blank';
-
-            const newWindow = window.open(iframeSrc, '_blank');
-
-            newWindow.document.open();
-            newWindow.document.write(`
-                                                                   <html>
-                                                                       <head>
-                                                                           <title>Loading...</title>
-                                                                           <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVR42mJ0vLy9TqO0du3bm/YSMRxg/Dhg/v8CqNAAAEEAAf/zqJwPj0qAAAAAElFTkSuQmCC">
-                                                                       </head>
-                                                                       <body>
-                                                                           <iframe src="${currentUrl}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
-                                                                       </body>
-                                                                   </html>
-                                                               `);
-            newWindow.document.close();
-        }
-    </script>
-    <script>
-        // Function to remove cloud iframes
         function removeCloudsIframes() {
-            // Check if the scriptEnabled cookie exists
             const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
 
-            // If the cookie exists, remove the iframes
             if (scriptEnabled) {
                 const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
                 iframes.forEach(iframe => {
                     iframe.remove();
                 });
             } else {
-                // If the cookie doesn't exist, recreate the iframes
                 const iframeContainer = document.createElement('iframe');
                 iframeContainer.setAttribute('id', 'MyFrame');
                 iframeContainer.setAttribute('src', './scripts/clouds.html');
@@ -264,7 +238,6 @@
             }
         }
 
-        // Call the function to remove or recreate iframes when the page loads
         removeCloudsIframes();
     </script>
 
@@ -274,11 +247,9 @@
             const navElement = document.querySelector('nav.ka-boom');
 
             if (isBanned) {
-                // Apply styling changes
                 navElement.style.backgroundColor = 'red';
-                navElement.style.pointerEvents = 'none'; // Disable clicking on nav elements
+                navElement.style.pointerEvents = 'none';
 
-                // Create and append an iframe on top of other elements
                 const iframe = document.createElement('iframe');
                 iframe.style.position = 'fixed';
                 iframe.style.top = '0';
@@ -286,8 +257,8 @@
                 iframe.style.width = '100%';
                 iframe.style.height = '100%';
                 iframe.style.border = 'none';
-                iframe.style.zIndex = '9999'; // Ensure it's on top of other elements
-                iframe.src = './blank.html'; // Load a blank page
+                iframe.style.zIndex = '9999'; 
+                iframe.src = './blank.html'; 
                 document.body.appendChild(iframe);
             }
         }
