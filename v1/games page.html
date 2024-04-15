@@ -78,7 +78,7 @@
 
     #myDiv {
         display: none;
-        z-index: 99999999999999999;
+        z-index: 9999;
     }
 
     #removeLagButton {
@@ -86,11 +86,28 @@
         top: 10px;
         right: 10px;
         padding: 10px;
-        background-color: #4d4c4c;
+        background-color: #262424;
         color: #fff;
         cursor: pointer;
         border: none;
         border-radius: 5px;
+    }
+
+    #gameHacks {
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        background-color: #4d4c4c;
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        border: none;
+        border-radius: 50%;
+        z-index: 9999;
     }
 </style>
 <body>
@@ -98,8 +115,9 @@
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP6772XP"
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>               
-    <!-- End Google Tag Manager (noscript) -->                                                                                                  
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <button id="gameHacks">&lt;&gt;</button>
     <iframe src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     </div>
     <div>
@@ -180,13 +198,13 @@
                 <br>
                 <h2>Account Needed Games</h2>
 
-<h1>Coming back soon.</h1>>
+                <h1>Coming back soon.</h1>>
 
             </div>
         </div>
 
         <div class="group2">
-            <div id="Apps"> 
+            <div id="Apps">
                 <h2>Apps</h2>
                 <a onclick="myFunction()" href="https://bg.kardna.org/uv/service/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-">
                     <img src="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png" />
@@ -229,83 +247,80 @@
                 iframe.style.margin = "0";
                 iframe.style.padding = "0";
                 iframe.style.overflow = "hidden";
-                iframe.style.zIndex = "999999"; 
+                iframe.style.zIndex = "999999";
 
                 document.body.appendChild(iframe);
             }
         </script>
-                <script>
+        <script>
             function openInAboutBlankH(url) {
                 event.preventDefault();
                 const newWindow = window.open('about:blank', '_blank');
                 newWindow.document.write(`<html><head><title>Loading...</title></head><body><iframe src="${url}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe></body></html>`);
             }
         </script>
-    <script>
-        // Function to remove cloud iframes
-        function removeCloudsIframes() {
-            // Check if the scriptEnabled cookie exists
-            const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
+        <script>
+            function removeCloudsIframes() {
+                const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
 
-            // If the cookie exists, remove the iframes
-            if (scriptEnabled) {
-                const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
-                iframes.forEach(iframe => {
-                    iframe.remove();
-                });
-            } else {
-                // If the cookie doesn't exist, recreate the iframes
-                const iframeContainer = document.createElement('iframe');
-                iframeContainer.setAttribute('id', 'MyFrame');
-                iframeContainer.setAttribute('src', './scripts/clouds.html');
-                iframeContainer.setAttribute('style', 'position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;');
-                document.body.appendChild(iframeContainer);
+                if (scriptEnabled) {
+                    const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
+                    iframes.forEach(iframe => {
+                        iframe.remove();
+                    });
+                } else {
+                    const iframeContainer = document.createElement('iframe');
+                    iframeContainer.setAttribute('id', 'MyFrame');
+                    iframeContainer.setAttribute('src', './scripts/clouds.html');
+                    iframeContainer.setAttribute('style', 'position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;');
+                    document.body.appendChild(iframeContainer);
+                }
             }
-        }
 
-        // Call the function to remove or recreate iframes when the page loads
-        removeCloudsIframes();
-    </script>
-    
+            removeCloudsIframes();
+        </script>
+
+        <script>
+            function checkGameHacksCookie() {
+                const gameHacksCookie = document.cookie.split('; ').find(row => row.startsWith('gameHacks='));
+                if (gameHacksCookie) {
+                    document.getElementById('gameHacks').style.display = 'block';
+                } else {
+                    document.getElementById('gameHacks').style.display = 'none';
+                }
+            }
+
+            checkGameHacksCookie();
+        </script>
+
+
         <script>
             function gameSource(game) {
-                // Extract the current domain from the URL
                 const currentDomain = window.location.hostname;
-        
-                // Check if the current domain is a Netlify subdomain
+
                 if (currentDomain.endsWith('.netlify.app')) {
-                    // Replace the subdomain with "sourcefog"
                     const newDomain = currentDomain.replace(/^[^.]+/, 'sourcefog');
-                    
-                    // Construct the new URL
+
                     const newUrl = `https://${newDomain}/play/${game}`;
-        
-                    // Open the URL in the same tab
+
                     window.location.href = newUrl;
                 } else {
-                    // Split the domain into parts
                     const domainParts = currentDomain.split('.');
-        
-                    // Check if there are three parts (subdomain.domain.tld)
+
                     if (domainParts.length === 3) {
-                        // Replace the first part with "source"
                         domainParts[0] = 'source';
                     } else {
-                        // If not, add "source" as a subdomain
                         domainParts.unshift('source');
                     }
-        
-                    // Construct the new domain
+
                     const newDomain = domainParts.join('.');
-        
-                    // Construct the new URL
+
                     const newUrl = `https://${newDomain}/play/${game}`;
-        
-                    // Open the URL in the same tab
+
                     window.location.href = newUrl;
                 }
             }
-        </script>        
+        </script>
 </body>
 </html>
  

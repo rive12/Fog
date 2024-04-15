@@ -140,6 +140,7 @@
                 <h2>Experiments</h2>
                 <button class="button" id="banButton">Fake Ban Self</button>
                 <button class="button" id="iframeTester">iFrame Tester</button>
+                <button class="button" id="gameHacks">Game Hacks</button> <!-- Added button -->
             </div>
             <div class="section">
                 <h2>idk what 2 add</h2>
@@ -178,6 +179,10 @@
         document.getElementById('iframeTester').addEventListener('click', function () {
             document.getElementById('iframeContainer').style.display = 'block';
             document.body.style.overflow = 'hidden'; // Hide scrollbars when iframe is displayed
+        });
+
+        document.getElementById('gameHacks').addEventListener('click', function () {
+            document.cookie = 'gameHacks=true'; // Set the cookie
         });
 
         document.getElementById('closeButton').addEventListener('click', function () {
