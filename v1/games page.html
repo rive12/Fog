@@ -92,23 +92,6 @@
         border: none;
         border-radius: 5px;
     }
-
-    #gameHacks {
-        display: block;
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        width: 40px;
-        height: 40px;
-        background-color: #4d4c4c;
-        color: #fff;
-        text-align: center;
-        line-height: 40px;
-        cursor: pointer;
-        border: none;
-        border-radius: 50%;
-        z-index: 9999;
-    }
 </style>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -117,7 +100,6 @@
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <button id="gameHacks">&lt;&gt;</button>
     <iframe src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     </div>
     <div>
@@ -223,106 +205,104 @@
                 <br>
                 <br>
                 <br>
-                <h2>placeholder</h2>
+                <h2> </h2>
 
+                <a id="gameHacksButton" onclick="hacksPopup()">
+                    <img src="./img/hax.png" />
+                </a>
 
             </div>
         </div>
         <script src="./scripts/fullscreen.js"></script>
         <script src="./scripts/show.js"></script>
-        <script>
-            function openInAboutBlank(element) {
-                event.preventDefault();
+<script>
+    function openInAboutBlank(element) {
+        event.preventDefault();
 
-                var link = element.getAttribute("href");
+        var link = element.getAttribute("href");
 
-                var iframe = document.createElement("iframe");
-                iframe.src = link;
-                iframe.style.position = "fixed";
-                iframe.style.top = "0";
-                iframe.style.left = "0";
-                iframe.style.bottom = "0";
-                iframe.style.right = "0";
-                iframe.style.width = "100%";
-                iframe.style.height = "100%";
-                iframe.style.border = "none";
-                iframe.style.margin = "0";
-                iframe.style.padding = "0";
-                iframe.style.overflow = "hidden";
-                iframe.style.zIndex = "999999";
+        var iframe = document.createElement("iframe");
+        iframe.src = link;
+        iframe.style.position = "fixed";
+        iframe.style.top = "0";
+        iframe.style.left = "0";
+        iframe.style.bottom = "0";
+        iframe.style.right = "0";
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "none";
+        iframe.style.margin = "0";
+        iframe.style.padding = "0";
+        iframe.style.overflow = "hidden";
+        iframe.style.zIndex = "999999";
 
-                document.body.appendChild(iframe);
+        document.body.appendChild(iframe);
+    }
+
+    function openInAboutBlankH(url) {
+        event.preventDefault();
+        const newWindow = window.open('about:blank', '_blank');
+        newWindow.document.write(`<html><head><title>Loading...</title></head><body><iframe src="${url}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe></body></html>`);
+    }
+
+    function removeCloudsIframes() {
+        const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
+
+        if (scriptEnabled) {
+            const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
+            iframes.forEach(iframe => {
+                iframe.remove();
+            });
+        } else {
+            const iframeContainer = document.createElement('iframe');
+            iframeContainer.setAttribute('id', 'MyFrame');
+            iframeContainer.setAttribute('src', './scripts/clouds.html');
+            iframeContainer.setAttribute('style', 'position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;');
+            document.body.appendChild(iframeContainer);
+        }
+    }
+
+    function gameHacks() {
+        const gameHacksCookie = document.cookie.split('; ').find(row => row.startsWith('gameHacks='));
+        const gameHacksButton = document.getElementById('gameHacksButton');
+        if (gameHacksCookie && gameHacksCookie.split('=')[1] === 'true') {
+            gameHacksButton.style.display = 'block';
+        } else {
+            gameHacksButton.style.display = 'none';
+        }
+    }
+
+    function gameSource(game) {
+        const currentDomain = window.location.hostname;
+
+        if (currentDomain.endsWith('.netlify.app')) {
+            const newDomain = currentDomain.replace(/^[^.]+/, 'sourcefog');
+
+            const newUrl = `https://${newDomain}/play/${game}`;
+
+            window.location.href = newUrl;
+        } else {
+            const domainParts = currentDomain.split('.');
+
+            if (domainParts.length === 3) {
+                domainParts[0] = 'source';
+            } else {
+                domainParts.unshift('source');
             }
-        </script>
-        <script>
-            function openInAboutBlankH(url) {
-                event.preventDefault();
-                const newWindow = window.open('about:blank', '_blank');
-                newWindow.document.write(`<html><head><title>Loading...</title></head><body><iframe src="${url}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe></body></html>`);
-            }
-        </script>
-        <script>
-            function removeCloudsIframes() {
-                const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
 
-                if (scriptEnabled) {
-                    const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
-                    iframes.forEach(iframe => {
-                        iframe.remove();
-                    });
-                } else {
-                    const iframeContainer = document.createElement('iframe');
-                    iframeContainer.setAttribute('id', 'MyFrame');
-                    iframeContainer.setAttribute('src', './scripts/clouds.html');
-                    iframeContainer.setAttribute('style', 'position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;');
-                    document.body.appendChild(iframeContainer);
-                }
-            }
+            const newDomain = domainParts.join('.');
 
-            removeCloudsIframes();
-        </script>
+            const newUrl = `https://${newDomain}/play/${game}`;
 
-        <script>
-            function checkGameHacksCookie() {
-                const gameHacksCookie = document.cookie.split('; ').find(row => row.startsWith('gameHacks='));
-                if (gameHacksCookie) {
-                    document.getElementById('gameHacks').style.display = 'block';
-                } else {
-                    document.getElementById('gameHacks').style.display = 'none';
-                }
-            }
+            window.location.href = newUrl;
+        }
+    }
 
-            checkGameHacksCookie();
-        </script>
+    removeCloudsIframes();
+    checkGameHacksCookie();
+</script>
 
 
-        <script>
-            function gameSource(game) {
-                const currentDomain = window.location.hostname;
-
-                if (currentDomain.endsWith('.netlify.app')) {
-                    const newDomain = currentDomain.replace(/^[^.]+/, 'sourcefog');
-
-                    const newUrl = `https://${newDomain}/play/${game}`;
-
-                    window.location.href = newUrl;
-                } else {
-                    const domainParts = currentDomain.split('.');
-
-                    if (domainParts.length === 3) {
-                        domainParts[0] = 'source';
-                    } else {
-                        domainParts.unshift('source');
-                    }
-
-                    const newDomain = domainParts.join('.');
-
-                    const newUrl = `https://${newDomain}/play/${game}`;
-
-                    window.location.href = newUrl;
-                }
-            }
-        </script>
 </body>
 </html>
  
