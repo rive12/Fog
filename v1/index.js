@@ -104,7 +104,7 @@ auth.createUserWithEmailAndPassword(email, password)
 			last_login : Date.now()
 		}
 		
-        database.ref.child('users/ + user.uid').set(user_data)
+        database.ref.child('users/' + user.uid).set(user_data)
 
 		alert('Account successfully created!')
 	})
