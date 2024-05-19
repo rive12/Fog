@@ -60,3 +60,83 @@ function sboxPopup() {
 	}
 	sbox.style.display = display;
 }
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+	apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+	authDomain: "fog-network-accounts.firebaseapp.com",
+	projectId: "fog-network-accounts",
+	storageBucket: "fog-network-accounts.appspot.com",
+	messagingSenderId: "641228125011",
+	appId: "1:641228125011:web:607bced8131db7802967a6"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth()
+const database = firebase.database()
+
+function register() {
+	email = document.getElementByID('email').value
+	password = document.getElementByID('password').value
+
+	if (validate_email(email) == false || validate_password(password) == false) {
+		alert('Email or Password is invalid.')
+		return
+	}
+}
+
+if (validate_field(full_name) == false) {
+	alert('Username is invalid.')
+	return
+}
+
+auth.createUserWithEmailAndPassword(email, password)
+	.then(function () {
+		var user = auth.currentUser
+
+		var database_ref = database.ref()
+
+		var user_data = {
+			email: email,
+			full_name: full_name,
+			last_login : Date.now()
+		}
+		
+        database.ref.child('users/ + user.uid').set(user_data)
+
+		alert('Account successfully created!')
+	})
+	.catch(function (error) {
+		var error_code = error.code
+		var error_message = error.message
+
+		alert(error_message
+	})
+
+function validate_email(email) {
+	expression = /^[^@]+@\w+(\.\w+)+\w$/.test(str);
+	if (expression.test(email) == true) {
+		return true
+	} else {
+		return false
+	}
+}
+
+
+function validate_password(password) {
+	if (password < 6) {
+		return false
+	} else {
+		return true
+	}
+}
+
+function validate_field(field) {
+	if (field == null) {
+		return false
+	} else {
+		return true
+	}
+}
