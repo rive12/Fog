@@ -11,7 +11,7 @@
     </script>
     <!-- Google Tag Manager -->
     <script>
-    (function (w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
                     new Date().getTime(), event: 'gtm.js'
@@ -76,11 +76,6 @@
         background-image: url(./imgs/Karda\ Home@2x.png);
     }
 
-    #myDiv {
-        display: none;
-        z-index: 9999;
-    }
-
     #removeLagButton {
         position: absolute;
         top: 10px;
@@ -91,6 +86,12 @@
         cursor: pointer;
         border: none;
         border-radius: 5px;
+    }
+
+    #calculatorFrame {
+        display: none;
+        height: 250px;
+        width: 300px;
     }
 </style>
 <body>
@@ -180,7 +181,7 @@
                 <br>
                 <h2>Account Needed Games [SLOW]</h2>
 
-                <a onclick="myFunction()" href="https://nowgg.is-really.pro/service/hvtrs8%2F-nmweg%2Cnn%2Fcprs-rmbnoz-aoppmrctkol%2F7369-rmbnoz.jtol">
+                <a onclick="myFunction()" href="https://newalgebra.com/">
                     <img src="./img/robloxBk.png" />
                 </a>
 
@@ -205,104 +206,106 @@
                 <br>
                 <br>
                 <br>
-                <h2> </h2>
+                <h2>School Cheats</h2>
 
-                <a id="gameHacksButton" onclick="hacksPopup()">
-                    <img src="./img/hax.png" />
+                <a onclick="toggleCalculator()">
+                    <img src="./img/calc.png" />
+                </a>
+                <iframe id="calculatorFrame" src="./cheats/calc.html" style="height: 688px; width: 550px;"></iframe>
+
+                <a onclick="myFunction()" href="https://fogsearchfrfr-7cfdfece79a0.herokuapp.com/uv/service/hvtrs8%2F-wuw%2Cgcuvhoavh%2Ccmm-">
+                    <img src="https://i.ibb.co/bzdMcNS/image.png" />
                 </a>
 
             </div>
         </div>
         <script src="./scripts/fullscreen.js"></script>
         <script src="./scripts/show.js"></script>
-<script>
-    function openInAboutBlank(element) {
-        event.preventDefault();
-
-        var link = element.getAttribute("href");
-
-        var iframe = document.createElement("iframe");
-        iframe.src = link;
-        iframe.style.position = "fixed";
-        iframe.style.top = "0";
-        iframe.style.left = "0";
-        iframe.style.bottom = "0";
-        iframe.style.right = "0";
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.border = "none";
-        iframe.style.margin = "0";
-        iframe.style.padding = "0";
-        iframe.style.overflow = "hidden";
-        iframe.style.zIndex = "999999";
-
-        document.body.appendChild(iframe);
-    }
-
-    function openInAboutBlankH(url) {
-        event.preventDefault();
-        const newWindow = window.open('about:blank', '_blank');
-        newWindow.document.write(`<html><head><title>Loading...</title></head><body><iframe src="${url}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe></body></html>`);
-    }
-
-    function removeCloudsIframes() {
-        const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
-
-        if (scriptEnabled) {
-            const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
-            iframes.forEach(iframe => {
-                iframe.remove();
-            });
-        } else {
-            const iframeContainer = document.createElement('iframe');
-            iframeContainer.setAttribute('id', 'MyFrame');
-            iframeContainer.setAttribute('src', './scripts/clouds.html');
-            iframeContainer.setAttribute('style', 'position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;');
-            document.body.appendChild(iframeContainer);
-        }
-    }
-
-    function gameHacks() {
-        const gameHacksCookie = document.cookie.split('; ').find(row => row.startsWith('gameHacks='));
-        const gameHacksButton = document.getElementById('gameHacksButton');
-        if (gameHacksCookie && gameHacksCookie.split('=')[1] === 'true') {
-            gameHacksButton.style.display = 'block';
-        } else {
-            gameHacksButton.style.display = 'none';
-        }
-    }
-
-    function gameSource(game) {
-        const currentDomain = window.location.hostname;
-
-        if (currentDomain.endsWith('.netlify.app')) {
-            const newDomain = currentDomain.replace(/^[^.]+/, 'sourcefog');
-
-            const newUrl = `https://${newDomain}/play/${game}`;
-
-            window.location.href = newUrl;
-        } else {
-            const domainParts = currentDomain.split('.');
-
-            if (domainParts.length === 3) {
-                domainParts[0] = 'source';
-            } else {
-                domainParts.unshift('source');
+        <script>
+            function openInAboutBlank(element) {
+                event.preventDefault();
+                var link = element.getAttribute("href");
+                var iframe = document.createElement("iframe");
+                iframe.src = link;
+                iframe.style.position = "fixed";
+                iframe.style.top = "0";
+                iframe.style.left = "0";
+                iframe.style.bottom = "0";
+                iframe.style.right = "0";
+                iframe.style.width = "100%";
+                iframe.style.height = "100%";
+                iframe.style.border = "none";
+                iframe.style.margin = "0";
+                iframe.style.padding = "0";
+                iframe.style.overflow = "hidden";
+                iframe.style.zIndex = "999999";
+                document.body.appendChild(iframe);
             }
 
-            const newDomain = domainParts.join('.');
+            function openInAboutBlankH(url) {
+                event.preventDefault();
+                const newWindow = window.open('about:blank', '_blank');
+                newWindow.document.write(`<html><head><title>Loading...</title></head><body><iframe src="${url}" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe></body></html>`);
+            }
 
-            const newUrl = `https://${newDomain}/play/${game}`;
+            function removeCloudsIframes() {
+                const scriptEnabled = document.cookie.split('; ').find(row => row.startsWith('scriptEnabled='));
+                if (scriptEnabled) {
+                    const iframes = document.querySelectorAll('iframe[src="./scripts/clouds.html"]');
+                    iframes.forEach(iframe => {
+                        iframe.remove();
+                    });
+                } else {
+                    const iframeContainer = document.createElement('iframe');
+                    iframeContainer.setAttribute('id', 'MyFrame');
+                    iframeContainer.setAttribute('src', './scripts/clouds.html');
+                    iframeContainer.setAttribute('style', 'position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;');
+                    document.body.appendChild(iframeContainer);
+                }
+            }
 
-            window.location.href = newUrl;
-        }
-    }
+            function gameHacks() {
+                const gameHacksCookie = document.cookie.split('; ').find(row => row.startsWith('gameHacks='));
+                const gameHacksButton = document.getElementById('gameHacksButton');
+                if (gameHacksCookie && gameHacksCookie.split('=')[1] === 'true') {
+                    gameHacksButton.style.display = 'block';
+                } else {
+                    gameHacksButton.style.display = 'none';
+                }
+            }
 
-    removeCloudsIframes();
-    checkGameHacksCookie();
-</script>
+            function gameSource(game) {
+                const currentDomain = window.location.hostname;
+                if (currentDomain.endsWith('.netlify.app')) {
+                    const newDomain = currentDomain.replace(/^[^.]+/, 'sourcefog');
+                    const newUrl = `https://${newDomain}/play/${game}`;
+                    window.location.href = newUrl;
+                } else {
+                    const domainParts = currentDomain.split('.');
+                    if (domainParts.length === 3) {
+                        domainParts[0] = 'source';
+                    } else {
+                        domainParts.unshift('source');
+                    }
+                    const newDomain = domainParts.join('.');
+                    const newUrl = `https://${newDomain}/play/${game}`;
+                    window.location.href = newUrl;
+                }
+            }
 
-
+            removeCloudsIframes();
+            gameHacks();
+        </script>
+        <script>
+            function toggleCalculator() {
+                var calculatorFrame = document.getElementById('calculatorFrame');
+                if (calculatorFrame.style.display === "none" || calculatorFrame.style.display === "") {
+                    calculatorFrame.style.display = "block";
+                } else {
+                    calculatorFrame.style.display = "none";
+                }
+            }
+        </script>
 </body>
 </html>
- 
+

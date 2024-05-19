@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Calculator | Interesting Science</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+        }
+
+        #calculator {
+            background-color: #444;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #result {
+            width: 100%;
+            height: 50px;
+            background-color: #555;
+            color: white;
+            text-align: right;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .button, .operation {
+            width: 80px;
+            height: 80px;
+            margin: 5px;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            border: none;
+            border-radius: 5px;
+            background-color: #666;
+            color: white;
+            cursor: pointer;
+        }
+
+            .button:hover, .operation:hover {
+                background-color: #777;
+            }
+
+            .button:active, .operation:active {
+                background-color: #888;
+            }
+
+        #buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .operation {
+            background-color: #363636;
+        }
+
+            .operation:hover {
+                background-color: #404040;
+            }
+
+            .operation:active {
+                background-color: #4f4f4f;
+            }
+
+        #buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <div id="result"></div>
+        <div id="buttons">
+            <button class="operation" onclick="clearResult()">C</button>
+            <button class="operation" onclick="backspace()">←</button>
+            <button class="button" onclick="append('1')">1</button>
+            <button class="button" onclick="append('2')">2</button>
+            <button class="button" onclick="append('3')">3</button>
+
+            <button class="button" onclick="append('4')">4</button>
+            <button class="button" onclick="append('5')">5</button>
+            <button class="button" onclick="append('6')">6</button>
+
+            <button class="button" onclick="append('7')">7</button>
+            <button class="button" onclick="append('8')">8</button>
+            <button class="button" onclick="append('9')">9</button>
+
+            <button class="button" onclick="append('0')">0</button>
+            <button class="operation" onclick="append('+')">+</button>
+            <button class="operation" onclick="append('-')">-</button>
+            <button class="operation" onclick="append('.')">.</button>
+            <button class="operation" onclick="append('/')">/</button>
+            <button class="operation" onclick="append('*')">*</button>
+            <button class="operation" onclick="append('^')">^</button>
+            <button class="operation" onclick="append('(')">(</button>
+            <button class="operation" onclick="append(')')">)</button>
+            <button class="operation" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+
+    <script>
+        const resultElement = document.getElementById('result');
+        const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '^', '.', '(', ')', 'Enter', 'Backspace', 'Delete'];
+
+        function append(value) {
+            resultElement.innerText += value;
+        }
+
+        function clearResult() {
+            resultElement.innerText = '';
+        }
+
+        function backspace() {
+            resultElement.innerText = resultElement.innerText.slice(0, -1);
+        }
+
+        function calculateResult() {
+            let expression = resultElement.innerText;
+            expression = expression.replace(/\^/g, '**'); // replace ^ with ** for exponents
+            try {
+                const result = eval(expression);
+                resultElement.innerText = result;
+            } catch (error) {
+                resultElement.innerText = 'Error';
+            }
+        }
+
+        document.addEventListener('keydown', function (event) {
+            const key = event.key;
+            if (allowedKeys.includes(key)) {
+                event.preventDefault();
+                if (key === 'Enter') {
+                    calculateResult();
+                } else if (key === 'Backspace') {
+                    backspace();
+                } else if (key === 'Delete') {
+                    clearResult();
+                } else {
+                    append(key);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
