@@ -87,13 +87,45 @@ function register() {
 	}
 }
 
+function login() {
+	email = document.getElementByID('email').value
+	password = document.getElementByID('password').value
+
+	if (validate_email(email) == false || validate_password(password) == false) {
+		alert('Email or Password is invalid.')
+		return
+	}
+	auth.signInWithEmailAndPassword(email, password)
+		.then(function() {
+
+			var user = auth.currentUser
+
+			var database_ref = database.ref()
+
+			var user_data = {
+				last_login: Date.now()
+			}
+
+			database_ref.child('users/' + user.uid).update(user_data)
+
+			alert('Logged in succesfully!')
+
+		})
+		.catch(function(error) {
+				var error_code = error.code
+				var error_message = error.message
+
+				alert(error_message
+		})
+}
+
 if (validate_field(full_name) == false) {
 	alert('Username is invalid.')
 	return
 }
 
 auth.createUserWithEmailAndPassword(email, password)
-	.then(function () {
+	.then(function() {
 		var user = auth.currentUser
 
 		var database_ref = database.ref()
@@ -104,11 +136,11 @@ auth.createUserWithEmailAndPassword(email, password)
 			last_login : Date.now()
 		}
 		
-        database.ref.child('users/' + user.uid).set(user_data)
+        database_ref.child('users/' + user.uid).set(user_data)
 
 		alert('Account successfully created!')
 	})
-	.catch(function (error) {
+	.catch(function(error) {
 		var error_code = error.code
 		var error_message = error.message
 
