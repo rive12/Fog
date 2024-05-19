@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Accounts | Interesting Science</title>
+    <style>
+        @font-face {
+            font-family: 'AE';
+            src: url('../AE.otf') format('opentype');
+        }
+
+        body {
+            background-color: #1c1c1c;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #content_container {
+            background-color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+
+        #form_header_container {
+            background-color: #444;
+            text-align: center;
+            border-bottom: 1px solid #555;
+        }
+
+        #form_header {
+            margin: 0;
+            padding: 20px;
+            /* font-family: 'AE', Arial, sans-serif; fog font */
+        }
+
+        #form_content_container {
+            padding: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            background-color: #555;
+            border: none;
+            color: #fff;
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding: 10px;
+            width: calc(100% - 20px);
+        }
+
+        input::placeholder {
+            color: #ccc;
+        }
+
+        #button_container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            background-color: #444;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px;
+            width: 48%;
+            transition: background-color 0.3s;
+        }
+
+            button:hover {
+                background-color: #555;
+            }
+
+            button:active {
+                background-color: #666;
+            }
+    </style>
+</head>
+<body>
+    <div id="content_container">
+        <div id="form_container">
+            <div id="form_header_container">
+                <h2 id="form_header">Fog Accounts</h2>
+            </div>
+            <div id="form_content_container">
+                <div id="form_content_inner_container">
+                    <input type="email" id="email" placeholder="Email">
+                    <input type="text" id="full_name" placeholder="Username">
+                    <input type="password" id="password" placeholder="Password">
+                    <div id="button_container">
+                        <button onclick="login()">Login</button>
+                        <button onclick="register()">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <script>
+
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+            authDomain: "fog-network-accounts.firebaseapp.com",
+            projectId: "fog-network-accounts",
+            storageBucket: "fog-network-accounts.appspot.com",
+            messagingSenderId: "641228125011",
+            appId: "1:641228125011:web:607bced8131db7802967a6"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const database = firebase.database();
+
+        function register() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const fullName = document.getElementById('full_name').value;
+
+            if (!validate_email(email) || !validate_password(password) || !validate_field(fullName)) {
+                alert('Email, Password, or Username is invalid.');
+                return;
+            }
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    const user_data = {
+                        email: email,
+                        full_name: fullName,
+                        last_login: Date.now(),
+                        banned: false // Default value
+                    };
+                    database.ref('users/' + user.uid).set(user_data);
+                    alert('Account successfully created!');
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        }
+
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!validate_email(email) || !validate_password(password)) {
+                alert('Email or Password is invalid.');
+                return;
+            }
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    checkIfBanned(user.uid, email, password);
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        }
+
+        function checkIfBanned(uid, email, password) {
+            const userRef = database.ref('users/' + uid);
+            userRef.once('value').then((snapshot) => {
+                const userData = snapshot.val();
+                if (userData && userData.banned === true) {
+                    alert('You have been banned from Fog Network.');
+                    auth.signOut().then(() => {
+                        window.location.href = 'banned.html'; // Redirect to banned page
+                    });
+                } else {
+                    // Proceed with the login process if not banned
+                    var database_ref = database.ref();
+
+                    var user_data = {
+                        last_login: Date.now()
+                    };
+
+                    database_ref.child('users/' + uid).update(user_data);
+                    alert('Logged in successfully!');
+                }
+            }).catch((error) => {
+                alert('Error checking banned status: ' + error.message);
+            });
+        }
+
+        function validate_email(email) {
+            const expression = /^[^@]+@\w+(\.\w+)+\w$/;
+            return expression.test(email);
+        }
+
+        function validate_password(password) {
+            return password.length >= 6;
+        }
+
+        function validate_field(field) {
+            return field != null && field.length > 0;
+        }
+
+    </script>
+
+    <!-- <script src="../index.js"></script> -->
+
+</body>
+</html>
