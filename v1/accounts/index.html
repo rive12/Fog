@@ -177,12 +177,10 @@
             userRef.once('value').then((snapshot) => {
                 const userData = snapshot.val();
                 if (userData && userData.banned === true) {
-                    alert('You have been banned from Fog Network.');
                     auth.signOut().then(() => {
-                        window.location.href = 'banned.html'; // Redirect to banned page
+                        window.location.href = '../banned.html';
                     });
                 } else {
-                    // Proceed with the login process if not banned
                     var database_ref = database.ref();
 
                     var user_data = {

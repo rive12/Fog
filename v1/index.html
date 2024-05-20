@@ -278,7 +278,7 @@
         </ul>
         <img src="images/FogClient.png" style="display: block; margin: auto; width: 143px; height: 193px;" /> 
         <div style="margin-top: 10px; position: relative;">
-            <button id="download" onclick="window.location.href='https://cdn.discordapp.com/attachments/1209178116031905834/1236839882148806766/FogClient.dll?ex=66397867&is=663826e7&hm=519be77dae072165f1447b4a787950bc90fb2493b797f2ab136528c5518798c9&'" style="background-color: #262424; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; position: relative; z-index: 999;">Download</button>
+            <button id="download" onclick="window.location.href='https://cdn.discordapp.com/attachments/1209178116031905834/1241163790775750706/FogClient.dll?ex=664bd65b&is=664a84db&hm=55a66f2ab0d79457c999e0272441039ffd979b3a269991f8dcebef969b872737&'" style="background-color: #262424; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; position: relative; z-index: 999;">Download</button>
         </div>
     </div>
 
@@ -301,30 +301,6 @@
         }
 
         removeCloudsIframes();
-    </script>
-
-    <script>
-        function applyBanStyling() {
-            const isBanned = document.cookie.split('; ').find(row => row.startsWith('isBanned='));
-            const navElement = document.querySelector('nav.ka-boom');
-
-            if (isBanned) {
-                navElement.style.backgroundColor = 'red';
-                navElement.style.pointerEvents = 'none';
-
-                const iframe = document.createElement('iframe');
-                iframe.style.position = 'fixed';
-                iframe.style.top = '0';
-                iframe.style.left = '0';
-                iframe.style.width = '100%';
-                iframe.style.height = '100%';
-                iframe.style.border = 'none';
-                iframe.style.zIndex = '9999';
-                iframe.src = './blank.html';
-                document.body.appendChild(iframe);
-            }
-        }
-        applyBanStyling();
     </script>
 
     <script>
