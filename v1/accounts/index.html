@@ -176,23 +176,22 @@
             auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    checkIfBanned(user.uid);
+                    loginChecks(user.uid);
                 })
                 .catch((error) => {
                     alert(error.message);
                 });
         }
 
-        function checkIfBanned(uid) {
+        function loginChecks(uid) {
             const userRef = database.ref('users/' + uid);
             userRef.once('value').then((snapshot) => {
                 const userData = snapshot.val();
                 if (userData && userData.banned === true) {
                     auth.signOut().then(() => {
-                        window.location.href = 'banned.html'; // Redirect to banned page
+                        window.location.href = 'banned.html';
                     });
                 } else {
-                    // Proceed with the login process if not banned
                     var database_ref = database.ref();
 
                     var user_data = {
