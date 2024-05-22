@@ -1,4 +1,5 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TM52GM2B"></script>
@@ -6,7 +7,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-44TM52GM2B');
     </script>
     <!-- Google Tag Manager -->
@@ -52,7 +52,7 @@
     h1 {
         margin: 0 0 0 0;
     }
-    
+
     body {
         overflow-y: scroll;
         height: 30in;
@@ -156,8 +156,6 @@
         function getCurrentURL() {
             return window.location.href
         }
-
-
     </script>
 
     </div>
@@ -180,29 +178,34 @@
                 <br>
                 <br>
                 <br>
+
+                <h2>Account Actions</h2>
+
+                <div id="accountDetails"></div>
+                <button id="signOutButton">Sign Out</button>
+
                 <br>
                 <br>
                 <br>
                 <!-- <div id="passwordFormContainer">
-            <form id="passwordForm">
-                <label for="password">Admin Password</label>
-                <input type="password" id="password" name="password">
-                <button type="submit">Enter</button>
-            </form>
-            </div>  -->
+                    <form id="passwordForm">
+                        <label for="password">Admin Password</label>
+                        <input type="password" id="password" name="password">
+                        <button type="submit">Enter</button>
+                    </form>
+                </div>  -->
 
+            </div>
         </div>
+
+        <div style="position: absolute; left: 50%; transform: translate(-50%, 125%); text-align: center; color: white; z-index: 999;">
+            <p style="font-size: 24px;">Credits</p>
+            <p style="font-size: 20px;">Developers & Contributors</p>
+            <p>Rive, Zenfy, BlazerHM</p>
+            <hr style="width: 80%; margin: auto; margin-top: 20px; margin-bottom: 10px; border-color: white;">
+            <p style="font-size: 20px;">Game Sources</p>
+            <p>Unblockedgames76, Unblockedgames77, 3kh0, MathPlayground 😭</p>
         </div>
-
-<div style="position: absolute; left: 50%; transform: translate(-50%, 125%); text-align: center; color: white; z-index: 999;">
-    <p style="font-size: 24px;">Credits</p>
-    <p style="font-size: 20px;">Developers & Contributors</p>
-    <p>Rive, Zenfy, BlazerHM</p>
-    <hr style="width: 80%; margin: auto; margin-top: 20px; margin-bottom: 10px; border-color: white;">
-    <p style="font-size: 20px;">Game Sources</p>
-    <p>Unblockedgames76, Unblockedgames77, 3kh0, MathPlayground 😭</p>
-</div>
-
 
         <script src="./scripts/fullscreen.js"></script>
         <script src="./scripts/show.js"></script>
@@ -260,53 +263,69 @@
             removeCloudsIframes();
         </script>
 
-            <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
 
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
-            authDomain: "fog-network-accounts.firebaseapp.com",
-            projectId: "fog-network-accounts",
-            storageBucket: "fog-network-accounts.appspot.com",
-            messagingSenderId: "641228125011",
-            appId: "1:641228125011:web:607bced8131db7802967a6"
-        };
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+                authDomain: "fog-network-accounts.firebaseapp.com",
+                projectId: "fog-network-accounts",
+                storageBucket: "fog-network-accounts.appspot.com",
+                messagingSenderId: "641228125011",
+                appId: "1:641228125011:web:607bced8131db7802967a6"
+            };
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
 
-        const database = firebase.database();
+            const database = firebase.database();
 
-        function getUid() {
-            return localStorage.getItem('uid');
-        }
-
-        window.onload = function() {
-            const uid = getUid();
-            if (uid) {
-                console.log('User is logged in with UID:', uid);
-                checkAdminStatus(uid);
-            } else {
-                console.log('No user is logged in.');
+            function getUid() {
+                return localStorage.getItem('uid');
             }
-        };
 
-        function checkAdminStatus(uid) {
-            const userRef = database.ref('users/' + uid);
-            userRef.once('value').then((snapshot) => {
-                const userData = snapshot.val();
-                if (userData && userData.admin === true) {
-                    document.getElementById('adminButton').style.display = 'block';
+            function fetchUserData(uid) {
+                return database.ref('users/' + uid).once('value').then(snapshot => snapshot.val());
+            }
+
+            function displayAccountDetails(uid, fullName) {
+                const accountDetails = document.getElementById('accountDetails');
+                accountDetails.innerHTML = `<p>UID: ${uid}</p><p>Username: ${fullName}</p>`;
+            }
+
+            function signOut() {
+                localStorage.removeItem('uid');
+                firebase.auth().signOut().then(() => {
+                    window.location.href = "../accounts";
+                }).catch(error => {
+                    console.error('Error signing out:', error);
+                });
+            }
+
+            document.getElementById('signOutButton').addEventListener('click', signOut);
+
+            window.onload = function () {
+                const uid = getUid();
+                if (uid) {
+                    console.log('User is logged in with UID:', uid);
+                    fetchUserData(uid).then(userData => {
+                        if (userData) {
+                            displayAccountDetails(uid, userData.full_name);
+                            if (userData.admin === true) {
+                                document.getElementById('adminButton').style.display = 'block';
+                            }
+                        }
+                    }).catch(error => {
+                        console.error('Error fetching user data:', error.message);
+                    });
+                } else {
+                    console.log('No user is logged in.');
                 }
-            }).catch((error) => {
-                console.error('Error fetching user data:', error.message);
-            });
-        }
-    </script>
-
+            };
+        </script>
+    </section>
 </body>
 </html>
-
