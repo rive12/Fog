@@ -140,9 +140,9 @@
         function register() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const fullName = document.getElementById('full_name').value;
+            const full_name = document.getElementById('full_name').value;
 
-            if (!validate_email(email) || !validate_password(password) || !validate_field(fullName)) {
+            if (!validate_email(email) || !validate_password(password) || !validate_field(full_name)) {
                 alert('Email, Password, or Username is invalid.');
                 return;
             }
@@ -152,7 +152,7 @@
                     const user = userCredential.user;
                     const user_data = {
                         email: email,
-                        full_name: fullName,
+                        full_name: full_name,
                         last_login: Date.now(),
                         banned: false
                     };

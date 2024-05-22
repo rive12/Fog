@@ -33,6 +33,41 @@
 </head>
 <body>
     <h1>You have been <span class="red">BANNED</span> from Fog</h1>
+
+    <div id="banReason"></div>
+
     <p>u cant use fog anymore lmao<br>stop being bad</p>
 </body>
+
+<script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+                authDomain: "fog-network-accounts.firebaseapp.com",
+                projectId: "fog-network-accounts",
+                storageBucket: "fog-network-accounts.appspot.com",
+                messagingSenderId: "641228125011",
+                appId: "1:641228125011:web:607bced8131db7802967a6"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+            const database = firebase.database();
+
+            function getUid() {
+                return localStorage.getItem('uid');
+            }
+
+            function fetchUserData(uid) {
+                return database.ref('users/' + uid).once('value').then(snapshot => snapshot.val());
+            }
+
+            function displayAccountDetails(ban_reason) {
+                const banReason = document.getElementById('ban_reason');
+                banReason.innerHTML = `<p>Reason: ${ban_reason}</p>`;
+            }
+
+</script>
+
 </html>
