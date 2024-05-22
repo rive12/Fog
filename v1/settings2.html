@@ -299,7 +299,7 @@
             function signOut() {
                 localStorage.removeItem('uid');
                 firebase.auth().signOut().then(() => {
-                    window.location.href = "../accounts";
+                    window.location.href = "./accounts";
                 }).catch(error => {
                     console.error('Error signing out:', error);
                 });
