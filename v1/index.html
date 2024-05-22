@@ -276,7 +276,7 @@
             <li>Fog Client is the most convenient cheat for Gorilla Tag</li>
             <li style="color: red;">Menu may have a false virus detection*</li>
         </ul>
-        <img src="images/FogClient.png" style="display: block; margin: auto; width: 143px; height: 193px;" /> 
+        <img src="images/FogClient.png" style="display: block; margin: auto; width: 143px; height: 193px;" />
         <div style="margin-top: 10px; position: relative;">
             <button id="download" onclick="window.location.href='https://cdn.discordapp.com/attachments/1209178116031905834/1241163790775750706/FogClient.dll?ex=664bd65b&is=664a84db&hm=55a66f2ab0d79457c999e0272441039ffd979b3a269991f8dcebef969b872737&'" style="background-color: #262424; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; position: relative; z-index: 999;">Download</button>
         </div>
@@ -313,6 +313,48 @@
         };
     </script>
 
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+            authDomain: "fog-network-accounts.firebaseapp.com",
+            projectId: "fog-network-accounts",
+            storageBucket: "fog-network-accounts.appspot.com",
+            messagingSenderId: "641228125011",
+            appId: "1:641228125011:web:607bced8131db7802967a6"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const database = firebase.database();
+
+        function getUid() {
+            return localStorage.getItem('uid');
+        }
+
+        window.onload = function () {
+            const uid = getUid();
+            if (uid) {
+                console.log('User is logged in with UID:', uid);
+                checkAdminStatus(uid);
+            } else {
+                console.log('No user is logged in.');
+            }
+        };
+
+        function checkAdminStatus(uid) {
+            const userRef = database.ref('users/' + uid);
+            userRef.once('value').then((snapshot) => {
+                const userData = snapshot.val();
+                if (userData && userData.admin === true) {
+                    document.getElementById('adminButton').style.display = 'block';
+                }
+            }).catch((error) => {
+                console.error('Error fetching user data:', error.message);
+            });
+        }
+    </script>
+
 </body>
-</html>
 
