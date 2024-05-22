@@ -199,7 +199,9 @@
                     };
 
                     database_ref.child('users/' + uid).update(user_data);
+                    localStorage.setItem('uid', uid);
                     alert('Logged in successfully!');
+                    window.location.href = '../index.html'; 
                 }
             }).catch((error) => {
                 alert('Error checking banned status: ' + error.message);
@@ -218,6 +220,20 @@
         function validate_field(field) {
             return field != null && field.length > 0;
         }
+
+        function getUid() {
+            return localStorage.getItem('uid');
+        }
+
+        // check login
+        window.onload = function () {
+            const uid = getUid();
+            if (uid) {
+                console.log('User is logged in with UID:', uid);
+            } else {
+                console.log('No user is logged in.');
+            }
+        };
     </script>
 </body>
 </html>
