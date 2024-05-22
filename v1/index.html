@@ -24,29 +24,12 @@
             crossorigin="anonymous"></script>
     <title>Home</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon2.png">
-    <link href="index.css" rel="stylesheet">
-    <link href="nav.css" rel="stylesheet">
+    <link href="./index.css" rel="stylesheet">
+    <link href="./nav.css" rel="stylesheet">
     <script href="./fram.js"></script>
     <script href="./index.js"></script>
     <script href="./scripts/preventcloser.js"></script>
     <script src="./scripts/background.js"></script>
-    <script>
-        document.onkeydown = function (e) {
-            if (event.keyCode == 123) {
-                return false;
-            }
-
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-                return false;
-            }
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-                return false;
-            }
-        }
-    </script>
     <style>
         #removeLagButton {
             position: absolute;
@@ -314,46 +297,47 @@
     </script>
 
     <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
-            authDomain: "fog-network-accounts.firebaseapp.com",
-            projectId: "fog-network-accounts",
-            storageBucket: "fog-network-accounts.appspot.com",
-            messagingSenderId: "641228125011",
-            appId: "1:641228125011:web:607bced8131db7802967a6"
-        };
+        document.addEventListener('DOMContentLoaded', function () {
+            var firebaseConfig = {
+                apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+                authDomain: "fog-network-accounts.firebaseapp.com",
+                projectId: "fog-network-accounts",
+                storageBucket: "fog-network-accounts.appspot.com",
+                messagingSenderId: "641228125011",
+                appId: "1:641228125011:web:607bced8131db7802967a6"
+            };
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
 
-        const database = firebase.database();
+            const database = firebase.database();
 
-        function getUid() {
-            return localStorage.getItem('uid');
-        }
-
-        window.onload = function () {
-            const uid = getUid();
-            if (uid) {
-                console.log('User is logged in with UID:', uid);
-                checkAdminStatus(uid);
-            } else {
-                console.log('No user is logged in.');
+            function getUid() {
+                return localStorage.getItem('uid');
             }
-        };
 
-        function checkAdminStatus(uid) {
-            const userRef = database.ref('users/' + uid);
-            userRef.once('value').then((snapshot) => {
-                const userData = snapshot.val();
-                if (userData && userData.admin === true) {
-                    document.getElementById('adminButton').style.display = 'block';
+            window.onload = function () {
+                const uid = getUid();
+                if (uid) {
+                    console.log('User is logged in with UID:', uid);
+                    checkAdminStatus(uid);
+                } else {
+                    console.log('No user is logged in.');
                 }
-            }).catch((error) => {
-                console.error('Error fetching user data:', error.message);
-            });
-        }
+            };
+
+            function checkAdminStatus(uid) {
+                const userRef = database.ref('users/' + uid);
+                userRef.once('value').then((snapshot) => {
+                    const userData = snapshot.val();
+                    if (userData && userData.admin === true) {
+                        document.getElementById('adminButton').style.display = 'block'; // Show admin button
+                    }
+                }).catch((error) => {
+                    console.error('Error fetching user data:', error.message);
+                });
+            }
+        });
     </script>
 
 </body>
