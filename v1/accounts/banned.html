@@ -33,6 +33,60 @@
 </head>
 <body>
     <h1>You have been <span class="red">BANNED</span> from Fog</h1>
+
+    <div id="banReason"></div>
+
     <p>u cant use fog anymore lmao<br>stop being bad</p>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+            authDomain: "fog-network-accounts.firebaseapp.com",
+            projectId: "fog-network-accounts",
+            storageBucket: "fog-network-accounts.appspot.com",
+            messagingSenderId: "641228125011",
+            appId: "1:641228125011:web:607bced8131db7802967a6"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const database = firebase.database();
+
+        function getUid() {
+            return localStorage.getItem('uid');
+        }
+
+        function fetchUserData(uid) {
+            return database.ref('users/' + uid).once('value').then(snapshot => snapshot.val());
+        }
+
+        function displayBanReason(ban_reason) {
+            const banReasonElement = document.getElementById('banReason');
+            banReasonElement.innerHTML = `<p>Reason: ${ban_reason}</p>`;
+        }
+
+        window.onload = function () {
+            const uid = getUid();
+            if (uid) {
+                fetchUserData(uid).then(userData => {
+                    if (userData && userData.ban_reason) {
+                        displayBanReason(userData.ban_reason);
+                    } else {
+                        displayBanReason('No specific reason provided.');
+                    }
+                }).catch(error => {
+                    console.error('Error fetching user data:', error.message);
+                });
+            } else {
+                console.log('No user is logged in.');
+            }
+        };
+    </script>
 </body>
 </html>
