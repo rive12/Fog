@@ -201,6 +201,18 @@
             cursor: pointer;
         }
 
+        #adminButton {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background-color: #4d4c4c;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -223,6 +235,7 @@
         </ul>
     </nav>
     <!-- <iframe id="iframeContainer" src="./v1/popup/warning.html"></iframe> -->
+    <button id="adminButton" onclick="window.location.href='./admin'">🛠️ Admin Panel</button>
     <iframe id="MyFrame" src="./search.html" style="position:fixed; top:7%; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
     <img class="kardimg" src="./imgs/Kardna Text.png"></img>
     <!-- changelog -->
@@ -296,48 +309,51 @@
         };
     </script>
 
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var firebaseConfig = {
-                apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
-                authDomain: "fog-network-accounts.firebaseapp.com",
-                projectId: "fog-network-accounts",
-                storageBucket: "fog-network-accounts.appspot.com",
-                messagingSenderId: "641228125011",
-                appId: "1:641228125011:web:607bced8131db7802967a6"
-            };
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+            authDomain: "fog-network-accounts.firebaseapp.com",
+            projectId: "fog-network-accounts",
+            storageBucket: "fog-network-accounts.appspot.com",
+            messagingSenderId: "641228125011",
+            appId: "1:641228125011:web:607bced8131db7802967a6"
+        };
 
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
 
-            const database = firebase.database();
+        const database = firebase.database();
 
-            function getUid() {
-                return localStorage.getItem('uid');
+        function getUid() {
+            return localStorage.getItem('uid');
+        }
+
+        window.onload = function () {
+            const uid = getUid();
+            if (uid) {
+                console.log('User is logged in with UID:', uid);
+                checkAdminStatus(uid);
+            } else {
+                console.log('No user is logged in.');
             }
+        };
 
-            window.onload = function () {
-                const uid = getUid();
-                if (uid) {
-                    console.log('User is logged in with UID:', uid);
-                    checkAdminStatus(uid);
-                } else {
-                    console.log('No user is logged in.');
+        function checkAdminStatus(uid) {
+            const userRef = database.ref('users/' + uid);
+            userRef.once('value').then((snapshot) => {
+                const userData = snapshot.val();
+                if (userData && userData.admin === true) {
+                    document.getElementById('adminButton').style.display = 'block';
                 }
-            };
-
-            function checkAdminStatus(uid) {
-                const userRef = database.ref('users/' + uid);
-                userRef.once('value').then((snapshot) => {
-                    const userData = snapshot.val();
-                    if (userData && userData.admin === true) {
-                        document.getElementById('adminButton').style.display = 'block'; // Show admin button
-                    }
-                }).catch((error) => {
-                    console.error('Error fetching user data:', error.message);
-                });
-            }
-        });
+            }).catch((error) => {
+                console.error('Error fetching user data:', error.message);
+            });
+        }
     </script>
 
 </body>
