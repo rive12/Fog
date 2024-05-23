@@ -141,10 +141,15 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const fullName = document.getElementById('full_name').value;
-
+            const banned = getBanned();
             if (!validate_email(email) || !validate_password(password) || !validate_field(fullName)) {
                 alert('Email, Password, or Username is invalid.');
                 return;
+            }
+
+            if (banned) {
+                const welcome = document.getElementById("welcome_text");
+                welcome.textContent = "stop tryna ban evade loser";
             }
 
             auth.createUserWithEmailAndPassword(email, password)
@@ -154,7 +159,8 @@
                         email: email,
                         full_name: fullName,
                         last_login: Date.now(),
-                        banned: false
+                        banned: false,
+                        ban_reason: none
                     };
                     database.ref('users/' + user.uid).set(user_data);
                     alert('Account successfully created!');
