@@ -150,6 +150,7 @@
             if (banned) {
                 const welcome = document.getElementById("welcome_text");
                 welcome.textContent = "stop tryna ban evade loser";
+                return;
             }
 
             auth.createUserWithEmailAndPassword(email, password)
