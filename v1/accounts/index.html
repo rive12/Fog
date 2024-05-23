@@ -189,6 +189,7 @@
                 const userData = snapshot.val();
                 if (userData && userData.banned === true) {
                     auth.signOut().then(() => {
+                        localStorage.setItem('banned');
                         window.location.href = 'banned.html';
                     });
                 } else {
@@ -225,6 +226,10 @@
             return localStorage.getItem('uid');
         }
 
+        function getBanned() {
+            return localStorage.getItem('banned');
+        }
+
         window.onload = function () {
             const uid = getUid();
             if (uid) {
@@ -247,13 +252,12 @@
     </script>
 
     <script>
-        window.onload = function () {
-            const userRef = database.ref('users/' + uid);
-                const userData = snapshot.val();
-                if (userData && userData.banned === true) {
-                    {
-                        document.getElementById('register').style.display = 'none';
-                    }
+            window.onload = function() {
+            const banned = getBanned();
+            if (banned) {
+            {
+            document.getElementById('register').style.display = 'none';
+            }
     </script>
 
 </body>
