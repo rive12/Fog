@@ -109,7 +109,7 @@
                     <input type="password" id="password" placeholder="Password">
                     <div id="button_container">
                         <button onclick="login()">Login</button>
-                        <button onclick="register()">Register</button>
+                        <button id="register" onclick="register()">Register</button>
                     </div>
                 </div>
             </div>
@@ -244,6 +244,16 @@
                 }
             }
         };
+    </script>
+
+    <script>
+        window.onload = function () {
+            const userRef = database.ref('users/' + uid);
+                const userData = snapshot.val();
+                if (userData && userData.banned === true) {
+                    {
+                        document.getElementById('register').style.display = 'none';
+                    }
     </script>
 
 </body>
