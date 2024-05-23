@@ -333,14 +333,24 @@
             return localStorage.getItem('uid');
         }
 
+        function getBanned() {
+            return localStorage.getItem('banned');
+        }
+
         window.onload = function () {
             const uid = getUid();
+            const banned = getBanned();
             if (uid) {
                 console.log('User is logged in with UID:', uid);
                 checkAdminStatus(uid);
             } else {
                 console.log('No user is logged in.');
                 window.location.href = "accounts/#newuser";
+            }
+            const userData = snapshot.val();
+            if (userData && userData.banned === true) {
+                auth.signOut().then(() => {
+                window.location.href = "accounts";
             }
         };
 
