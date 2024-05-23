@@ -189,7 +189,6 @@
                 const userData = snapshot.val();
                 if (userData && userData.banned === true) {
                     auth.signOut().then(() => {
-                        localStorage.setItem('banned');
                         window.location.href = 'banned.html';
                     });
                 } else {
