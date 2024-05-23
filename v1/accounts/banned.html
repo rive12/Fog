@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banned</title>
+
+    <script>
+            localStorage.setItem('banned');
+    </script>
+
     <style>
         body {
             background-color: black;
@@ -66,14 +71,10 @@
             return database.ref('users/' + uid).once('value').then(snapshot => snapshot.val());
         }
 
-        function displayBanReason(ban_reason) {
+        /* function displayBanReason(ban_reason) {
             const banReasonElement = document.getElementById('banReason');
             banReasonElement.innerHTML = `<p>Reason: ${ban_reason}</p>`;
-        }
-
-        window.onload = function () {
-            localStorage.setItem('banned');
-        }
+        } */
 
     </script>
 </body>
