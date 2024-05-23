@@ -309,20 +309,26 @@
 
             window.onload = function () {
                 const uid = getUid();
+
                 if (uid) {
                     console.log('User is logged in with UID:', uid);
-                    fetchUserData(uid).then(userData => {
+                    checkAdminStatus(uid).then(userData => {
                         if (userData) {
-                            displayAccountDetails(uid, userData.full_name);
+                            if (userData.banned === true) {
+                                auth.signOut().then(() => {
+                                    window.location.href = "accounts";
+                                });
+                            }
                             if (userData.admin === true) {
                                 document.getElementById('adminButton').style.display = 'block';
                             }
                         }
                     }).catch(error => {
-                        console.error('Error fetching user data:', error.message);
+                        console.error('Error fetching user data:', error);
                     });
                 } else {
                     console.log('No user is logged in.');
+                    window.location.href = "accounts/#newuser";
                 }
             };
         </script>

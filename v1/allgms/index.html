@@ -37,4 +37,54 @@
 
 <iframe id="iframeContainer" src="././allgmsview.html"></iframe>
 
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+        authDomain: "fog-network-accounts.firebaseapp.com",
+        projectId: "fog-network-accounts",
+        storageBucket: "fog-network-accounts.appspot.com",
+        messagingSenderId: "641228125011",
+        appId: "1:641228125011:web:607bced8131db7802967a6"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const database = firebase.database();
+
+    function getUid() {
+        return localStorage.getItem('uid');
+    }
+
+    window.onload = function () {
+        const uid = getUid();
+
+        if (uid) {
+            console.log('User is logged in with UID:', uid);
+            checkAdminStatus(uid).then(userData => {
+                if (userData) {
+                    if (userData.banned === true) {
+                        auth.signOut().then(() => {
+                            window.location.href = "accounts";
+                        });
+                    }
+                    if (userData.admin === true) {
+                        document.getElementById('adminButton').style.display = 'block';
+                    }
+                }
+            }).catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+        } else {
+            console.log('No user is logged in.');
+            window.location.href = "accounts/#newuser";
+        }
+    };
+</script>
+
 

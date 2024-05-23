@@ -256,5 +256,62 @@
             }
         };
     </script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+            authDomain: "fog-network-accounts.firebaseapp.com",
+            projectId: "fog-network-accounts",
+            storageBucket: "fog-network-accounts.appspot.com",
+            messagingSenderId: "641228125011",
+            appId: "1:641228125011:web:607bced8131db7802967a6"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const database = firebase.database();
+
+        function getUid() {
+            return localStorage.getItem('uid');
+        }
+
+        function getBanned() {
+            return localStorage.getItem('banned');
+        }
+
+        window.onload = function () {
+            const uid = getUid();
+            const banned = getBanned();
+            if (uid) {
+                console.log('User is logged in with UID:', uid);
+                checkAdminStatus(uid);
+            } else {
+                console.log('No user is logged in.');
+                window.location.href = "accounts/#newuser";
+            }
+            if (banned) {
+                window.location.href = "accounts";
+            }
+        };
+
+        function checkAdminStatus(uid) {
+            const userRef = database.ref('users/' + uid);
+            userRef.once('value').then((snapshot) => {
+                const userData = snapshot.val();
+                if (userData && userData.admin === true) {
+                    document.getElementById('adminButton').style.display = 'block';
+                }
+            }).catch((error) => {
+                console.error('Error fetching user data:', error.message);
+            });
+        }
+    </script>
+
 </body>
 </html>
