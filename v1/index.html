@@ -1,4 +1,6 @@
-﻿
+﻿<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TM52GM2B"></script>
@@ -44,24 +46,24 @@
         }
 
         #iframeContainer {
-        position: fixed;
-        top: 72px;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        z-index: 1000; 
-    }
+            position: fixed;
+            top: 72px;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            z-index: 1000;
+        }
 
         /* changelog css */
         #changelog {
-            width: 80%; 
-            margin: 30px auto; 
+            width: 80%;
+            margin: 30px auto;
             padding: 20px;
             background-color: #1c1c1c;
             color: #ffffff;
@@ -125,7 +127,7 @@
             }
 
             #issues p {
-                font-size: 18px; 
+                font-size: 18px;
             }
 
             #issues ul {
@@ -134,24 +136,24 @@
                 margin-top: 10px;
             }
 
-        #issues ul li {
-            margin-bottom: 5px;
-            font-size: 18px;
-        }
-
-        #issues ul li.added {
-            color: #00ff00;
-        }
-
-        #issues ul li.removed {
-            color: #ff0000;
-        }
-
-                #issues ul li.fixed {
-                    color: #ffffff;
+                #issues ul li {
+                    margin-bottom: 5px;
+                    font-size: 18px;
                 }
 
-                /*fog client section css*/
+                    #issues ul li.added {
+                        color: #00ff00;
+                    }
+
+                    #issues ul li.removed {
+                        color: #ff0000;
+                    }
+
+                    #issues ul li.fixed {
+                        color: #ffffff;
+                    }
+
+        /*fog client section css*/
         #menu {
             width: 80%;
             margin: 30px auto;
@@ -188,8 +190,9 @@
             font-family: Arial, sans-serif;
         }
 
-         .button {
-            background-color: #262424; /*#eb4034 kewl red*/
+        .button {
+            background-color: #262424;
+            /*#eb4034 kewl red*/
             border: none;
             color: white;
             padding: 15px 32px;
@@ -219,12 +222,13 @@
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP6772XP"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP6772XP" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <iframe id="MyFrame" src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
+    <iframe id="MyFrame" src="./scripts/clouds.html"
+            style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     <nav class="ka-boom">
         <ul class="nav">
             <li><a href="./index.html">Home</a></li>
@@ -236,7 +240,8 @@
     </nav>
     <!-- <iframe id="iframeContainer" src="./v1/popup/warning.html"></iframe> -->
     <button id="adminButton" onclick="window.location.href='./admin'">🛠️ Admin Panel</button>
-    <iframe id="MyFrame" src="./search.html" style="position:fixed; top:7%; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
+    <iframe id="MyFrame" src="./search.html"
+            style="position:fixed; top:7%; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
     <img class="kardimg" src="./imgs/Kardna Text.png"></img>
     <!-- changelog -->
     <div id="changelog">
@@ -274,7 +279,11 @@
         </ul>
         <img src="images/FogClient.png" style="display: block; margin: auto; width: 143px; height: 193px;" />
         <div style="margin-top: 10px; position: relative;">
-            <button id="download" onclick="window.location.href='https://cdn.discordapp.com/attachments/1209178116031905834/1241163790775750706/FogClient.dll?ex=664bd65b&is=664a84db&hm=55a66f2ab0d79457c999e0272441039ffd979b3a269991f8dcebef969b872737&'" style="background-color: #262424; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; position: relative; z-index: 999;">Download</button>
+            <button id="download"
+                    onclick="window.location.href='https://cdn.discordapp.com/attachments/1209178116031905834/1241163790775750706/FogClient.dll?ex=664bd65b&is=664a84db&hm=55a66f2ab0d79457c999e0272441039ffd979b3a269991f8dcebef969b872737&'"
+                    style="background-color: #262424; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; position: relative; z-index: 999;">
+                Download
+            </button>
         </div>
     </div>
 
@@ -335,17 +344,12 @@
 
         function checkAdminStatus(uid) {
             const userRef = database.ref('users/' + uid);
-            userRef.once('value').then((snapshot) => {
-                const userData = snapshot.val();
-                if (userData && userData.admin === true) {
-                    document.getElementById('adminButton').style.display = 'block';
-                }
-            }).catch((error) => {
-                console.error('Error fetching user data:', error.message);
+            return userRef.once('value').then((snapshot) => {
+                return snapshot.val();
             });
         }
 
-        window.onload = function() {
+        window.onload = function () {
             const uid = getUid();
 
             if (uid) {
@@ -353,7 +357,7 @@
                 checkAdminStatus(uid).then(userData => {
                     if (userData) {
                         if (userData.banned === true) {
-                            auth.signOut().then(() => {
+                            firebase.auth().signOut().then(() => {
                                 window.location.href = "accounts";
                             });
                         }
@@ -373,3 +377,4 @@
 
 </body>
 
+</html>
