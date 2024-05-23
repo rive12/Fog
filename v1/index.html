@@ -333,7 +333,19 @@
             return localStorage.getItem('uid');
         }
 
-        window.onload = function () {
+        function checkAdminStatus(uid) {
+            const userRef = database.ref('users/' + uid);
+            userRef.once('value').then((snapshot) => {
+                const userData = snapshot.val();
+                if (userData && userData.admin === true) {
+                    document.getElementById('adminButton').style.display = 'block';
+                }
+            }).catch((error) => {
+                console.error('Error fetching user data:', error.message);
+            });
+        }
+
+        window.onload = function() {
             const uid = getUid();
 
             if (uid) {
@@ -357,18 +369,6 @@
                 window.location.href = "accounts/#newuser";
             }
         };
-
-        function checkAdminStatus(uid) {
-            const userRef = database.ref('users/' + uid);
-            userRef.once('value').then((snapshot) => {
-                const userData = snapshot.val();
-                if (userData && userData.admin === true) {
-                    document.getElementById('adminButton').style.display = 'block';
-                }
-            }).catch((error) => {
-                console.error('Error fetching user data:', error.message);
-            });
-        }
     </script>
 
 </body>
