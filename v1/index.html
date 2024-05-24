@@ -336,6 +336,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
+        const auth = firebase.auth();
         const database = firebase.database();
 
         function getUid() {
@@ -357,17 +358,20 @@
                 checkAdminStatus(uid).then(userData => {
                     if (userData) {
                         if (userData.banned === true) {
-                            firebase.auth().signOut().then(() => {
-                                localStorage.removeItem('uid');
+                            localStorage.removeItem('uid');
+                            auth.signOut().then(() => {
                                 window.location.href = "accounts";
                             });
-                        }
-                        if (userData.admin === true) {
-                            document.getElementById('adminButton').style.display = 'block';
+                        } else {
+                            displayAccountDetails(uid, userData.full_name);
+                            if (userData.admin === true) {
+                                document.getElementById('adminButton').style.display = 'block';
+                            }
                         }
                     }
                 }).catch(error => {
                     console.error('Error fetching user data:', error);
+                    window.location.href = "accounts/#newuser";
                 });
             } else {
                 console.log('No user is logged in.');
@@ -375,6 +379,7 @@
             }
         };
     </script>
+
 
 </body>
 
