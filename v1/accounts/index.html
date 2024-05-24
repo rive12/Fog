@@ -104,8 +104,8 @@
             <div id="form_content_container">
                 <div id="welcome_text">Welcome Back!</div>
                 <div id="form_content_inner_container">
-                    <input type="email" id="email" placeholder="Email">
-                    <input type="text" id="full_name" placeholder="Username">
+                    <input type="email" id="email" placeholder="Username">
+                    <!-- input type="text" id="full_name" placeholder="Username">  -->
                     <input type="password" id="password" placeholder="Password">
                     <div id="button_container">
                         <button onclick="login()">Login</button>
@@ -158,7 +158,7 @@
                     const user = userCredential.user;
                     const user_data = {
                         email: email,
-                        full_name: fullName,
+                        // full_name: fullName,
                         last_login: Date.now(),
                         banned: false,
                         ban_reason: none
@@ -217,8 +217,8 @@
         }
 
         function validate_email(email) {
-            const expression = /^[^@]+@\w+(\.\w+)+\w$/;
-            return expression.test(email);
+            // const expression = /^[^@]+@\w+(\.\w+)+\w$/;
+            return email.length >= 3;
         }
 
         function validate_password(password) {
