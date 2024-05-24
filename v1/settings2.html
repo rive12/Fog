@@ -13,12 +13,12 @@
     <script>
         (function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
+                'gtm.start': new Date().getTime(), event: 'gtm.js'
             }); var f = d.getElementsByTagName(s)[0],
                 j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PP6772XP');</script>
+        })(window, document, 'script', 'dataLayer', 'GTM-PP6772XP');
+    </script>
     <!-- End Google Tag Manager -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3724985851304355"
             crossorigin="anonymous"></script>
@@ -125,7 +125,6 @@
     <iframe src="./scripts/clouds.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;"></iframe>
     <button id="adminButton" onclick="window.location.href='./admin'">🛠️ Admin Panel</button>
 
-    </div>
     <div>
         <h1 style="
             @font-face {
@@ -143,6 +142,7 @@
             Settings
         </h1>
     </div>
+
     <script>
         var site = getCurrentURL();
         var name = new URL(site).host;
@@ -150,29 +150,22 @@
 
         //Other Stuff
         console.log(url);
-        //window.location.replace(url)
-
 
         function getCurrentURL() {
-            return window.location.href
+            return window.location.href;
         }
     </script>
 
-    </div>
-    <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
     <section>
-
         <div class="group">
             <h2 style="transform: translateY(-145px);">Game Settings</h2>
             <div id="Games">
-
                 <p>soon...</p>
-
                 <br>
                 <br>
                 <br>
                 <h2>Miscellaneous</h2>
-
                 <label for="toggleButton">Performance Mode</label>
                 <input type="checkbox" id="toggleButton" onchange="toggleScriptExecution()">
                 <br>
@@ -180,21 +173,11 @@
                 <br>
 
                 <h2>Account Actions</h2>
-
                 <div id="accountDetails"></div>
                 <button id="signOutButton">Sign Out</button>
-
                 <br>
                 <br>
                 <br>
-                <!-- <div id="passwordFormContainer">
-                    <form id="passwordForm">
-                        <label for="password">Admin Password</label>
-                        <input type="password" id="password" name="password">
-                        <button type="submit">Enter</button>
-                    </form>
-                </div>  -->
-
             </div>
         </div>
 
@@ -209,6 +192,7 @@
 
         <script src="./scripts/fullscreen.js"></script>
         <script src="./scripts/show.js"></script>
+
         <script>
             function toggleScriptExecution() {
                 const isChecked = document.getElementById('toggleButton').checked;
@@ -282,6 +266,7 @@
             firebase.initializeApp(firebaseConfig);
 
             const database = firebase.database();
+            const auth = firebase.auth();
 
             function getUid() {
                 return localStorage.getItem('uid');
@@ -298,7 +283,7 @@
 
             function signOut() {
                 localStorage.removeItem('uid');
-                firebase.auth().signOut().then(() => {
+                auth.signOut().then(() => {
                     window.location.href = "./accounts";
                 }).catch(error => {
                     console.error('Error signing out:', error);
@@ -307,6 +292,22 @@
 
             document.getElementById('signOutButton').addEventListener('click', signOut);
 
+            function checkAdminStatus(uid) {
+                return fetchUserData(uid).then(userData => {
+                    if (userData) {
+                        if (userData.banned) {
+                            auth.signOut().then(() => {
+                                window.location.href = "./accounts";
+                            });
+                            return null;
+                        }
+                        return userData;
+                    } else {
+                        throw new Error('User data not found');
+                    }
+                });
+            }
+
             window.onload = function () {
                 const uid = getUid();
 
@@ -314,21 +315,18 @@
                     console.log('User is logged in with UID:', uid);
                     checkAdminStatus(uid).then(userData => {
                         if (userData) {
-                            if (userData.banned === true) {
-                                auth.signOut().then(() => {
-                                    window.location.href = "accounts";
-                                });
-                            }
+                            displayAccountDetails(uid, userData.fullName);
                             if (userData.admin === true) {
                                 document.getElementById('adminButton').style.display = 'block';
                             }
                         }
                     }).catch(error => {
                         console.error('Error fetching user data:', error);
+                        window.location.href = "./accounts/#newuser";
                     });
                 } else {
                     console.log('No user is logged in.');
-                    window.location.href = "accounts/#newuser";
+                    window.location.href = "./accounts/#newuser";
                 }
             };
         </script>
