@@ -142,6 +142,7 @@
             const password = document.getElementById('password').value;
             const fullName = document.getElementById('full_name').value;
             const banned = getBanned();
+
             if (!validate_email(email) || !validate_password(password) || !validate_field(fullName)) {
                 alert('Email, Password, or Username is invalid.');
                 return;
@@ -161,9 +162,12 @@
                         full_name: fullName,
                         last_login: Date.now(),
                         banned: false,
-                        ban_reason: none
+                        ban_reason: ""
                     };
-                    database.ref('users/' + user.uid).set(user_data);
+
+                    return database.ref('users/' + user.uid).set(user_data);
+                })
+                .then(() => {
                     alert('Account successfully created!');
                 })
                 .catch((error) => {
@@ -244,11 +248,7 @@
             } else {
                 console.log('No user is logged in.');
             }
-        };
-    </script>
 
-    <script>
-        window.onload = function () {
             if (window.location.href.indexOf("/#newuser") !== -1) {
                 const newuser = document.getElementById("welcome_text");
                 if (newuser) {
