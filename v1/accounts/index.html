@@ -53,7 +53,7 @@
         }
 
         input[type="text"],
-        input[type="email"],
+        input[type="username"],
         input[type="password"] {
             background-color: #444;
             border: none;
@@ -104,7 +104,7 @@
             <div id="form_content_container">
                 <div id="welcome_text">Welcome Back!</div>
                 <div id="form_content_inner_container">
-                    <input type="email" id="email" placeholder="Username">
+                    <input type="username" id="username" placeholder="Username">
                     <!-- input type="text" id="full_name" placeholder="Username">  -->
                     <input type="password" id="password" placeholder="Password">
                     <div id="button_container">
@@ -138,12 +138,12 @@
         const database = firebase.database();
 
         function register() {
-            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const fullName = document.getElementById('full_name').value;
             const banned = getBanned();
-            if (!validate_email(email) || !validate_password(password) || !validate_field(fullName)) {
-                alert('Email, Password, or Username is invalid.');
+            if (!validate_username(username) || !validate_password(password) || !validate_field(fullName)) {
+                alert('username, Password, or Username is invalid.');
                 return;
             }
 
@@ -153,11 +153,11 @@
                 return;
             }
 
-            auth.createUserWithEmailAndPassword(email, password)
+            auth.createUserWithusernameAndPassword(username, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
                     const user_data = {
-                        username: email,
+                        username: username,
                         // full_name: fullName,
                         last_login: Date.now(),
                         banned: false,
@@ -172,15 +172,15 @@
         }
 
         function login() {
-            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            if (!validate_email(email) || !validate_password(password)) {
-                alert('Email or Password is invalid.');
+            if (!validate_username(username) || !validate_password(password)) {
+                alert('username or Password is invalid.');
                 return;
             }
 
-            auth.signInWithEmailAndPassword(email, password)
+            auth.signInWithusernameAndPassword(username, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
                     loginChecks(user.uid);
@@ -216,9 +216,9 @@
             });
         }
 
-        function validate_email(email) {
+        function validate_username(username) {
             // const expression = /^[^@]+@\w+(\.\w+)+\w$/;
-            return email.length >= 3;
+            return username.length >= 3;
         }
 
         function validate_password(password) {
