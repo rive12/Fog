@@ -265,66 +265,58 @@
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
 
+            const auth = firebase.auth();
             const database = firebase.database();
 
-            function getUid() {
-                return localStorage.getItem('uid');
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    displayAccountDetails(user);
+                    checkAdminStatus(user);
+                } else {
+                    document.getElementById('accountDetails').innerHTML = 'No user is signed in.';
+                }
+            });
+
+            function displayAccountDetails(user) {
+                var uid = user.uid;
+                var userRef = firebase.database().ref('users/' + uid);
+
+                userRef.once('value').then(function (snapshot) {
+                    var userData = snapshot.val();
+                    console.log('User data:', userData); // Log the user data
+                    var email = userData.email || 'No email available';
+                    var fullName = userData.full_name || 'No full name available';
+
+                    document.getElementById('accountDetails').innerHTML =
+                        'UID: ' + uid + '<br>' +
+                        'Username: ' + fullName;
+                }).catch(function (error) {
+                    console.error('Error retrieving user data:', error);
+                });
             }
 
-            function fetchUserData(uid) {
-                return database.ref('users/' + uid).once('value').then(snapshot => snapshot.val());
+            function checkAdminStatus(user) {
+                var userRef = firebase.database().ref('users/' + user.uid);
+                userRef.once('value').then(function (snapshot) {
+                    var userData = snapshot.val();
+                    if (userData && userData.isAdmin) {
+                        document.getElementById('adminButton').style.display = 'block';
+                    }
+                }).catch(function (error) {
+                    console.error('Error checking admin status:', error);
+                });
             }
 
-            function displayAccountDetails(uid, fullName) {
-                const accountDetails = document.getElementById('accountDetails');
-                accountDetails.innerHTML = `<p>UID: ${uid}</p><p>Username: ${fullName}</p>`;
-            }
-
-            function signOut() {
-                localStorage.removeItem('uid');
-                firebase.auth().signOut().then(() => {
-                    window.location.href = "./accounts";
-                }).catch(error => {
+            document.getElementById('signOutButton').addEventListener('click', function () {
+                firebase.auth().signOut().then(function () {
+                    localStorage.removeItem('uid');
+                    auth.signOut().then(() => {
+                    window.location.href = '../accounts.html';
+                    console.log('User signed out.');
+                }).catch(function (error) {
                     console.error('Error signing out:', error);
                 });
-            }
-
-            document.getElementById('signOutButton').addEventListener('click', signOut);
-
-            window.onload = function () {
-                const uid = getUid();
-                if (uid) {
-                    console.log('User is logged in with UID:', uid);
-                    fetchUserData(uid).then(userData => {
-                        if (userData) {
-                            displayAccountDetails(uid, userData.full_name);
-                            if (userData.admin === true) {
-                                document.getElementById('adminButton').style.display = 'block';
-                            }
-                        }
-                    }).catch(error => {
-                        console.error('Error fetching user data:', error.message);
-                    });
-                } else {
-                    console.log('No user is logged in.');
-                }
-            };
-
-            function checkAdminStatus(uid) {
-                return fetchUserData(uid).then(userData => {
-                    if (userData) {
-                        if (userData.banned) {
-                            auth.signOut().then(() => {
-                                window.location.href = "./accounts";
-                            });
-                            return null;
-                        }
-                        return userData;
-                    } else {
-                        throw new Error('User data not found');
-                    }
-                });
-            }
+            });
 
             window.onload = function () {
                 const uid = getUid();
