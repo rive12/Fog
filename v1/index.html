@@ -358,6 +358,7 @@
                     if (userData) {
                         if (userData.banned === true) {
                             firebase.auth().signOut().then(() => {
+                                localStorage.removeItem('uid');
                                 window.location.href = "accounts";
                             });
                         }

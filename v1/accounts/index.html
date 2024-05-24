@@ -195,6 +195,7 @@
             userRef.once('value').then((snapshot) => {
                 const userData = snapshot.val();
                 if (userData && userData.banned === true) {
+                    localStorage.removeItem('uid');
                     auth.signOut().then(() => {
                         window.location.href = 'banned.html';
                     });
