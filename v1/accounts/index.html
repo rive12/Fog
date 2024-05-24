@@ -53,7 +53,7 @@
         }
 
         input[type="text"],
-        input[type="username"],
+        input[type="email"],
         input[type="password"] {
             background-color: #444;
             border: none;
@@ -104,8 +104,8 @@
             <div id="form_content_container">
                 <div id="welcome_text">Welcome Back!</div>
                 <div id="form_content_inner_container">
-                    <input type="username" id="username" placeholder="Username">
-                    <!-- input type="text" id="full_name" placeholder="Username">  -->
+                    <input type="email" id="email" placeholder="Email">
+                    <input type="text" id="full_name" placeholder="Username">
                     <input type="password" id="password" placeholder="Password">
                     <div id="button_container">
                         <button onclick="login()">Login</button>
@@ -138,12 +138,12 @@
         const database = firebase.database();
 
         function register() {
-            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const fullName = document.getElementById('full_name').value;
             const banned = getBanned();
-            if (!validate_username(username) || !validate_password(password) || !validate_field(fullName)) {
-                alert('username, Password, or Username is invalid.');
+            if (!validate_email(email) || !validate_password(password) || !validate_field(fullName)) {
+                alert('Email, Password, or Username is invalid.');
                 return;
             }
 
@@ -153,12 +153,12 @@
                 return;
             }
 
-            auth.createUserWithusernameAndPassword(username, password)
+            auth.createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
                     const user_data = {
-                        username: username,
-                        // full_name: fullName,
+                        email: email,
+                        full_name: fullName,
                         last_login: Date.now(),
                         banned: false,
                         ban_reason: none
@@ -172,15 +172,15 @@
         }
 
         function login() {
-            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            if (!validate_username(username) || !validate_password(password)) {
-                alert('username or Password is invalid.');
+            if (!validate_email(email) || !validate_password(password)) {
+                alert('Email or Password is invalid.');
                 return;
             }
 
-            auth.signInWithusernameAndPassword(username, password)
+            auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
                     loginChecks(user.uid);
@@ -216,9 +216,9 @@
             });
         }
 
-        function validate_username(username) {
-            // const expression = /^[^@]+@\w+(\.\w+)+\w$/;
-            return username.length >= 3;
+        function validate_email(email) {
+            const expression = /^[^@]+@\w+(\.\w+)+\w$/;
+            return expression.test(email);
         }
 
         function validate_password(password) {
@@ -256,6 +256,62 @@
                 }
             }
         };
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+            authDomain: "fog-network-accounts.firebaseapp.com",
+            projectId: "fog-network-accounts",
+            storageBucket: "fog-network-accounts.appspot.com",
+            messagingSenderId: "641228125011",
+            appId: "1:641228125011:web:607bced8131db7802967a6"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const database = firebase.database();
+
+        function getUid() {
+            return localStorage.getItem('uid');
+        }
+
+        function getBanned() {
+            return localStorage.getItem('banned');
+        }
+
+        window.onload = function () {
+            const uid = getUid();
+            const banned = getBanned();
+            if (uid) {
+                console.log('User is logged in with UID:', uid);
+                checkAdminStatus(uid);
+            } else {
+                console.log('No user is logged in.');
+                window.location.href = "accounts/#newuser";
+            }
+            if (banned) {
+                window.location.href = "accounts";
+            }
+        };
+
+        function checkAdminStatus(uid) {
+            const userRef = database.ref('users/' + uid);
+            userRef.once('value').then((snapshot) => {
+                const userData = snapshot.val();
+                if (userData && userData.admin === true) {
+                    document.getElementById('adminButton').style.display = 'block';
+                }
+            }).catch((error) => {
+                console.error('Error fetching user data:', error.message);
+            });
+        }
     </script>
 
 </body>

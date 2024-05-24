@@ -64,8 +64,8 @@ function firebaseLogin(providerName, successCallback, errorCallback) {
 			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;
-			// The username of the user's account used.
-			var username = error.username;
+			// The email of the user's account used.
+			var email = error.email;
 			// The firebase.auth.AuthCredential type that was used.
 			tempErrorCreds = error.credential;
 			console.log(error);
@@ -74,9 +74,9 @@ function firebaseLogin(providerName, successCallback, errorCallback) {
 				errorCallback(error.message);
 
 			if (errorCode === 'auth/account-exists-with-different-credential') {
-				// User's username already exists.
-				// Get sign-in methods for this username.
-				firebase.auth().fetchSignInMethodsForusername(username).then(function (methods) {
+				// User's email already exists.
+				// Get sign-in methods for this email.
+				firebase.auth().fetchSignInMethodsForEmail(email).then(function (methods) {
 					// the first method in the list will be the "recommended" method to use.
 					if (methods.length == 0)
 						return;

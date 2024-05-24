@@ -78,12 +78,12 @@ const auth = firebase.auth()
 const database = firebase.database()
 
 function register() {
-    var username = document.getElementById('username').value
+    var email = document.getElementById('email').value
     var password = document.getElementById('password').value
     var full_name = document.getElementById('full_name').value
 
-    if (validate_username(username) == false || validate_password(password) == false) {
-        alert('username or Password is invalid.')
+    if (validate_email(email) == false || validate_password(password) == false) {
+        alert('Email or Password is invalid.')
         return
     }
 
@@ -92,14 +92,14 @@ function register() {
         return
     }
 
-    auth.createUserWithusernameAndPassword(username, password)
+    auth.createUserWithEmailAndPassword(email, password)
         .then(function () {
             var user = auth.currentUser
 
             var database_ref = database.ref()
 
             var user_data = {
-                username: username,
+                email: email,
                 full_name: full_name,
                 last_login: Date.now()
             }
@@ -117,15 +117,15 @@ function register() {
 }
 
 function login() {
-    var username = document.getElementById('username').value
+    var email = document.getElementById('email').value
     var password = document.getElementById('password').value
 
-    if (validate_username(username) == false || validate_password(password) == false) {
-        alert('username or Password is invalid.')
+    if (validate_email(email) == false || validate_password(password) == false) {
+        alert('Email or Password is invalid.')
         return
     }
 
-    auth.signInWithusernameAndPassword(username, password)
+    auth.signInWithEmailAndPassword(email, password)
         .then(function () {
             var user = auth.currentUser
 
@@ -147,9 +147,9 @@ function login() {
         })
 }
 
-function validate_username(username) {
+function validate_email(email) {
     var expression = /^[^@]+@\w+(\.\w+)+\w+$/
-    if (expression.test(username) == true) {
+    if (expression.test(email) == true) {
         return true
     } else {
         return false
