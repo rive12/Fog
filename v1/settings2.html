@@ -291,9 +291,9 @@
                 return database.ref('users/' + uid).once('value').then(snapshot => snapshot.val());
             }
 
-            function displayAccountDetails(uid, email) {
+            function displayAccountDetails(uid, username) {
                 const accountDetails = document.getElementById('accountDetails');
-                accountDetails.innerHTML = `<p>UID: ${uid}</p><p>Username: ${email}</p>`;
+                accountDetails.innerHTML = `<p>UID: ${uid}</p><p>Username: ${username}</p>`;
             }
 
             function signOut() {
