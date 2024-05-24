@@ -61,6 +61,13 @@
         return localStorage.getItem('uid');
     }
 
+    function checkAdminStatus(uid) {
+        const userRef = database.ref('users/' + uid);
+        return userRef.once('value').then((snapshot) => {
+            return snapshot.val();
+        });
+    }
+
     window.onload = function () {
         const uid = getUid();
 
@@ -69,7 +76,8 @@
             checkAdminStatus(uid).then(userData => {
                 if (userData) {
                     if (userData.banned === true) {
-                        auth.signOut().then(() => {
+                        firebase.auth().signOut().then(() => {
+                            localStorage.removeItem('uid');
                             window.location.href = "accounts";
                         });
                     }

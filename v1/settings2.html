@@ -307,30 +307,39 @@
 
             document.getElementById('signOutButton').addEventListener('click', signOut);
 
-            window.onload = function () {
-                const uid = getUid();
+            function checkAdminStatus(uid) {
+                const userRef = database.ref('users/' + uid);
+                return userRef.once('value').then((snapshot) => {
+                    return snapshot.val();
+                });
+            }
 
-                if (uid) {
-                    console.log('User is logged in with UID:', uid);
-                    checkAdminStatus(uid).then(userData => {
-                        if (userData) {
-                            if (userData.banned === true) {
-                                auth.signOut().then(() => {
-                                    window.location.href = "accounts";
-                                });
+            window.onload = function () {
+                window.onload = function () {
+                    const uid = getUid();
+
+                    if (uid) {
+                        console.log('User is logged in with UID:', uid);
+                        checkAdminStatus(uid).then(userData => {
+                            if (userData) {
+                                if (userData.banned === true) {
+                                    firebase.auth().signOut().then(() => {
+                                        localStorage.removeItem('uid');
+                                        window.location.href = "accounts";
+                                    });
+                                }
+                                if (userData.admin === true) {
+                                    document.getElementById('adminButton').style.display = 'block';
+                                }
                             }
-                            if (userData.admin === true) {
-                                document.getElementById('adminButton').style.display = 'block';
-                            }
-                        }
-                    }).catch(error => {
-                        console.error('Error fetching user data:', error);
-                    });
-                } else {
-                    console.log('No user is logged in.');
-                    window.location.href = "accounts/#newuser";
-                }
-            };
+                        }).catch(error => {
+                            console.error('Error fetching user data:', error);
+                        });
+                    } else {
+                        console.log('No user is logged in.');
+                        window.location.href = "accounts/#newuser";
+                    }
+                };
         </script>
     </section>
 </body>

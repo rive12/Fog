@@ -110,6 +110,13 @@
                 return localStorage.getItem('uid');
             }
 
+            function checkAdminStatus(uid) {
+                const userRef = database.ref('users/' + uid);
+                return userRef.once('value').then((snapshot) => {
+                    return snapshot.val();
+                });
+            }
+
             window.onload = function () {
                 const uid = getUid();
 
@@ -118,7 +125,8 @@
                     checkAdminStatus(uid).then(userData => {
                         if (userData) {
                             if (userData.banned === true) {
-                                auth.signOut().then(() => {
+                                firebase.auth().signOut().then(() => {
+                                    localStorage.removeItem('uid');
                                     window.location.href = "accounts";
                                 });
                             }
@@ -134,18 +142,6 @@
                     window.location.href = "accounts/#newuser";
                 }
             };
-
-            function checkAdminStatus(uid) {
-                const userRef = database.ref('users/' + uid);
-                userRef.once('value').then((snapshot) => {
-                    const userData = snapshot.val();
-                    if (userData && userData.admin === true) {
-                        document.getElementById('adminButton').style.display = 'block';
-                    }
-                }).catch((error) => {
-                    console.error('Error fetching user data:', error.message);
-                });
-            }
         </script>
 </body>
 </html>
