@@ -1,107 +1,111 @@
-<title>Topics | Interesting Science</title>
-<link href="../nav.css" rel="stylesheet">
-<script href="../index.js"></script>
-<link href="../index.css" rel="stylesheet">
-<script src="./scripts/fullscreen.js"></script>
-<script href="../scripts/preventcloser.js"></script>
-<script src="./scripts/show.js"></script>
-<nav class="ka-boom">
-    <ul class="nav">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../select/">Search</a></li>
-        <li><a href="./index.html">Menu</a></li>
-        <li><a href="../media/">Media</a></li>
-        <li><a href="../settings2.html">Settings</a></li>
-    </ul>
-</nav>
-<style>
-    #myDiv {
-        display: none;
-        z-index: 99999999999999999;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    #iframeContainer {
-        position: fixed;
-        top: 72px;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 91%;
-        border: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        z-index: 0;
-    }
-</style>
+<head>
+    <title>Topics | Interesting Science</title>
+    <link href="../nav.css" rel="stylesheet">
+    <link href="../index.css" rel="stylesheet">
+    <script src="./scripts/fullscreen.js"></script>
+    <script src="./scripts/show.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <style>
+        #myDiv {
+            display: none;
+            z-index: 99999999999999999;
+        }
 
-<iframe id="iframeContainer" src="../games page.html"></iframe>
+        #iframeContainer {
+            position: fixed;
+            top: 72px;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 91%;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+    </style>
+</head>
 
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<body>
+    <nav class="ka-boom">
+        <ul class="nav">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../select/">Search</a></li>
+            <li><a href="./index.html">Menu</a></li>
+            <li><a href="../media/">Media</a></li>
+            <li><a href="../settings2.html">Settings</a></li>
+        </ul>
+    </nav>
+    <iframe id="iframeContainer" src="../games page.html"></iframe>
 
-<script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
-        authDomain: "fog-network-accounts.firebaseapp.com",
-        projectId: "fog-network-accounts",
-        storageBucket: "fog-network-accounts.appspot.com",
-        messagingSenderId: "641228125011",
-        appId: "1:641228125011:web:83fd2f5ceae993b12967a6"
-    };
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtVsgnaqP6Jl0aqOYwYVMqOE8SS0uHoXA",
+            authDomain: "fog-network-accounts.firebaseapp.com",
+            projectId: "fog-network-accounts",
+            storageBucket: "fog-network-accounts.appspot.com",
+            messagingSenderId: "641228125011",
+            appId: "1:641228125011:web:83fd2f5ceae993b12967a6"
+        };
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
 
-    const auth = firebase.auth();
-    const database = firebase.database();
+        const auth = firebase.auth();
+        const database = firebase.database();
 
-    function getUid() {
-        return localStorage.getItem('uid');
-    }
+        function getUid() {
+            return localStorage.getItem('uid');
+        }
 
-    function checkAdminStatus(uid) {
-        const userRef = database.ref('users/' + uid);
-        return userRef.once('value').then((snapshot) => {
-            return snapshot.val();
-        });
-    }
+        function checkAdminStatus(uid) {
+            const userRef = database.ref('users/' + uid);
+            return userRef.once('value').then((snapshot) => {
+                return snapshot.val();
+            });
+        }
 
-    function displayAccountDetails(uid, fullName) {
-        console.log(`User ID: ${uid}, Full Name: ${fullName}`);
-    }
+        function displayAccountDetails(uid, fullName) {
+            console.log(`User ID: ${uid}, Full Name: ${fullName}`);
+        }
 
-    window.onload = function () {
-        const uid = getUid();
+        window.onload = function () {
+            const uid = getUid();
 
-        if (uid) {
-            console.log('User is logged in with UID:', uid);
-            checkAdminStatus(uid).then(userData => {
-                if (userData) {
-                    if (userData.banned === true) {
-                        localStorage.removeItem('uid');
-                        auth.signOut().then(() => {
-                            window.location.href = "accounts";
-                        });
-                    } else {
-                        displayAccountDetails(uid, userData.full_name);
-                        if (userData.admin === true) {
-                            document.getElementById('adminButton').style.display = 'block';
+            if (uid) {
+                console.log('User is logged in with UID:', uid);
+                checkAdminStatus(uid).then(userData => {
+                    if (userData) {
+                        if (userData.banned === true) {
+                            localStorage.removeItem('uid');
+                            auth.signOut().then(() => {
+                                window.location.href = "../accounts";
+                            });
+                        } else {
+                            displayAccountDetails(uid, userData.full_name);
+                            if (userData.admin === true) {
+                                document.getElementById('adminButton').style.display = 'block';
+                            }
                         }
                     }
-                }
-            }).catch(error => {
-                console.error('Error fetching user data:', error);
-                window.location.href = "accounts/#newuser";
-            });
-        } else {
-            console.log('No user is logged in.');
-            window.location.href = "accounts/#newuser";
-        }
-    };
-</script>
+                }).catch(error => {
+                    console.error('Error fetching user data:', error);
+                    //window.location.href = "../accounts/#newuser";
+                });
+            } else {
+                console.log('No user is logged in.');
+                //window.location.href = "../accounts/#newuser";
+            }
+        };
+    </script>
+</body>
 
-
+</html>
