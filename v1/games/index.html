@@ -73,15 +73,11 @@
             });
         }
 
-        function displayAccountDetails(uid, fullName) {
-            console.log(`User ID: ${uid}, Full Name: ${fullName}`);
-        }
-
         window.onload = function () {
             const uid = getUid();
 
             if (uid) {
-                console.log('User is logged in with UID:', uid);
+                console.log('User logged in with UID:', uid);
                 checkAdminStatus(uid).then(userData => {
                     if (userData) {
                         if (userData.banned === true) {
@@ -90,22 +86,23 @@
                                 window.location.href = "../accounts";
                             });
                         } else {
-                            displayAccountDetails(uid, userData.full_name);
-                            if (userData.admin === true) {
-                                document.getElementById('adminButton').style.display = 'block';
-                            }
+                            console.log('User is unbanned');
                         }
+                    } else {
+                        console.error('User data not found');
+                        // window.location.href = "../accounts/#newuser";
                     }
                 }).catch(error => {
                     console.error('Error fetching user data:', error);
-                    window.location.href = "../accounts/#newuser";
+                    // window.location.href = "../accounts/#newuser";
                 });
             } else {
                 console.log('No user is logged in.');
-                window.location.href = "../accounts/#newuser";
+                // window.location.href = "../accounts/#newuser";
             }
         };
     </script>
+
 </body>
 
 </html>
